@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/item_my_order__layout_"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/shop_cart_address"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_10">
+
+        <ImageView
+            android:id="@+id/item_my_order__wine_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/shopping_cart_item" />
+
+        <TextView
+            android:id="@+id/item_my_order__wine_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/magin_10"
+            android:layout_weight="2"
+            android:text="罗兰百悦盛世香槟(气泡葡萄酒）"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/text_13" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item_my_order__wine_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_marginLeft="@dimen/magin_10"
+                android:layout_marginRight="@dimen/magin_10"
+                android:text="¥110,009.00"
+                android:textColor="@color/my_text"
+                android:textSize="@dimen/text_12" />
+
+            <!--<TextView
+                android:id="@+id/item_my_order__wine_delete_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/magin_10"
+                android:layout_marginRight="@dimen/magin_10"
+                android:layout_marginTop="@dimen/magin_5"
+                android:text="¥222,020.00"
+                android:textColor="@color/money_delete"
+                android:textSize="@dimen/text_11" />-->
+
+            <TextView
+                android:id="@+id/item_my_order__wine_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/magin_10"
+                android:layout_marginRight="@dimen/magin_10"
+                android:layout_marginTop="@dimen/magin_5"
+                android:gravity="right"
+                android:text="×1000"
+                android:textColor="@color/my_text"
+                android:textSize="@dimen/text_11" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/garys"></View>
+</LinearLayout>

@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_product_brand__root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.humming.ascwg.activity.surprise.GiftActivity"
+    tools:showIn="@layout/activity_promotion_gift">
+
+    <ImageView
+        android:id="@+id/content_promotion_gift__bg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_150"
+        android:scaleType="centerCrop"
+        android:src="@drawable/wine" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+
+        <ImageView
+            android:id="@+id/content_promotion_gift__sold_img"
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+            android:layout_gravity="center"
+            android:src="@drawable/shopping_cart_item" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/content_promotion_gift__sold_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="罗兰百悦盛世香槟(起泡葡萄酒)"
+                android:textColor="@color/tab_text"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/content_promotion_gift__sold_englishname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="Laurent_Perrier Grand Siecle"
+                android:textColor="@color/tab_text"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="¥"
+                    android:textColor="@color/tab_bg" />
+
+                <TextView
+                    android:id="@+id/content_promotion_gift__sold_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:text="88.00"
+                    android:textColor="@color/tab_bg" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="right|bottom"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="90dp"
+                        android:layout_height="@dimen/height_20"
+                        android:background="@drawable/add_delete_border"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp">
+
+                        <LinearLayout
+                            android:id="@+id/content_promotion_gift__sold_subtract"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="12dp"
+                                android:layout_height="2dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/down"
+                                android:paddingLeft="5dp"
+                                android:textColor="@color/text_gray" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/content_promotion_gift__sold_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="12"
+                            android:textColor="@color/tab_bg" />
+
+                        <LinearLayout
+                            android:id="@+id/content_promotion_gift__sold_add"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="15dp"
+                                android:background="@drawable/up"
+                                android:textColor="@color/tab_bg" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="赠"
+            android:textColor="@color/get_ident"
+            android:textSize="25sp" />
+
+        <ImageView
+            android:id="@+id/content_promotion_gift__gift_img"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/shopping_cart_item" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/content_promotion_gift__gift_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="罗兰百悦盛世香槟(起泡葡萄酒)"
+                android:textColor="@color/tab_text"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/content_promotion_gift__gift_englishname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="Laurent_Perrier Grand Siecle"
+                android:textColor="@color/tab_text"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="¥"
+                    android:textColor="@color/tab_bg" />
+
+                <TextView
+                    android:id="@+id/content_promotion_gift__gift_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:text="88.00"
+                    android:textColor="@color/tab_bg" />
+
+                <TextView
+                    android:id="@+id/content_promotion_gift__gift_num"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="50"
+                    android:textColor="@color/bg_remark" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_gravity="bottom"
+        android:background="@color/shop_cart_bottom_all"
+        android:gravity="bottom"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1.7"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total"
+                    android:textColor="@color/tab_text" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="¥"
+                    android:textColor="@color/tab_text" />
+
+                <TextView
+                    android:id="@+id/fragment_shopping__total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:textColor="@color/tab_text" />
+
+                <TextView
+                    android:id="@+id/item_shoppongcart__all_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:text="(0件)"
+                    android:textColor="@color/tab_text" />
+            </LinearLayout>
+
+            <!-- <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="match_parent"
+                 android:layout_gravity="right"
+                 android:textSize="10sp"
+                 android:text="(不含运费)" />-->
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/fragment_shopping__account"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="@color/get_ident"
+            android:text="@string/settlement"
+            android:textColor="@color/tab_text"
+            android:textSize="@dimen/text_17" />
+
+    </LinearLayout>
+</LinearLayout>

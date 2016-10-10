@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.humming.ascwg.component.ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:background="@color/bg"
+    android:scrollbars="none"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_180"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_20">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2">
+
+                <ImageView
+                    android:id="@+id/fragment_rights__card_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/vip_card" />
+
+                <TextView
+                    android:id="@+id/fragment_rights__card_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="@dimen/magin_20"
+                    android:layout_marginRight="@dimen/magin_10"
+                    android:text="NO.870097"
+                    android:textColor="@color/money_delete"
+                    android:textSize="@dimen/text_14" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/fragment_rights__card_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="银卡"
+                    android:textColor="@color/get_ident"
+                    android:textSize="@dimen/text_14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/magin_10"
+                    android:text="目前获得的积分"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/text_12" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/magin_10">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@mipmap/barrel" />
+
+                    <TextView
+                        android:id="@+id/fragment_rights__card_points"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="@dimen/magin_20"
+                        android:text="100"
+                        android:textColor="@color/tab_text"
+                        android:textSize="@dimen/text_12" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="@dimen/magin_20"
+            android:background="@color/gray" />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/fragment_rights__listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/fragment_rights__gridview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/magin_10" />
+
+        <TextView
+            android:id="@+id/fragment_rights__rule_head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_list"
+            android:gravity="center"
+            android:paddingBottom="@dimen/padding_10"
+            android:paddingTop="@dimen/padding_10"
+            android:text="积分使用规则"
+            android:textColor="@color/get_ident"
+            android:textSize="@dimen/text_14" />
+
+        <TextView
+            android:id="@+id/fragment_rights__rule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/magin_10"
+            android:padding="@dimen/padding_20"
+            android:text="@string/text_rule"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_14" />
+
+    </LinearLayout>
+
+
+</com.humming.ascwg.component.ScrollView>

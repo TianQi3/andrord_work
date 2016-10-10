@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/padding_10"
+    android:paddingLeft="@dimen/padding_20"
+    android:paddingRight="@dimen/padding_20"
+    android:paddingTop="@dimen/padding_10">
+
+    <TextView
+        android:id="@+id/item_surprise_promotion__wine_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="御兰堡雅系列莎当妮白葡萄酒"
+        android:textColor="@color/money_delete"
+        android:textSize="@dimen/text_14" />
+
+    <TextView
+        android:id="@+id/item_surprise_promotion__wine_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="¥118"
+        android:textColor="@color/money_delete"
+        android:textSize="@dimen/text_14" />
+
+    <TextView
+        android:id="@+id/item_surprise_promotion__wine_english_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_surprise_promotion__wine_name"
+        android:layout_marginTop="@dimen/magin_5"
+        android:text="Yalumba ‘Y’ Series Chardonnay"
+        android:textColor="@color/money_delete"
+        android:textSize="@dimen/text_12" />
+
+</RelativeLayout>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:background="@color/bg"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <ListView
+        android:id="@+id/fragment_shopping__recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="#00000000"
+        android:dividerHeight="12dp"
+        android:scrollbars="none">
+
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/fragment_shopping__null"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/cart_null" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/cart_null"
+            android:textColor="@color/tab_text" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:background="@color/text_gray"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/shop_cart_bottom_all"
+        android:orientation="horizontal">
+
+        <RadioGroup
+            android:id="@+id/item_shoppongcart__radiogroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.7"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp">
+
+            <CheckBox
+                android:id="@+id/fragment_shoppongcart__all_select"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/shopping_cart_radio_status"
+                android:button="@null"
+                android:checked="false" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:text="@string/all_select"
+            android:textColor="@color/tab_text"
+            android:textSize="@dimen/text_17" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1.7"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total"
+                    android:textColor="@color/tab_text" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="¥"
+                    android:textColor="@color/tab_text" />
+
+                <TextView
+                    android:id="@+id/fragment_shopping__total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:textColor="@color/tab_text" />
+
+                <TextView
+                    android:id="@+id/item_shoppongcart__all_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:text="(0件)"
+                    android:textColor="@color/tab_text" />
+            </LinearLayout>
+
+            <!-- <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="match_parent"
+                 android:layout_gravity="right"
+                 android:textSize="10sp"
+                 android:text="(不含运费)" />-->
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/fragment_shopping__account"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:background="@color/get_ident"
+            android:textColor="@color/tab_text"
+            android:text="@string/settlement"
+            android:textSize="@dimen/text_17" />
+
+    </LinearLayout>
+</LinearLayout>

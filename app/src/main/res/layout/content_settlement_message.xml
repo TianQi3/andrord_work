@@ -1,0 +1,246 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical"
+    android:id="@+id/content_settlement__layout"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.humming.ascwg.activity.shoppingcart.SettlementMessageActivity"
+    tools:showIn="@layout/activity_settlement_message">
+
+    <LinearLayout
+        android:id="@+id/content_settlement__default_address"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/shop_cart_address"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/dizhi" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:id="@+id/content_settlement_message__consignee"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="fffff"
+                    android:textColor="@color/tab_text" />
+
+                <TextView
+                    android:id="@+id/content_settlement_message__phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:text="ffffff"
+                    android:textColor="@color/tab_text" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/content_settlement_message__address"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="vvvvv"
+                android:textColor="@color/tab_text" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/content_settlement__select_address"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/shop_cart_address"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/dizhi" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:text="@string/select_address_shop"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/text_17" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/right_w" />
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/garys"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp">
+
+        <com.humming.ascwg.component.CircleImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/login_logo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:text="@string/order"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/text_17" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/garys"></View>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/content_settlement__order_listview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/shop_cart_bottom_all"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1.7"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/commodity_price"
+                        android:textColor="@color/tab_text" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="¥"
+                        android:textColor="@color/tab_text" />
+
+                    <TextView
+                        android:id="@+id/content_settlement_message__total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0.00"
+                        android:textColor="@color/tab_text" />
+
+                </LinearLayout>
+
+                 <TextView
+                     android:id="@+id/content_settlement_message__discount"
+                     android:layout_width="wrap_content"
+                     android:layout_height="match_parent"
+                     android:layout_gravity="center"
+                     android:layout_marginTop="5dp"
+                     android:textSize="10sp"
+                     android:textColor="@color/tab_text"
+                     android:text="@string/vip_discount" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="15dp"
+                android:gravity="center|right"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total"
+                    android:textColor="@color/tab_text" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="¥"
+                    android:textColor="@color/tab_text" />
+
+                <TextView
+                    android:id="@+id/content_settlement_message__discount_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:textColor="@color/tab_text" />
+
+            </LinearLayout>
+
+            <!-- <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="match_parent"
+                 android:layout_gravity="right"
+                 android:textSize="10sp"
+                 android:text="(不含运费)" />-->
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/content_settlement_message__commit"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="@color/get_ident"
+            android:text="@string/order_commit"
+            android:textColor="@color/tab_text"
+            android:textSize="@dimen/text_17" />
+
+    </LinearLayout>
+</LinearLayout>

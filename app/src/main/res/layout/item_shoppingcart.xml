@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_shoppongcart__layouts"
+    android:layout_width="match_parent"
+    android:layout_height="84dp"
+    android:background="@color/shop_cart_item_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp">
+
+        <LinearLayout
+            android:id="@+id/item_shoppongcart__radiogroup"
+            android:layout_width="@dimen/height_40"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/item_shoppongcart__radio"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/shopping_cart_radio_status"
+                android:button="@null"
+                android:checked="false" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/item_shoppongcart__img"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:src="@drawable/shopping_cart_item" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item_shoppongcart__name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="罗兰百悦盛世香槟(起泡葡萄酒)"
+                android:textColor="@color/tab_text"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/item_shoppongcart__englishname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="Laurent_Perrier Grand Siecle"
+                android:textColor="@color/tab_text"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="¥"
+                    android:textColor="@color/tab_bg" />
+
+                <TextView
+                    android:id="@+id/item_shoppongcart__price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:text="88.00"
+                    android:textColor="@color/tab_bg" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="right|bottom"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="90dp"
+                        android:layout_height="@dimen/height_20"
+                        android:background="@drawable/add_delete_border"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp">
+
+                        <LinearLayout
+                            android:id="@+id/item_shoppongcart__subtract"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="12dp"
+                                android:layout_height="2dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/down"
+                                android:paddingLeft="5dp"
+                                android:textColor="@color/text_gray" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/item_shoppongcart__number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="12"
+                            android:textColor="@color/tab_bg" />
+
+                        <LinearLayout
+                            android:id="@+id/item_shoppongcart__add"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="15dp"
+                                android:background="@drawable/up"
+                                android:textColor="@color/tab_bg" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/text_line"></View>
+
+</LinearLayout>

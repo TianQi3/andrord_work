@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg">
+
+    <!--<ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.8"
+        android:scaleType="centerCrop"
+        android:src="@drawable/product_bg" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/content_register__back"
+                android:layout_width="@dimen/height_20"
+                android:layout_height="@dimen/height_20"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/back" />
+
+
+            <TextView
+                android:id="@+id/content_register__title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/text_login"
+                android:textColor="@color/tab_text"
+                android:textSize="@dimen/text_18" />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_120"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.humming.ascwg.component.CircleImageView
+                android:id="@+id/content_login__head_img"
+                android:layout_width="@dimen/height_80"
+                android:layout_height="@dimen/height_80"
+                android:src="@mipmap/logo"
+                app:civ_border_color="@color/tab_text"
+                app:civ_border_width="1dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+           android:layout_marginRight="@dimen/magin_20"
+            android:layout_marginLeft="@dimen/magin_20"
+            android:layout_marginTop="@dimen/magin_10">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="1dp"
+                android:paddingTop="5dp">
+
+                <EditText
+                    android:id="@+id/content_login__username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:drawableLeft="@drawable/small_phone"
+                    android:drawablePadding="@dimen/padding_5"
+                    android:textColorHint="@color/tab_text"
+                    android:hint="@string/text_phone"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:maxLines="1"
+                    android:textColor="@color/tab_text"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:singleLine="true"
+                    android:textSize="@dimen/text_14" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/my_item_bg" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="1dp"
+                android:paddingTop="5dp">
+
+                <EditText
+                    android:id="@+id/content_login__password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:drawableLeft="@drawable/password"
+                    android:drawablePadding="@dimen/padding_5"
+                    android:hint="@string/text_password"
+                    android:imeActionId="@+id/login"
+                    android:textColor="@color/tab_text"
+                    android:imeActionLabel="@string/text_login"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:singleLine="true"
+                    android:textSize="@dimen/text_14" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/my_item_bg" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/content_login__login"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_50"
+            android:layout_margin="@dimen/padding_20"
+            android:background="@drawable/border_white"
+            android:gravity="center"
+            android:text="@string/text_login"
+            android:textColor="@color/tab_text"
+            android:textSize="@dimen/text_16" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/magin_20"
+            android:layout_marginRight="@dimen/magin_20">
+
+            <TextView
+                android:id="@+id/content_login__create_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/tab_text"
+                android:textSize="@dimen/text_13"
+                android:padding="@dimen/padding_5"
+                android:text="@string/text_fast_register"/>
+            <TextView
+                android:id="@+id/content_login__forget_pw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/tab_text"
+                android:textSize="@dimen/text_13"
+                android:gravity="right"
+                android:padding="@dimen/padding_5"
+                android:text="@string/text_find_password"/>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/content_login__weixin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/magin_5"
+                android:padding="@dimen/padding_5"
+                android:src="@drawable/weixin" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/content_login__weixin"
+                android:layout_marginBottom="@dimen/magin_10"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="@dimen/height_30"
+                    android:layout_height="1dp"
+                    android:background="@color/tab_text" />
+
+                <TextView
+                    android:id="@+id/item_surprise__content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/text_weixin_login"
+                    android:textColor="@color/tab_text"
+                    android:textSize="@dimen/text_14" />
+
+                <View
+                    android:layout_width="@dimen/height_30"
+                    android:layout_height="1dp"
+                    android:background="@color/tab_text" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

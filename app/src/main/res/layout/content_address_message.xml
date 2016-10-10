@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_product_brand__root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.humming.ascwg.activity.my.AddressMessageActivity"
+    tools:showIn="@layout/activity_address_message">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/consignee"
+            android:textColor="@color/tab_text" />
+
+        <EditText
+            android:id="@+id/content_address_message__consignee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:hint="@string/please_click_write"
+            android:textColor="@color/tab_text"
+            android:textColorHint="@color/cart_text" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/garys"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/contact_infomation"
+            android:textColor="@color/tab_text" />
+
+        <EditText
+            android:id="@+id/content_address_message__contact_infomation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:hint="@string/please_click_write"
+            android:textColor="@color/tab_text"
+            android:textColorHint="@color/cart_text" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/garys"></View>
+    <!-- <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="50dp"
+         android:layout_marginLeft="15dp"
+         android:gravity="center_vertical"
+         android:orientation="horizontal">
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="match_parent"
+             android:gravity="center"
+             android:text="@string/consignee"
+             android:textColor="@color/tab_text" />
+
+         <EditText
+             android:id="@+id/content_address_message__consignee"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="10dp"
+             android:hint="@string/please_click_write"
+             android:textColor="@color/tab_text"
+             android:textColorHint="@color/cart_text" />
+     </LinearLayout>-->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/garys"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/detail_address"
+            android:textColor="@color/tab_text" />
+
+        <EditText
+            android:id="@+id/content_address_message__address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:hint="@string/please_click_write"
+            android:textColor="@color/tab_text"
+            android:textColorHint="@color/cart_text" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/garys"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/content_address_message__defult"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/edit_my_address_status"
+            android:checked="true"
+            android:button="@null"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/tab_text"
+            android:layout_marginLeft="10dp"
+            android:text="@string/set_default_address"/>
+    </LinearLayout>
+</LinearLayout>

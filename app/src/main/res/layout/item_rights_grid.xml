@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/magin_10"
+    android:layout_marginLeft="@dimen/magin_10"
+    android:layout_marginRight="@dimen/magin_10"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <!--<android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_80"
+        app:cardCornerRadius="@dimen/magin_5">-->
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_80">
+
+            <ImageView
+                android:id="@+id/item_rights_list__image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/wine" />
+
+            <!-- <TextView
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:alpha="0.4"
+                 android:background="@color/tab_text_select" />
+ -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/item_rights_list__title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/magin_30"
+                    android:layout_marginRight="@dimen/magin_30"
+                    android:gravity="center"
+                    android:text="免费甜品或餐后酒一杯"
+                    android:textColor="@color/tab_text"
+                    android:textSize="@dimen/text_12" />
+
+            </LinearLayout>
+        </FrameLayout>
+    <!--</android.support.v7.widget.CardView>-->
+
+    <TextView
+        android:id="@+id/item_rights_list__name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/magin_5"
+        android:layout_marginRight="@dimen/magin_5"
+        android:layout_marginTop="@dimen/magin_10"
+        android:text="Morton's Steak and Seafood House IFC 店和IAPM店"
+        android:textColor="@color/get_ident"
+        android:textSize="@dimen/text_12" />
+
+</LinearLayout>

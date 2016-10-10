@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/magin_10"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_list"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_10">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/magin_10"
+            android:text="@string/text_order_num"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_12" />
+
+        <TextView
+            android:id="@+id/item_my_order__number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="093048253073"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_12" />
+
+        <TextView
+            android:id="@+id/item_my_order__status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="下单待审核"
+            android:textColor="@color/money_vip"
+            android:textSize="@dimen/text_12"
+            android:background="@drawable/border_vip"
+            android:padding="3dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_my_order__layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/padding_10"
+        android:paddingRight="@dimen/padding_10">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_list"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/magin_10"
+        android:paddingTop="@dimen/padding_10"
+        android:layout_marginTop="10dp"
+        android:paddingRight="@dimen/padding_10">
+
+        <TextView
+            android:layout_width="@dimen/height_70"
+            android:layout_height="@dimen/height_20"
+            android:background="@drawable/discount"
+            android:text="会员折扣"
+            android:textSize="@dimen/text_12"
+            android:gravity="center"
+            android:textColor="@color/tab_text"/>
+
+        <TextView
+            android:id="@+id/item_my_order__original_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="¥ 220,018.00"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_12" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_list"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/padding_10"
+        android:paddingLeft="@dimen/padding_10"
+        android:paddingRight="@dimen/padding_10">
+
+        <TextView
+            android:id="@+id/item_my_order__vip_discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/magin_10"
+            android:text="×90%"
+            android:textColor="@color/money_vip"
+            android:textSize="@dimen/text_12" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="@string/text_order_discount"
+                android:textColor="@color/money_vip"
+                android:textSize="@dimen/text_12" />
+
+            <TextView
+                android:id="@+id/item_my_order__vip_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="¥ 198,016.00"
+                android:textColor="@color/money_vip"
+                android:textSize="@dimen/text_13" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

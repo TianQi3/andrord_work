@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.humming.ascwg.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/content_main_tab_layout"
+        style="@style/MyCustomTabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/main_tab_height"
+        android:layout_alignParentBottom="true"
+        android:background="@color/tab_text_select"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:tabMode="fixed"
+        app:tabIndicatorColor="@null"
+        app:tabPaddingTop="4dp"
+        />
+
+    <com.humming.ascwg.component.LockableViewPager
+        android:id="@+id/content_main_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/content_main_tab_layout" />
+</RelativeLayout>

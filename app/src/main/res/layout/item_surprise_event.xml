@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_surprise__layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/bg">
+
+    <ImageView
+        android:id="@+id/item_surprise__image"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_150"
+        android:scaleType="centerCrop"
+        android:src="@drawable/wine"
+        android:layout_marginBottom="@dimen/magin_5"/>
+
+    <TextView
+        android:id="@+id/item_surprise__title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="菲利普·罗斯柴尔德男爵至臻晚宴"
+        android:textColor="@color/tab_text"
+        android:textSize="@dimen/text_18"
+        android:layout_marginTop="@dimen/magin_10"/>
+
+    <TextView
+        android:id="@+id/item_surprise__content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Bazon Philippe de Rothschild Pzemium Zoine Dinnez"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/text_14"
+        android:layout_marginBottom="@dimen/magin_10"/>
+
+</LinearLayout>

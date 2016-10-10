@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.humming.ascwg">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <application
+        android:name="com.humming.ascwg.Application"
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.humming.ascwg.activity.SplashActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- <intent-filter>
+                 <action android:name="android.intent.action.VIEW" />
+                 <category android:name="android.intent.category.DEFAULT" />
+                 <data android:scheme="wxbd12788156951c0a" />
+             </intent-filter>-->
+        </activity>
+
+        <activity
+            android:name="com.humming.ascwg.wxapi.WXEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.humming.ascwg.activity.LoginActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.RegisterActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.product.CountryActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.product.BrandActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.product.TypeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.product.ItemCodeSelectorActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.product.WinesListActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.product.WinesQueryActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.my.MyAdviserActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.my.MyOrderActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.my.MyOrderDetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.my.MyAddressActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.my.MyEventActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.my.MyBillActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.AreaSelectActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.BasePhotoActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.CitySelectActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.SetInformationActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.SetPasswordActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.TextEditorActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.product.WinesInfoActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.shoppingcart.SettlementMessageActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.my.AddressMessageActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.PromotionDetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.EventDetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.BusinessDetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+    </application>
+
+</manifest>

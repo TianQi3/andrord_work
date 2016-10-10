@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.humming.ascwg.activity.EventDetailsActivity"
+    tools:showIn="@layout/activity_surprise_event">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.humming.ascwg.component.Loading
+            android:id="@+id/activity_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center" />
+
+        <com.humming.ascwg.component.PhotoView
+            android:id="@+id/photo_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitStart"></com.humming.ascwg.component.PhotoView>
+    </FrameLayout>
+
+    <!--<ScrollView
+        android:id="@+id/sc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:scrollbars="none">
+
+        <ImageView
+            android:id="@+id/content_surprise_event__image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+             />-->
+
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/padding_20">
+
+        <ImageView
+            android:id="@+id/content_surprise_event__image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_180"
+            android:scaleType="centerCrop"
+            android:src="@drawable/event" />
+
+        <TextView
+            android:id="@+id/content_surprise_event__name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/magin_30"
+            android:text="菲利普·罗斯柴尔德男爵至臻晚宴"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_18" />
+
+        <TextView
+            android:id="@+id/content_surprise_event__english_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/magin_5"
+            android:text="Bazon Philippe de Rothschild Pzemium Zoine Dinnez"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_14" />
+
+        <TextView
+            android:id="@+id/content_surprise_event__sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_60"
+            android:layout_marginRight="@dimen/margin_60"
+            android:layout_marginTop="@dimen/magin_20"
+            android:background="@drawable/bg_border_radius_orange"
+            android:gravity="center"
+            android:paddingBottom="@dimen/padding_10"
+            android:paddingTop="@dimen/padding_10"
+            android:text="参加"
+            android:textColor="@color/tab_text"
+            android:textSize="@dimen/text_16" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:layout_marginTop="@dimen/magin_30"
+            android:alpha="0.2"
+            android:background="@color/line_color_" />
+
+        <TextView
+            android:id="@+id/content_surprise_promotion__wine_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_list"
+            android:gravity="center"
+            android:paddingBottom="@dimen/padding_10"
+            android:paddingTop="@dimen/padding_10"
+            android:text="详情"
+            android:textColor="@color/get_ident"
+            android:textSize="@dimen/text_14" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:alpha="0.2"
+            android:background="@color/line_color_" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/padding_5"
+            android:paddingLeft="@dimen/padding_20"
+            android:paddingRight="@dimen/padding_20"
+            android:paddingTop="@dimen/padding_10">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="日期："
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_14" />
+
+            <TextView
+                android:id="@+id/content_surprise_event__date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2015年7月17日，星期五"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_14" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/padding_10"
+            android:paddingLeft="@dimen/padding_20"
+            android:paddingRight="@dimen/padding_20">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date："
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_12" />
+
+            <TextView
+                android:id="@+id/content_surprise_event__english_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Friday,July17,2015"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_12" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/padding_5"
+            android:paddingLeft="@dimen/padding_20"
+            android:paddingRight="@dimen/padding_20">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="时间："
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_14" />
+
+            <TextView
+                android:id="@+id/content_surprise_event__time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="18：30欢迎酒会 19：00晚宴"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_14" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/padding_10"
+            android:paddingLeft="@dimen/padding_20"
+            android:paddingRight="@dimen/padding_20">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time："
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_12" />
+
+            <TextView
+                android:id="@+id/content_surprise_event__english_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="18：30 Welcome drink 19：00 Wine dinner"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_12" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:alpha="0.2"
+            android:background="@color/line_color_" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/padding_5"
+            android:paddingLeft="@dimen/padding_20"
+            android:paddingRight="@dimen/padding_20"
+            android:paddingTop="@dimen/padding_10">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="地点："
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_14" />
+
+            <TextView
+                android:id="@+id/content_surprise_event__venue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="上海藏酒轩，包房5＆6"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_14" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/padding_10"
+            android:paddingLeft="@dimen/padding_20"
+            android:paddingRight="@dimen/padding_20">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Venue："
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_12" />
+
+            <TextView
+                android:id="@+id/content_surprise_event__english_venue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wine Residerence Shanghai, Bao 5＆6"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_12" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/padding_5"
+            android:paddingLeft="@dimen/padding_20"
+            android:paddingRight="@dimen/padding_20">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="地址："
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_14" />
+
+            <TextView
+                android:id="@+id/content_surprise_event__address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="乌鲁木齐南路55号"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_14" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/padding_10"
+            android:paddingLeft="@dimen/padding_20"
+            android:paddingRight="@dimen/padding_20">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address："
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_12" />
+
+            <TextView
+                android:id="@+id/content_surprise_event__english_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="55 Wulumuqiinan Lu"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_12" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:alpha="0.2"
+            android:background="@color/line_color_" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/magin_5"
+            android:paddingLeft="@dimen/padding_20"
+            android:paddingRight="@dimen/padding_20"
+            android:paddingTop="@dimen/padding_10">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="原价："
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_12" />
+
+            <TextView
+                android:id="@+id/content_surprise_event__price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="人民币2,888元"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_12" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/padding_20"
+            android:paddingRight="@dimen/padding_20">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price："
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_12" />
+
+            <TextView
+                android:id="@+id/content_surprise_event__english_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RMB 2,888/Per"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_12" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:layout_marginTop="@dimen/magin_30"
+            android:alpha="0.2"
+            android:background="@color/line_color_" />
+
+        <TextView
+            android:id="@+id/content_surprise_event__taste"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_list"
+            android:gravity="center"
+            android:paddingBottom="@dimen/padding_10"
+            android:paddingTop="@dimen/padding_10"
+            android:text="您将品尝到"
+            android:textColor="@color/get_ident"
+            android:textSize="@dimen/text_14" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:alpha="0.2"
+            android:background="@color/line_color_" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/content_surprise_event__listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>-->
+    <!--</ScrollView>-->
+
+</LinearLayout>

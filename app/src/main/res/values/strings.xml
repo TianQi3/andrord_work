@@ -1,0 +1,244 @@
+<resources>
+    <!--<string name="app_name">ASC 尊享会员</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="country">Country</string>
+    <string name="wines_type">Wine Type</string>
+    <string name="brand">Brand</string>
+    <string name="search">Search</string>
+    <string name="wines">Wines</string>
+    <string name="item_code">Item Code</string>
+    <string name="text_name">Search</string>
+    <string name="text_shopping_cart">购物车</string>
+    <string name="text_adviser">销售顾问</string>
+    <string name="text_order">订单管理</string>
+    <string name="text_address">地址管理</string>
+    <string name="text_event">活动</string>
+    <string name="text_bill">发票管理</string>
+    <string name="text_setting">设置</string>
+
+    <string name="promotion">促销</string>
+    <string name="promotion_detail">促销详情</string>
+    <string name="attend_success">参加成功</string>
+    <string name="activity">活动</string>
+    <string name="activity_detail">活动详情</string>
+    <string name="business_detail">商家详情</string>
+    <string name="my_event">我的活动</string>
+
+    <string name="total">共计:</string>
+    <string name="commodity_price">总价:</string>
+    <string name="settlement">结算</string>
+    <string name="settlement_message">结算信息</string>
+    <string name="order_commit">提交订单</string>
+    <string name="commit">提交</string>
+    <string name="char_right">&gt;</string>
+    <string name="action_search">搜索</string>
+    <string name="pls_input_search">Please input search content </string>
+    <string name="text_phone">手机号</string>
+    <string name="text_password">密码</string>
+    <string name="text_weixin_login">第三方微信登陆</string>
+    <string name="application_exit">再按一次退出应用程序</string>
+    <string name="text_login">登录</string>
+    <string name="text_fast_register">手机快速注册</string>
+    <string name="text_account_pw">账号密码登录</string>
+    <string name="text_not_code">未收到验证码?</string>
+    <string name="text_find_password">忘记密码</string>
+    <string name="error_invalid_password">密码长度过短</string>
+    <string name="error_invalid_employee_id">用户ID无效</string>
+    <string name="text_order_num">订单编号</string>
+    <string name="text_order_discount">折后价：</string>
+    <string name="text_identifying_code">验证码</string>
+    <string name="text_get_identifying_code">获取验证码</string>
+    <string name="text_register">注册</string>
+    <string name="reget_identifying_code">重新获取</string>
+    <string name="hint_correct_phone">请输入正确的手机号</string>
+    <string name="next">下一步</string>
+    <string name="text_welcome">欢迎来到ASC藏酒轩</string>
+    <string name="set_password">设置密码</string>
+    <string name="reset_password">确认密码</string>
+    <string name="prompt_password">密码</string>
+    <string name="forget_password">忘记密码?</string>
+    <string name="get_back_password">找回密码</string>
+    <string name="hint_set_password">密码为6~12位</string>
+    <string name="text_register_agree">同意</string>
+    <string name="text_register_agreement"> 《ASC服务协议》</string>
+    <string name="nick_name">昵称:</string>
+    <string name="nick_account">昵称/帐号</string>
+    <string name="basic_information">基本信息:</string>
+    <string name="birthday">生日:</string>
+    <string name="sex">性别:</string>
+    <string name="address">所在地:</string>
+    <string name="select_address">选择地区</string>
+    <string name="date_cancel">取消</string>
+    <string name="date_submit">确定</string>
+    <string name="action_save">保存</string>
+    <string name="check_sex">选择性别</string>
+    <string name="sex_man">男</string>
+    <string name="sex_woman">女</string>
+    <string name="nick_message">好名字可以让你的朋友更容易记住你.</string>
+    <string name="change_name">更改名字</string>
+    <string name="please_enter_name">请输入内容</string>
+    <string name="province">省</string>
+    <string name="city">市(区)</string>
+    <string name="delete_success">删除成功</string>
+    <string name="add_cart">加入购物车</string>
+    <string name="all_select">全选</string>
+    <string name="cart_null">购物车为空哦~</string>
+    <string name="activity_null">暂未添加活动哦~</string>
+    <string name="promotion_null">暂未参与促销哦~</string>
+    <string name="select_address_shop">选择收货地址</string>
+    <string name="address_shop">收货地址:</string>
+    <string name="my_address">我的地址</string>
+    <string name="order">订单</string>
+    <string name="add_address">新增收货地址</string>
+    <string name="update_address">修改收货地址</string>
+    <string name="add_address_no">您还没设置收货地址哦  快点去设置吧</string>
+    <string name="is_working_hard_on_the_new_oh">正在努力上新哦</string>
+    <string name="open_soon">即将开放</string>
+    <string name="consignee">收货人:</string>
+    <string name="contact_infomation">联系方式:</string>
+    <string name="detail_address">详细地址:</string>
+    <string name="please_click_write">请点击填写:</string>
+    <string name="set_default_address">设置为默认地址</string>
+    <string name="please_fill_in_the_complete">请完善所有信息</string>
+    <string name="add_address_success">添加地址成功</string>
+    <string name="delete_address_success">删除地址成功</string>
+    <string name="commit_order_success">提交订单成功</string>
+    <string name="vip_discount">会员折扣</string>
+    <string name="bank_code">银行会员验证码</string>
+    <string name="switch_open">开</string>
+    <string name="switch_close">关</string>
+    <string name="setting_success">设置信息成功</string>
+    <string name="set_default">设置默认</string>
+    <string name="set_default_success">设置默认成功</string>
+    <string name="please_write_message">请填写报名信息</string>
+    <string name="contract">联系人:</string>
+    <string name="phone">手机号:</string>
+    <string name="information_is_not_perfect">信息未填写完整,请完善信息</string>
+    <string name="text_rule">
+        1.积分有效期为12个月\n
+        2.积分可以在支付时抵扣总金额，抵扣完成后实际支付金额再进行积分\n
+        3.积分适用于所有产品
+    </string>
+    <string name="update_prompt">更新提示</string>
+    <string name="net_type_message">当前使用的是移动网络(非wifi),是否确认下载?</string>
+    <string name="heard_image">头像</string>
+    <string name="vip_position">会员级别:</string>
+    <string name="my_message">个人信息</string>
+    <string name="bigger_vip">尊享会员</string>
+    <string name="call_sales">联系销售顾问?</string>
+    <string name="call">拨打 </string>
+
+    &lt;!&ndash;我的订单状态&ndash;&gt;
+    <string name="order_status_1">下单待审核</string>
+    <string name="order_status_2">下单成功</string>
+    <string name="order_status_3">下单失败</string>
+    <string name="order_status_4">订单取消申请</string>
+    <string name="order_status_5">订单取消成功</string>
+    <string name="order_status_6">订单取消失败</string>
+
+    <string name="char_add">+</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="press_back_again_to_exit">Press back again to exit.</string>
+    <string name="network_access_error">Network access error.</string>
+    <string name="header_back" translatable="false">&lt; Back</string>
+    <string name="service_not_found" translatable="false">Can not connect network service.</string>
+    <string name="login_name_error" translatable="false">Please check user name.</string>
+    <string name="login_password_error" translatable="false">Please check password.</string>
+    <string name="login" translatable="false">Login</string>
+    <string name="logout" translatable="false">Log out</string>
+    <string name="activity_login_link_non_member_login">Guest Login</string>
+    <string name="activity_main_tab_product">Products</string>
+    <string name="activity_main_tab_event">Events</string>
+    <string name="activity_main_tab_promotion">Promotions</string>
+    <string name="activity_main_tab_cellar">Wines Cellars</string>
+    <string name="activity_main_tab_setting">Settings</string>
+    <string name="inquiry" translatable="false">Inquiry</string>
+    <string name="share" translatable="false">Share</string>
+    <string name="inquiry_buy" translatable="false">Inquiry</string>
+    <string name="detail">Detail</string>
+    <string name="submit">Submit</string>
+    <string name="reset">Reset</string>
+    <string name="activity_product_wines_info__brand_story">Brand Story</string>
+    <string name="cancel">Cancel</string>
+    <string name="contact_info" translatable="false">Contact Information</string>
+    <string name="close">Close</string>
+    <string name="price_inquiry">Inquiry</string>
+    <string name="header_home" translatable="false">Home</string>
+    <string name="header_title_product" translatable="false">Product</string>
+    <string name="header_title_country" translatable="false">Country</string>
+    <string name="label_name">Name:</string>
+    <string name="label_phone">Phone:</string>
+    <string name="label_email" translatable="false">E-mail:</string>
+    <string name="label_remark">Remarks:</string>
+    <string name="label_country">Country:</string>
+    <string name="label_region">Region:</string>
+    <string name="label_price">Price:</string>
+    <string name="label_variety">Grape Variety:</string>
+    <string name="label_volumn">Volume:</string>
+    <string name="label_vintage">Vintage:</string>
+    <string name="label_wines_type">Wine Type:</string>
+    <string name="label_brand">Brand:</string>
+    <string name="label_item_code">Item Code:</string>
+    <string name="label_time">Time:</string>
+    <string name="label_city" translatable="false">City:</string>
+    <string name="label_date" translatable="false">Date:</string>
+    <string name="label_cellar_name" translatable="false">Cellar Name:</string>
+    <string name="label_upload_pic">Upload Picture:</string>
+    <string name="label_qty">Quantity:</string>
+    <string name="label_welcome">Welcome </string>
+    <string name="label_current_pwd" translatable="false">Current Password:</string>
+    <string name="label_new_pwd">New Password:</string>
+    <string name="label_verify_pwd">Confirm:</string>
+    <string name="label_stock">Inventory:</string>
+    <string name="join_us" translatable="false">Join Us</string>
+    <string name="asc_info">About Us</string>
+    <string name="suggest" translatable="false">Feedback</string>
+    <string name="favorite" translatable="false">My Favorites</string>
+    <string name="change_pwd">Change Password</string>
+    <string name="stored_successful" translatable="false">Stored successful</string>
+    <string name="inventory_detail" translatable="false">Inventory</string>
+    <string name="cancel_storing_successful" translatable="false">Cancel storing successful</string>
+    <string name="display_value" translatable="false">Display Value</string>
+    <string name="setting" translatable="false">Settings</string>
+    <string name="confirm" translatable="false">Confirm</string>
+    <string name="msg_at_least_one_item">Only one value is required!</string>
+    <string name="msg_pwd_changed" translatable="false">Password has been changed!</string>
+    <string name="msg_guest" translatable="false">Member Only!</string>
+    <string name="share_wx" translatable="false">Share to WeChat</string>
+    <string name="share_friend" translatable="false">Send to friend</string>
+    <string name="share_friends" translatable="false">Share to friends</string>
+    <string name="error_not_null" translatable="false">Cannot be blank</string>
+    <string name="error_new_pwd_not_equals" translatable="false">Please use the same password!</string>
+    <string name="info_asc" translatable="false">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Wine Gallery by ASC Fine Wines is direct-to-consumers division of ASC Fine Wines. The division provides multiple channels through which our private clients can learn about, taste, purchase and store wines and related services.\n\n&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;The channels include our professional and dedicated sales team, e-commerce platform, retail shops and our private member clubs, which we call “Wine Residences”. Wine Gallery by ASC currently operates two Wine Residences in Shanghai and Beijing.</string>
+    <string name="shanghai_asc" translatable="false">Wine Gallery Shanghai</string>
+    <string name="shanghai_asc_phone" translatable="false"><u>(86 21)3423 9599</u></string>
+    <string name="shanghai_asc_address" translatable="false"><u>No.55 Wulumuqi South Road, Shanghai, China</u></string>
+    <string name="shanghai_asc_time" translatable="false">10:00-22:00\r\n(Mon.～Sat.)\r\n Reservation  Required</string>
+    <string name="beijing_asc">Wine Gallery Beijing</string>
+    <string name="beijing_asc_phone"><u>(86 10)6415 1910</u></string>
+    <string name="beijing_asc_address"><u>Building N3-17/28, No.11 Taikoo Li Sanlitun Road, Chaoyang District, Beijing, China</u></string>
+    <string name="beijing_asc_time">10:00-22:00\r\n(Tues.～Sun.)\r\n Reservation Required</string>
+    <string name="cellar_asc">Wine Residence</string>
+    <string name="cellar_person">Private</string>
+    <string name="currency" translatable="false">¥</string>
+    <string name="add">Add</string>
+    <string name="add_cellar">Add Wine Cellar</string>
+    <string name="upload_pic">Upload Picture:</string>
+    <string name="upload_pic_from_lib">Choose from Album</string>
+    <string name="upload_pic_from_camera">Take Photo</string>
+    <string name="cellar_add_title">Cellar Information</string>
+    <string name="inquiry_price" translatable="false">Need Inquiry</string>
+    <string name="edit" translatable="false">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="add_private_wines">Add private collection</string>
+    <string name="private_wines_info">My wine information</string>
+    <string name="label_grape_variety">grape Variety:</string>
+    <string name="label_price_$">Price(¥):</string>
+    <string name="edit_stock" translatable="false">Edit Stock</string>
+    <string name="label_edit_stock" translatable="false">Quantity</string>
+    <string name="edit_private_wines" translatable="false">Revise Private Collection</string>
+    <string name="hint_delete_cellar" translatable="false">Are you sure to delete this cellar, and all wines in this cellar will be deleted!</string>
+    <string name="hint_delete_wines" translatable="false">Are you sure to delete this wine?</string>
+    <string name="item_view_pager_holder">viewPagerHolder</string>-->
+</resources>

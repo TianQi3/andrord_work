@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:background="@drawable/my"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/height_150"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.humming.ascwg.component.CircleImageView
+            android:id="@+id/fragment_my__head_img"
+            android:layout_width="@dimen/height_80"
+            android:layout_height="@dimen/height_80"
+            android:src="@drawable/wine_glasses"
+            app:civ_border_color="@color/tab_text"
+            app:civ_border_width="1dp" />
+
+        <TextView
+            android:id="@+id/fragment_my__username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/magin_10"
+            android:padding="@dimen/padding_5"
+            android:text="@string/text_name"
+            android:textColor="@color/tab_text"
+            android:textSize="@dimen/text_15" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/padding_40"
+        android:paddingLeft="@dimen/padding_20"
+        android:paddingRight="@dimen/padding_20">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:id="@+id/fragment_my__adviser"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/height_35"
+                    android:layout_height="@dimen/height_35"
+                    android:src="@drawable/xiaoshouguwen" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/magin_10"
+                    android:text="@string/text_adviser"
+                    android:textColor="@color/tab_text"
+                    android:textSize="@dimen/text_15" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.2dp"
+                android:layout_height="match_parent"
+                android:alpha="0.5"
+                android:background="@color/tab_text" />
+
+            <LinearLayout
+                android:id="@+id/fragment_my__order"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/height_35"
+                    android:layout_height="@dimen/height_35"
+                    android:src="@drawable/dingdan" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/magin_10"
+                    android:text="@string/text_order"
+                    android:textColor="@color/tab_text"
+                    android:textSize="@dimen/text_15" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:alpha="0.5"
+            android:background="@color/tab_text" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:id="@+id/fragment_my__address"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/height_35"
+                    android:layout_height="@dimen/height_35"
+                    android:src="@drawable/dizhiguanli" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/magin_10"
+                    android:text="@string/text_address"
+                    android:textColor="@color/tab_text"
+                    android:textSize="@dimen/text_15" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.2dp"
+                android:layout_height="match_parent"
+                android:alpha="0.5"
+                android:background="@color/tab_text" />
+
+            <LinearLayout
+                android:id="@+id/fragment_my__bill"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/height_35"
+                    android:layout_height="@dimen/height_35"
+                    android:src="@drawable/fapiaoguanli" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/magin_10"
+                    android:text="@string/text_bill"
+                    android:textColor="@color/tab_text"
+                    android:textSize="@dimen/text_15" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:alpha="0.5"
+            android:background="@color/tab_text" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/fragment_my__event"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/height_35"
+                    android:layout_height="@dimen/height_35"
+                    android:src="@drawable/huodong" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/magin_10"
+                    android:text="@string/text_event"
+                    android:textColor="@color/tab_text"
+                    android:textSize="@dimen/text_15" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.2dp"
+                android:layout_height="match_parent"
+                android:alpha="0.5"
+                android:background="@color/tab_text" />
+
+
+            <LinearLayout
+                android:id="@+id/fragment_my__setting"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/height_35"
+                    android:layout_height="@dimen/height_35"
+                    android:src="@drawable/shezhi" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/magin_10"
+                    android:text="@string/text_setting"
+                    android:textColor="@color/tab_text"
+                    android:textSize="@dimen/text_15" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
