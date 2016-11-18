@@ -139,7 +139,6 @@
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="库存:198"
                             android:textColor="@color/tab_text" />
 
                         <TextView
@@ -148,7 +147,6 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="年份:2008"
                             android:textColor="@color/tab_text" />
                     </LinearLayout>
 

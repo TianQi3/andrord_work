@@ -225,8 +225,8 @@ public class WinesInfoActivity extends AbstractActivity {
                 tvStory.setText(response.getStory());
                 //  tvCostPrice.setText("¥"+response.getCostPrice());
                 tvSoldPrice.setText("¥" + response.getCostPrice());
-                tvdate.setText("年份:" + response.getVintage());
-                tvStock.setText("库存:" + response.getStock() + "");
+                tvdate.setText(getResources().getString(R.string.label_vintage) + response.getVintage());
+                tvStock.setText(getResources().getString(R.string.label_stock) + response.getStock() + "");
             }
 
             @Override

@@ -90,9 +90,12 @@ public class CountryActivity extends AbstractActivity implements SwipeRefreshLay
                         } else {
                             Intent intent = new Intent(context, WinesListActivity.class);
                             bundle.putString(Constant.ID, item.getId() + "");
-                            String country = item.getNameEn();
-                            if (Locale.getDefault().getCountry().equalsIgnoreCase("CN")) {
+                            String country = "";
+                            Locale curLocal = getResources().getConfiguration().locale;
+                            if (curLocal.equals(Locale.SIMPLIFIED_CHINESE)) {
                                 country = item.getNameCn();
+                            } else {
+                                country = item.getNameEn();
                             }
                             bundle.putString(Constant.NAME, country);
                             bundle.putString(Constant.TYPE, "1");

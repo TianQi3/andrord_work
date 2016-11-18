@@ -100,9 +100,12 @@ public class BrandActivity extends AbstractActivity implements SwipeRefreshLayou
                         } else {
                             Intent intent = new Intent(context, WinesListActivity.class);
                             bundle.putString(Constant.ID, item.getId() + "");
-                            String brandName = item.getNameEn();
-                            if (Locale.getDefault().getCountry().equalsIgnoreCase("CN")) {
+                            Locale curLocal = getResources().getConfiguration().locale;
+                            String brandName = "";
+                            if (curLocal.equals(Locale.SIMPLIFIED_CHINESE)) {
                                 brandName = item.getNameCn();
+                            } else {
+                                brandName = item.getNameEn();
                             }
                             bundle.putString(Constant.NAME, brandName);
                             bundle.putString(Constant.TYPE, "3");
