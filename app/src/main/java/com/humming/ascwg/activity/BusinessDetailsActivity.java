@@ -11,9 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.humming.ascwg.Application;
-import com.humming.ascwg.component.PhotoView;
 import com.humming.ascwg.R;
-import com.humming.ascwg.activity.AbstractActivity;
+import com.humming.ascwg.component.PhotoView;
 import com.squareup.picasso.Picasso;
 
 /**
