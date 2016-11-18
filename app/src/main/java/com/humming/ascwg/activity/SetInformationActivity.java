@@ -75,25 +75,26 @@ public class SetInformationActivity extends BasePhotoActivity implements View.On
     private LinearLayout sexLayout;
     private LinearLayout parent;
     private TextView sexTv, confirm;
-    private LinearLayout headImageLayout;
     private CircleImageView headImage;
     private Dialog dialog;
     private RadioButton man;
     private RadioButton woman;
     private TextEditorData textEditorData;
-    private EditText signatureEdit;
     private ImageView back;
     public String KEY_IMAGE = "fileName";
     public String KEY_NAME = "files";
-    private Switch bankCloseOpen;
-    private EditText bankCode;
+    private Switch bankCloseOpen, pumCloseOpen;
+    private EditText bankCode, pumCode;
     private TextView title;
     private Handler mDelivery;
+    private TextView pumText, bankText;
     private static final MediaType MEDIA_TYPE_PNG = MediaType.parse("image/jpg");
     public static String COME_FROM_MY = "come_from_my";
     public static final int NAME_IMAGE_RESULT_CODE = 10015;
     public static final String NAME_RESULT = "name_result";
     public static final String IMAGE_RESULT = "image_result";
+    private View bankCodeLayout, yumCodeLayout;
+    private TextView bankCommit, yumCommit;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -114,11 +115,29 @@ public class SetInformationActivity extends BasePhotoActivity implements View.On
         nickText = (TextView) findViewById(R.id.activity_set_information__nick);
         sexLayout = (LinearLayout) findViewById(R.id.activity_set_information__sex_layout);
         sexTv = (TextView) findViewById(R.id.activity_set_information__sex);
-        headImageLayout = (LinearLayout) findViewById(R.id.activity_set_information__head_img_layout);
         headImage = (CircleImageView) findViewById(R.id.activity_set_information__head_img);
         bankCloseOpen = (Switch) findViewById(R.id.activity_set_information__switch);
         bankCode = (EditText) findViewById(R.id.activity_set_information__bank_code);
-        // signatureEdit = (EditText) findViewById(R.id.activity_set_information__signature);
+        pumCloseOpen = (Switch) findViewById(R.id.activity_set_information__switch_pum);
+        pumCode = (EditText) findViewById(R.id.activity_set_information__yum_code);
+        pumText = (TextView) findViewById(R.id.activity_set_information__yum_text);
+        bankText = (TextView) findViewById(R.id.activity_set_information__bank_text);
+        bankCodeLayout = findViewById(R.id.activity_set_information__bank_code_layout);
+        yumCodeLayout = findViewById(R.id.activity_set_information__yum_code_layout);
+        bankCommit = (TextView) findViewById(R.id.activity_set_information__bank_code_commit);
+        yumCommit = (TextView) findViewById(R.id.activity_set_information__yum_code_commit);
+        String pum = SharePrefUtil.getString(Constant.FILE_NAME, Constant.PUM_CODE, "", SetInformationActivity.this);//判断是否验证过百盛会员
+        String bank = SharePrefUtil.getString(Constant.FILE_NAME, Constant.BANK_CODE, "", SetInformationActivity.this);//判断是否验证过银行会员
+        if (pum != null && !"".equals(pum)) {
+            yumCodeLayout.setVisibility(View.GONE);
+            pumCloseOpen.setVisibility(View.GONE);
+            pumText.setText(getResources().getString(R.string.pum_code_verified));
+        }
+        if (bank != null && !"".equals(bank)) {
+            bankCodeLayout.setVisibility(View.GONE);
+            bankCloseOpen.setVisibility(View.GONE);
+            bankText.setText(getResources().getString(R.string.bank_code_verified));
+        }
         confirm = (TextView) findViewById(R.id.activity_set_information__confirm);
         if ("true".equals(getIntent().getStringExtra(COME_FROM_MY))) {//从我的里面进来。需要获取个人信息
             getSelfInfo();
@@ -128,14 +147,26 @@ public class SetInformationActivity extends BasePhotoActivity implements View.On
         confirm.setOnClickListener(this);
         addressLayout.setOnClickListener(this);
         sexLayout.setOnClickListener(this);
-        headImageLayout.setOnClickListener(this);
+        headImage.setOnClickListener(this);
+        yumCommit.setOnClickListener(this);
+        bankCommit.setOnClickListener(this);
         bankCloseOpen.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {//表示选中状态
-                    bankCode.setVisibility(View.VISIBLE);
+                    bankCodeLayout.setVisibility(View.VISIBLE);
                 } else {//未选中
-                    bankCode.setVisibility(View.GONE);
+                    bankCodeLayout.setVisibility(View.GONE);
+                }
+            }
+        });
+        pumCloseOpen.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {//表示选中状态
+                    yumCodeLayout.setVisibility(View.VISIBLE);
+                } else {//未选中
+                    yumCodeLayout.setVisibility(View.GONE);
                 }
             }
         });
@@ -183,7 +214,7 @@ public class SetInformationActivity extends BasePhotoActivity implements View.On
             case R.id.activity_set_information__sex_layout:
                 checkSexDialog();
                 break;
-            case R.id.activity_set_information__head_img_layout://选择头像
+            case R.id.activity_set_information__head_img://选择头像
                 imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 new PopupWindows(SetInformationActivity.this, parent);
                 break;
@@ -202,16 +233,17 @@ public class SetInformationActivity extends BasePhotoActivity implements View.On
                 sexTv.setText(getResources().getString(R.string.sex_woman));
                 dialog.dismiss();
                 break;
+            case R.id.activity_set_information__bank_code_commit://银行会员
+                CheckBandCode();
+                break;
+            case R.id.activity_set_information__yum_code_commit://yum 会员
+                CheckPumCode();
+                break;
             case R.id.toolbar_back:
                 finish();
                 break;
             case R.id.activity_set_information__confirm:
-                if (bankCloseOpen.isChecked()) {
-                    CheckBandCode();
-                } else {
-                    VerificationInformation();
-                }
-
+                VerificationInformation();
                 break;
         }
 
@@ -230,7 +262,36 @@ public class SetInformationActivity extends BasePhotoActivity implements View.On
 
             @Override
             public void onResponse(ResponseData response) {
-                VerificationInformation();
+                SharePrefUtil.putString(Constant.FILE_NAME, Constant.BANK_CODE, bankCode.getText().toString(), SetInformationActivity.this);
+                bankCodeLayout.setVisibility(View.GONE);
+                bankCloseOpen.setVisibility(View.GONE);
+                bankText.setText(getResources().getString(R.string.bank_code_verified));
+            }
+
+            @Override
+            public void onOtherError(Request request, Exception exception) {
+                Log.e("xxxxxx", "onError , e = " + exception.getMessage());
+            }
+        }, base, ResponseData.class);
+    }
+
+    //百盛验证码  --> 验证
+    private void CheckPumCode() {
+        BaseInformation base = new BaseInformation();
+        base.setYumCode(pumCode.getText().toString());
+        OkHttpClientManager.postAsyn(Config.CHECK_YUM_CODE, new OkHttpClientManager.ResultCallback<ResponseData>() {
+            @Override
+            public void onError(Request request, Error info) {
+                Log.e("xxxxxx", "onError , Error = " + info.getInfo());
+                showShortToast(info.getInfo());
+            }
+
+            @Override
+            public void onResponse(ResponseData response) {
+                SharePrefUtil.putString(Constant.FILE_NAME, Constant.PUM_CODE, pumCode.getText().toString(), SetInformationActivity.this);
+                yumCodeLayout.setVisibility(View.GONE);
+                pumCloseOpen.setVisibility(View.GONE);
+                pumText.setText(getResources().getString(R.string.pum_code_verified));
             }
 
             @Override
@@ -377,7 +438,11 @@ public class SetInformationActivity extends BasePhotoActivity implements View.On
             case AreaSelectActivity.ACTIVITY_AREA_RESULT:
                 resultBundle = data.getExtras();
                 String text = resultBundle.getString(AreaSelectActivity.KEY_TEXT);
-                addressText.setText(text);
+                if ("".endsWith(text)) {
+
+                } else {
+                    addressText.setText(text);
+                }
                 break;
             case TextEditorActivity.ACTIVITY_CHANGE_NAME:
                 resultBundle = data.getExtras();

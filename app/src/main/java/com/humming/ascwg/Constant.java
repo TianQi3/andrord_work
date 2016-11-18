@@ -27,4 +27,6 @@ public class Constant {
 	public static final String PHONE = "phone";
 	public static final String APP_ID = "wxbd12788156951c0a";
 	public static final String APP_SECRERT = "7a6a16adf342ed2a7dc5eedc13bc74d9";
+	public static final String PUM_CODE = "pum_code";
+	public static final String BANK_CODE = "bank_code";
 }

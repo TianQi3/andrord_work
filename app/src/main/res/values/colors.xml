@@ -40,4 +40,6 @@
     <color name="nick_bg">#1E1911</color>
     <color name="attend_bg">#E7E7E7</color>
     <color name="line_colors_">#20E4E4E4</color>
+    <color name="navpage">#FFE1E8EB</color>
+    <color name="setting_color">#2B241A</color>
 </resources>

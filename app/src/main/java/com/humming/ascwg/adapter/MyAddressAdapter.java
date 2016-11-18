@@ -122,6 +122,7 @@ public class MyAddressAdapter extends AbstractItemPagerArrayAdapter<ShippingAddr
                 intent.putExtra(AddressMessageActivity.ADDRESS, items.get(positions).getDetailAddress());
                 intent.putExtra(AddressMessageActivity.CONTACT, items.get(positions).getPhone());
                 intent.putExtra(AddressMessageActivity.SHIPPING_ID, items.get(positions).getShippingAddressId() + "");
+                intent.putExtra(AddressMessageActivity.PROVINCE_CITY, items.get(positions).getCountyName() + items.get(positions).getCityName() + "");
                 Application.getInstance().getCurrentActivity().startActivityForResult(intent, AddressMessageActivity.ACTIVITY_ADDRESS_RESULT);
             }
         };
@@ -173,15 +174,13 @@ public class MyAddressAdapter extends AbstractItemPagerArrayAdapter<ShippingAddr
 
     @Override
     protected void setItemData(final int position, final ViewHolders viewHolder, ShippingAddressListResponse itemData) {
-        viewHolder.mAddress.setText(itemData.getDetailAddress());
+        viewHolder.mAddress.setText(itemData.getCountyName() + itemData.getCityName() + itemData.getDetailAddress());
         viewHolder.mPhone.setText(itemData.getPhone());
         viewHolder.mName.setText(itemData.getContact());
         if (addressSelectList.get(position).isSelect()) {
             viewHolder.setDefault.setChecked(true);
-            Log.v("xxxxx", "1");
         } else {
             viewHolder.setDefault.setChecked(false);
-            Log.v("xxxxx", "0");
         }
         viewHolder.defaultLayout.setOnClickListener(new View.OnClickListener() {
             @Override

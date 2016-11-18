@@ -133,6 +133,7 @@ public class WinesListActivity extends AbstractActivity implements SwipeRefreshL
                             Intent intent = new Intent(context, WinesInfoActivity.class);
                             Bundle bundle = new Bundle();
                             bundle.putLong(Constant.ID, response.get(position).getId());
+                            bundle.putString(WinesInfoActivity.NORMAL_YUM_FLAG,"0");
                             intent.putExtras(bundle);
                             startActivity(intent);
                         }

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,10 +16,11 @@ import com.humming.ascwg.Application;
 import com.humming.ascwg.Config;
 import com.humming.ascwg.R;
 import com.humming.ascwg.activity.AbstractActivity;
+import com.humming.ascwg.activity.AddsAreaSelectActivity;
 import com.humming.ascwg.model.ResponseData;
 import com.humming.ascwg.requestUtils.AddressRequest;
-import com.humming.ascwg.service.OkHttpClientManager;
 import com.humming.ascwg.service.Error;
+import com.humming.ascwg.service.OkHttpClientManager;
 import com.squareup.okhttp.Request;
 
 ;
@@ -32,6 +34,7 @@ public class AddressMessageActivity extends AbstractActivity {
     private TextView title, save;
     private ImageView back;
     private EditText mConsignee, mContact, mAddress;
+    private TextView mProvince;
     private CheckBox mdefault;
     public static final int ACTIVITY_ADDRESS_RESULT = 1001;
     public static final String KEY_TEXT = "address_text";
@@ -40,7 +43,10 @@ public class AddressMessageActivity extends AbstractActivity {
     public static final String CONTACT = "contact";
     public static final String ADDRESS = "address";
     public static final String SHIPPING_ID = "shipping_id";
+    public static final String PROVINCE_CITY = "province_city";
     private String shippingId;
+    private LinearLayout provinceLayout;
+    public static String provinceName = "", cityName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +79,9 @@ public class AddressMessageActivity extends AbstractActivity {
         mConsignee = (EditText) findViewById(R.id.content_address_message__consignee);
         mContact = (EditText) findViewById(R.id.content_address_message__contact_infomation);
         mAddress = (EditText) findViewById(R.id.content_address_message__address);
+        mProvince = (TextView) findViewById(R.id.content_address_message__province_city);
         mdefault = (CheckBox) findViewById(R.id.content_address_message__defult);
+        provinceLayout = (LinearLayout) findViewById(R.id.content_address_message__province_city_layout);
 
         if ("0".equals(getIntent().getStringExtra(UPDATE_OR_ADD))) {//修改
             title.setText(getResources().getString(R.string.update_address));
@@ -81,9 +89,19 @@ public class AddressMessageActivity extends AbstractActivity {
             mContact.setText(getIntent().getStringExtra(CONTACT));
             mAddress.setText(getIntent().getStringExtra(ADDRESS));
             shippingId = getIntent().getStringExtra(SHIPPING_ID);
+            mProvince.setText(getIntent().getStringExtra(PROVINCE_CITY));
         } else {//添加
             title.setText(getResources().getString(R.string.add_address));
         }
+        //省市点击事件
+        provinceLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Application.getInstance().getCurrentActivity(), AddsAreaSelectActivity.class);
+                startActivityForResult(intent, AddsAreaSelectActivity.ACTIVITY_AREA_RESULT);
+            }
+        });
+
         //保存点击事件
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +116,8 @@ public class AddressMessageActivity extends AbstractActivity {
                     addressRequest.setContact(mConsignee.getText().toString());
                     addressRequest.setPhone(mContact.getText().toString());
                     addressRequest.setDetailAddress(mAddress.getText().toString());
+                    addressRequest.setCountyName(provinceName);
+                    addressRequest.setCityName(cityName);
                     if (mdefault.isChecked()) {
                         addressRequest.setDefaultFlg(1);
                     } else {
@@ -152,6 +172,28 @@ public class AddressMessageActivity extends AbstractActivity {
         } else {
             isture = true;
         }
+        if (!"".equals(mProvince.getText().toString())) {
+
+        } else {
+            isture = true;
+        }
         return isture;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Bundle resultBundle = null;
+        switch (requestCode) {
+            case AddsAreaSelectActivity.ACTIVITY_AREA_RESULT:
+                resultBundle = data.getExtras();
+                String text = resultBundle.getString(AddsAreaSelectActivity.KEY_TEXT);
+                if ("".endsWith(text)) {
+
+                } else {
+                    mProvince.setText(text);
+                }
+                break;
+        }
     }
 }

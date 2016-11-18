@@ -15,15 +15,15 @@ import android.support.v7.app.AlertDialog;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.humming.ascwg.Application;
-import com.humming.ascwg.utils.FileUtils;
 import com.humming.ascwg.R;
-import com.humming.ascwg.activity.AbstractActivity;
+import com.humming.ascwg.utils.FileUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -70,7 +70,19 @@ public class BasePhotoActivity extends AbstractActivity {
             setOutsideTouchable(true);
             setContentView(view);
             setAnimationStyle(R.style.mypopwindow_anim_style);
+            // 设置背景颜色变暗
+            final WindowManager.LayoutParams lp = Application.getInstance().getCurrentActivity().getWindow().getAttributes();
+            lp.alpha = 0.5f;
+            Application.getInstance().getCurrentActivity().getWindow().setAttributes(lp);
+
             showAtLocation(parent, Gravity.BOTTOM, 0, 0);
+            setOnDismissListener(new OnDismissListener() {
+                @Override
+                public void onDismiss() {
+                    lp.alpha = 1.0f;
+                    Application.getInstance().getCurrentActivity().getWindow().setAttributes(lp);
+                }
+            });
             update();
 
             TextView camera = (TextView) view

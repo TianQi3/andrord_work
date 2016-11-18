@@ -1,6 +1,9 @@
 package com.humming.ascwg.activity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -15,16 +18,18 @@ import com.humming.ascwg.Application;
 import com.humming.ascwg.Config;
 import com.humming.ascwg.Constant;
 import com.humming.ascwg.MainActivity;
+import com.humming.ascwg.R;
 import com.humming.ascwg.requestUtils.BaseInformation;
+import com.humming.ascwg.service.Error;
 import com.humming.ascwg.service.OkHttpClientManager;
 import com.humming.ascwg.utils.SharePrefUtil;
-import com.humming.ascwg.R;
 import com.squareup.okhttp.Request;
+import com.tencent.mm.sdk.modelmsg.SendAuth;
 import com.tencent.mm.sdk.openapi.IWXAPI;
-import com.tencent.mm.sdk.openapi.SendAuth;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
 import com.wg.user.dto.LoginUserInfoResponse;
-import com.humming.ascwg.service.Error;
+
+import java.util.Locale;
 
 /**
  * Created by Elvira on 2016/8/9.
@@ -36,15 +41,14 @@ public class LoginActivity extends AbstractActivity implements View.OnClickListe
     private EditText mPasswordView;
     private long mExitTime; //退出时间
     private TextView mSignInButton;
-    public static final String SETTING_INFOS = "setting_infos";
-    public static final String NAME = "NAME";
-    public static final String PASSWORD = "PASSWORD";
 
+    public static final String LOGIN_FLAG = "login_flag";
     private TextView creatLoginTv;
     private TextView forgetPwdTv;
     private ImageView back;
     private ImageView wXLogin;
     public static IWXAPI msgApi;
+    private String loginFlag = "";
 
 
     @Override
@@ -59,13 +63,30 @@ public class LoginActivity extends AbstractActivity implements View.OnClickListe
         String passWord = SharePrefUtil.getString(Constant.FILE_NAME, "password", "", LoginActivity.this);
         mUsernameView.setText(userName);
         mPasswordView.setText(passWord);
-        if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(passWord)) {
+        loginFlag = getIntent().getStringExtra(LOGIN_FLAG);
+        //判断语言
+        SharedPreferences preferences = getSharedPreferences("language", Activity.MODE_PRIVATE);
+        String currentLanguage = preferences.getString("currentLanguage", "");
+        if (currentLanguage == null || "".equals(currentLanguage)) {
+        } else {
+            Configuration config = getResources().getConfiguration();//获取系统的配置
+            if ("chinese".equals(currentLanguage)) {
+                config.locale = Locale.ENGLISH;//将语言更改为简体中文
+            } else {
+                config.locale = Locale.SIMPLIFIED_CHINESE;//将语言更改为英文
+            }
+            getResources().updateConfiguration(config, getResources().getDisplayMetrics());//更新配置
+        }
+        if ("1".equals(loginFlag)) {//在我的里面退出程序
 
         } else {
-            Intent intent = new Intent(Application.getInstance().getCurrentActivity(), MainActivity.class);
-            Application.getInstance().getCurrentActivity().startActivity(intent);
-            finish();
+            if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(passWord)) {
 
+            } else {
+                Intent intent = new Intent(Application.getInstance().getCurrentActivity(), MainActivity.class);
+                Application.getInstance().getCurrentActivity().startActivity(intent);
+                finish();
+            }
         }
         msgApi = WXAPIFactory.createWXAPI(this, null);
         wXLogin = (ImageView) findViewById(R.id.content_login__weixin);

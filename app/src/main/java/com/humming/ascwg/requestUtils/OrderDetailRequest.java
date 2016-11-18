@@ -7,12 +7,14 @@ import com.humming.ascwg.service.IRequestMainData;
  */
 public class OrderDetailRequest implements IRequestMainData {
     private long id;
+    private String orderNo;
 
     public OrderDetailRequest() {
     }
 
-    public OrderDetailRequest(long id) {
+    public OrderDetailRequest(long id, String orderNo) {
         this.id = id;
+        this.orderNo = orderNo;
     }
 
     public long getId() {
@@ -21,6 +23,14 @@ public class OrderDetailRequest implements IRequestMainData {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getOrderNo() {
+        return orderNo;
+    }
+
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
     }
 }
 

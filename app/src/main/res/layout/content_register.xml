@@ -25,6 +25,7 @@
             android:layout_width="@dimen/height_20"
             android:layout_height="@dimen/height_20"
             android:layout_alignParentLeft="true"
+            android:padding="2dp"
             android:src="@drawable/back" />
 
 
@@ -49,7 +50,7 @@
             android:id="@+id/content_login__head_img"
             android:layout_width="@dimen/height_80"
             android:layout_height="@dimen/height_80"
-            android:src="@drawable/login_logo"
+            android:src="@mipmap/logo"
             app:civ_border_color="@color/tab_text"
             app:civ_border_width="1dp" />
     </LinearLayout>

@@ -19,7 +19,7 @@ public class EventAdapter extends BaseAdapter<EventListResponse> {
 
 
     @Override
-    protected void convert(BaseViewHolder helper, EventListResponse item) {
+    protected void convert(BaseViewHolder helper, EventListResponse item, int position) {
         helper.setText(R.id.item_surprise__title, item.getName())
                 .setText(R.id.item_surprise__content, item.getTitle());
         Picasso.with(helper.getConvertView().getContext()).load(item.getBgImage()).into((ImageView) helper.getView(R.id.item_surprise__image));

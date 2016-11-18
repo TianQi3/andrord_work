@@ -9,15 +9,16 @@ public class ShoppingCartRequest implements IRequestMainData {
     private long shoppingCartId;
     private long itemId;
     private int quantity;
-
+    private int scType;
 
     public ShoppingCartRequest() {
     }
 
-    public ShoppingCartRequest(long shoppingCartId, long itemId, int quantity) {
+    public ShoppingCartRequest(long shoppingCartId, long itemId, int quantity, int scType) {
         this.shoppingCartId = shoppingCartId;
         this.itemId = itemId;
         this.quantity = quantity;
+        this.scType = scType;
     }
 
     public long getShoppingCartId() {
@@ -42,5 +43,13 @@ public class ShoppingCartRequest implements IRequestMainData {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public int getScType() {
+        return scType;
+    }
+
+    public void setScType(int scType) {
+        this.scType = scType;
     }
 }

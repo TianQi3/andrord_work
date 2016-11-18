@@ -10,19 +10,24 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.humming.ascwg.Application;
+import com.humming.ascwg.Config;
 import com.humming.ascwg.Constant;
 import com.humming.ascwg.MainActivity;
 import com.humming.ascwg.activity.AbstractActivity;
 import com.humming.ascwg.activity.LoginActivity;
+import com.humming.ascwg.model.ResponseData;
+import com.humming.ascwg.requestUtils.WxUserInfoRequest;
+import com.humming.ascwg.service.Error;
+import com.humming.ascwg.service.OkHttpClientManager;
 import com.humming.ascwg.utils.SharePrefUtil;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
-import com.tencent.mm.sdk.openapi.BaseReq;
-import com.tencent.mm.sdk.openapi.BaseResp;
+import com.tencent.mm.sdk.modelbase.BaseReq;
+import com.tencent.mm.sdk.modelbase.BaseResp;
+import com.tencent.mm.sdk.modelmsg.SendAuth;
 import com.tencent.mm.sdk.openapi.IWXAPIEventHandler;
-import com.tencent.mm.sdk.openapi.SendAuth;
 
 import java.io.IOException;
 
@@ -55,7 +60,7 @@ public class WXEntryActivity extends AbstractActivity implements IWXAPIEventHand
      * 获取到token和openID。之后再调用https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID 获取用户个人信息
      *
      * @param arg0
-     * @see com.tencent.mm.sdk.openapi.IWXAPIEventHandler#onResp(com.tencent.mm.sdk.openapi.BaseResp)
+     * @see com.tencent.mm.sdk.openapi.IWXAPIEventHandler#
      */
     @Override
     public void onResp(BaseResp arg0) {
@@ -65,7 +70,7 @@ public class WXEntryActivity extends AbstractActivity implements IWXAPIEventHand
         mDelivery = new Handler(Looper.getMainLooper());
         //获取到code之后，需要调用接口获取到access_token
         if (resp.errCode == BaseResp.ErrCode.ERR_OK) {
-            String code = resp.token;
+            String code = resp.code;
             Request request = new Request.Builder().url("https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + Constant.APP_ID + "&secret=" + Constant.APP_SECRERT + "&code=" + code + "&grant_type=authorization_code").build();
             //获取微信access_token
             okHttpClient.newCall(request).enqueue(new Callback() {
@@ -162,19 +167,56 @@ public class WXEntryActivity extends AbstractActivity implements IWXAPIEventHand
                 ObjectMapper mapper = new ObjectMapper();
                 mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
                 final String string = response.body().string();
+                Log.v("xxxxxx", "string:" + string);
                 JsonNode node = mapper.readValue(string, JsonNode.class);
                 String nickName = node.get("nickname").toString();
                 String headimgurl = node.get("headimgurl").toString();
                 String nickNames = nickName.substring(1, nickName.length() - 1);
                 String headImage = headimgurl.substring(1, headimgurl.length() - 1);
+                String openid = node.get("openid").toString().substring(1, node.get("openid").toString().length() - 1);
+                String sex = node.get("sex").toString();
+                String province = node.get("province").toString().substring(1, node.get("province").toString().length() - 1);
+                String city = node.get("city").toString().substring(1, node.get("city").toString().length() - 1);
+                String country = node.get("country").toString().substring(1, node.get("country").toString().length() - 1);
+                String unionid = node.get("unionid").toString().substring(1, node.get("unionid").toString().length() - 1);
+                String language = node.get("language").toString().substring(1, node.get("language").toString().length() - 1);
+                final WxUserInfoRequest wxUserInfoRequest = new WxUserInfoRequest();
+                wxUserInfoRequest.setNickname(nickNames);
+                wxUserInfoRequest.setHeadimgurl(headImage);
+                wxUserInfoRequest.setOpenid(openid);
+                wxUserInfoRequest.setSex(sex);
+                wxUserInfoRequest.setProvince(province);
+                wxUserInfoRequest.setCity(city);
+                wxUserInfoRequest.setCountry(country);
+                wxUserInfoRequest.setUnionid(unionid);
+                wxUserInfoRequest.setLanguage(language);
                 SharePrefUtil.putString(Constant.FILE_NAME, Constant.HEAD_IMAGE, headImage, WXEntryActivity.this);
                 SharePrefUtil.putString(Constant.FILE_NAME, Constant.CONTRACT, nickNames, WXEntryActivity.this);
                 mDelivery.post(new Runnable() {
                     @Override
                     public void run() {
-                        WXEntryActivity.this.finish();
-                        Intent intent = new Intent(Application.getInstance().getCurrentActivity(), MainActivity.class);
-                        startActivity(intent);
+                        OkHttpClientManager.postAsyn(Config.WXLOGIN, new OkHttpClientManager.ResultCallback<ResponseData>() {
+
+                            @Override
+                            public void onError(Request request, Error info) {
+                                Log.e("xxxxxx", "onError , Error = " + info.getInfo());
+                                showShortToast(info.getInfo());
+                            }
+
+                            @Override
+                            public void onResponse(ResponseData response) {
+                               // Log.v("xxxx","成功了");
+                                WXEntryActivity.this.finish();
+                                Intent intent = new Intent(Application.getInstance().getCurrentActivity(), MainActivity.class);
+                                startActivity(intent);
+                            }
+
+                            @Override
+                            public void onOtherError(Request request, Exception exception) {
+                                Log.e("xxxxxx", "onError , e = " + exception.getMessage());
+                            }
+                        }, wxUserInfoRequest, ResponseData.class);
+
                     }
                 });
 

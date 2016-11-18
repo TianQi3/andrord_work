@@ -3,8 +3,6 @@ package com.humming.ascwg.adapter;
 import android.widget.ImageView;
 
 import com.humming.ascwg.R;
-import com.humming.ascwg.adapter.BaseAdapter;
-import com.humming.ascwg.adapter.BaseViewHolder;
 import com.squareup.picasso.Picasso;
 import com.wg.promotion.dto.PromotionListResponse;
 
@@ -22,7 +20,7 @@ public class PromotionAdapter extends BaseAdapter<PromotionListResponse> {
 
 
     @Override
-    protected void convert(BaseViewHolder helper, PromotionListResponse item) {
+    protected void convert(BaseViewHolder helper, PromotionListResponse item, int position) {
         helper.setText(R.id.item_surprise__title, item.getTitle())
                 .setText(R.id.item_surprise__content, item.getName());
         Picasso.with(helper.getConvertView().getContext()).load(item.getBgImage()).into((ImageView) helper.getView(R.id.item_surprise__image));

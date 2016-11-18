@@ -15,7 +15,7 @@ public class EventDetailsAdapter extends BaseAdapter<Map<String,String>> {
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, Map<String, String> item) {
+    protected void convert(BaseViewHolder helper, Map<String, String> item, int position) {
 
     }
 }

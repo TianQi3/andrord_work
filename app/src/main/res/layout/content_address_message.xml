@@ -68,7 +68,8 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/garys"></View>
-    <!-- <LinearLayout
+     <LinearLayout
+         android:id="@+id/content_address_message__province_city_layout"
          android:layout_width="match_parent"
          android:layout_height="50dp"
          android:layout_marginLeft="15dp"
@@ -79,18 +80,18 @@
              android:layout_width="wrap_content"
              android:layout_height="match_parent"
              android:gravity="center"
-             android:text="@string/consignee"
+             android:text="@string/province_city"
              android:textColor="@color/tab_text" />
 
-         <EditText
-             android:id="@+id/content_address_message__consignee"
+         <TextView
+             android:id="@+id/content_address_message__province_city"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:layout_marginLeft="10dp"
              android:hint="@string/please_click_write"
              android:textColor="@color/tab_text"
              android:textColorHint="@color/cart_text" />
-     </LinearLayout>-->
+     </LinearLayout>
 
     <View
         android:layout_width="match_parent"

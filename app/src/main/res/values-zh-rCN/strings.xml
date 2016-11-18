@@ -2,13 +2,14 @@
 
     <string name="app_name">ASC 尊享会员</string>
     <string name="action_settings">设置</string>
+    <string name="settings_language">设置语言</string>
 
-    <string name="country">Country</string>
-    <string name="wines_type">Wine Type</string>
-    <string name="brand">Brand</string>
-    <string name="search">Search</string>
+    <string name="country">国家</string>
+    <string name="wines_type">葡萄酒类型</string>
+    <string name="brand">品牌</string>
+    <string name="search">搜索</string>
     <string name="wines">Wines</string>
-    <string name="item_code">Item Code</string>
+    <string name="item_code">编号</string>
     <!--我的-->
     <string name="text_name">搜索</string>
     <string name="text_shopping_cart">购物车</string>
@@ -17,7 +18,7 @@
     <string name="text_address">地址管理</string>
     <string name="text_event">活动</string>
     <string name="text_bill">发票管理</string>
-    <string name="text_setting">设置</string>
+    <string name="text_quit">退出登录</string>
 
     <string name="promotion">促销</string>
     <string name="promotion_detail">促销详情</string>
@@ -32,11 +33,10 @@
     <string name="settlement">结算</string>
     <string name="settlement_message">结算信息</string>
     <string name="order_commit">提交订单</string>
-    <string name="go_pay">去支付</string>
     <string name="commit">提交</string>
     <string name="char_right">&gt;</string>
     <string name="action_search">搜索</string>
-    <string name="pls_input_search">Please input search content </string>
+    <string name="pls_input_search">请输入搜索内容</string>
     <!--登陆-->
     <string name="text_phone">手机号</string>
     <string name="text_password">密码</string>
@@ -51,7 +51,11 @@
     <string name="error_invalid_employee_id">用户ID无效</string>
     <!--订单-->
     <string name="text_order_num">订单编号</string>
+    <string name="text_order_date">下单时间</string>
     <string name="text_order_discount">折后价：</string>
+    <string name="text_order_details">订单详情</string>
+    <string name="text_order_cancel">订单取消</string>
+    <string name="text_order_pay">去支付</string>
     <!--注册-->
     <string name="text_identifying_code">验证码</string>
     <string name="text_get_identifying_code">获取验证码</string>
@@ -61,7 +65,10 @@
     <string name="next">下一步</string>
     <string name="text_welcome">欢迎来到ASC尊享会员</string>
     <string name="set_password">设置密码</string>
+    <string name="old_password">当前密码</string>
     <string name="reset_password">确认密码</string>
+    <string name="new_password">新密码</string>
+    <string name="reset_new_password">确认新密码</string>
     <string name="prompt_password">密码</string>
     <string name="forget_password">忘记密码?</string>
     <string name="get_back_password">找回密码</string>
@@ -72,6 +79,9 @@
     <string name="nick_account">昵称/帐号</string>
     <string name="basic_information">基本信息:</string>
     <string name="birthday">生日:</string>
+    <string name="modify_password">修改密码</string>
+    <string name="bind_wechat">绑定微信</string>
+    <string name="change_language">更改语言</string>
     <string name="sex">性别:</string>
     <string name="address">所在地:</string>
     <string name="select_address">选择地区</string>
@@ -84,11 +94,15 @@
     <string name="nick_message">好名字可以让你的朋友更容易记住你.</string>
     <string name="change_name">更改名字</string>
     <string name="please_enter_name">请输入内容</string>
+    <string name="please_enter_bank_code">请输入银行会员验证码</string>
+    <string name="please_enter_yum_code">请输入Yum会员验证码</string>
     <string name="province">省</string>
     <string name="city">市(区)</string>
     <string name="delete_success">删除成功</string>
     <string name="add_cart">加入购物车</string>
     <string name="all_select">全选</string>
+    <string name="all_select_normal">全选已购商品</string>
+    <string name="all_select_yum">全选yum商品</string>
     <string name="cart_null">购物车为空哦~</string>
     <string name="select_address_shop">选择收货地址</string>
     <string name="address_shop">收货地址:</string>
@@ -102,6 +116,7 @@
     <string name="consignee">收货人:</string>
     <string name="contact_infomation">联系方式:</string>
     <string name="detail_address">详细地址:</string>
+    <string name="province_city">省市:</string>
     <string name="please_click_write">请点击填写:</string>
     <string name="set_default_address">设置为默认地址</string>
     <string name="please_fill_in_the_complete">请完善所有信息</string>
@@ -109,7 +124,10 @@
     <string name="delete_address_success">删除地址成功</string>
     <string name="commit_order_success">提交订单成功</string>
     <string name="vip_discount">会员折扣</string>
-    <string name="bank_code">银行会员验证码</string>
+    <string name="bank_code">银行会员验证</string>
+    <string name="pum_code">Yum会员验证</string>
+    <string name="pum_code_verified">Yum验证码已验证</string>
+    <string name="bank_code_verified">银行会员已验证</string>
     <string name="switch_open">开</string>
     <string name="switch_close">关</string>
     <string name="setting_success">设置信息成功</string>
@@ -138,12 +156,16 @@
     <string name="detail">详情</string>
     <string name="activity_product_wines_info__brand_story">品牌故事</string>
     <!--我的订单状态-->
-    <string name="order_status_1">下单待审核</string>
-    <string name="order_status_2">下单成功</string>
-    <string name="order_status_3">下单失败</string>
-    <string name="order_status_4">订单取消申请</string>
-    <string name="order_status_5">订单取消成功</string>
-    <string name="order_status_6">订单取消失败</string>
+    <string name="order_status_1">下单成功</string>
+    <string name="order_refund_success">申请退款成功</string>
+    <string name="cancel_order_success">取消订单成功</string>
+    <string name="order_status_2">下单失败</string>
+    <string name="order_status_3">待支付</string>
+    <string name="order_status_4">订单失效</string>
+    <string name="order_status_5">支付完成待审核</string>
+    <string name="order_status_6">订单成功</string>
+    <string name="order_status_7">订单审核失败</string>
+    <string name="order_status_8">订单退款</string>
     <string name="label_country">国家:</string>
     <string name="label_region">区域:</string>
     <string name="label_price">价格:</string>
@@ -164,6 +186,17 @@
     <string name="tab_product">产品</string>
     <string name="tab_surprise">惊喜</string>
     <string name="tab_rights">权益</string>
+    <string name="yum_member_zone">Yum会员专区</string>
     <string name="tab_cart">购物车</string>
     <string name="tab_my">我的</string>
+    <string name="buy_one_send_three">买一赠三</string>
+
+    <string name="chinese">中文</string>
+    <string name="english">英文</string>
+    <!-- WXPayEntryActivity -->
+    <string name="pay_result_tip">这个界面用于显示第三方app通过微信支付的结果</string>
+    <string name="pay_result_callback_msg" formatted="false">微信支付结果：%s</string>
+    <string name="app_tip">提示</string>
+
+
 </resources>

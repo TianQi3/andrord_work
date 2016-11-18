@@ -69,6 +69,10 @@ public class OkHttpClientManager {
         getInstance()._postAsyn(url, callback, requestMainDataData, typeReference);
     }
 
+    public static <T> void postAsyn(String url, final ResultCallback callback, IRequestMainData requestMainDataData) {
+        getInstance()._postAsyn(url, callback, requestMainDataData);
+    }
+
     //异步请求 类(返回普通类)
     private <T> void _postAsyn(String cmd, final ResultCallback callback, IRequestMainData requestMainDataData, final Class<T> resultVOClass) {
         String token = SharePrefUtil.getString(Constant.FILE_NAME, "token", "", Application.getInstance().getCurrentActivity());
@@ -95,6 +99,20 @@ public class OkHttpClientManager {
         String url = Config.URL_SERVICE;
         Request request = buildPostRequest(url, requestData);
         deliveryResult(callback, request, typeReference);
+    }
+
+    //异步请求 Map(返回map---用于调用支付)
+    private <T> void _postAsyn(String cmd, final ResultCallback callback, IRequestMainData requestMainDataData) {
+        String token = SharePrefUtil.getString(Constant.FILE_NAME, "token", "", Application.getInstance().getCurrentActivity());
+        RequestData requestData = new RequestData();
+        if (!"".equals(token)) {
+            requestData.setToken(token);
+        }
+        requestData.setCmd(cmd);
+        requestData.setParameters(requestMainDataData);
+        String url = Config.URL_SERVICE;
+        Request request = buildPostRequest(url, requestData);
+        deliveryResult(callback, request);
     }
 
     private Param[] map2Params(Map<String, String> params) {
@@ -224,6 +242,37 @@ public class OkHttpClientManager {
                     sendFailedStringCallback(response.request(), e, callback);
                 }
 
+            }
+        });
+    }
+
+    private <T> void deliveryResult(final ResultCallback callback, final Request request) {
+        mOkHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(final Request request, final IOException e) {
+                sendFailedStringCallback(request, e, callback);
+            }
+
+            @Override
+            public void onResponse(final Response response) {
+                ObjectMapper mapper = new ObjectMapper();
+                mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+                try {
+                    final String string = response.body().string();
+                    JsonNode node = mapper.readValue(string, JsonNode.class);
+                    int statusCode = ((IntNode) node.get("statusCode")).intValue();
+                    if (statusCode == 0) {
+                        JsonNode responseNode = node.get("response");
+                        Map<String, Object> resutltMap = mapper.readValue(responseNode.toString(), Map.class);
+                        sendSuccessResultCallback(resutltMap, callback);
+                    } else {
+                        JsonNode errorNode = node.get("error");
+                        Error error = mapper.treeToValue(errorNode, Error.class);
+                        sendErrorStringCallback(request, error, callback);
+                    }
+                } catch (IOException e) {
+                    sendFailedStringCallback(response.request(), e, callback);
+                }
             }
         });
     }

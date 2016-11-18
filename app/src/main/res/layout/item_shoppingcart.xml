@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:paddingRight="10dp"
-        android:paddingTop="10dp">
+        >
 
         <LinearLayout
             android:id="@+id/item_shoppongcart__radiogroup"

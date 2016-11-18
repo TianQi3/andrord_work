@@ -621,7 +621,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<RecyclerView.V
 
         switch (viewType) {
             case 0:
-                convert((com.humming.ascwg.adapter.BaseViewHolder) holder, mData.get(holder.getLayoutPosition() - getHeaderLayoutCount()));
+                convert((com.humming.ascwg.adapter.BaseViewHolder) holder, mData.get(holder.getLayoutPosition() - getHeaderLayoutCount()), holder.getLayoutPosition() - getHeaderLayoutCount());
                 break;
             case LOADING_VIEW:
                 addLoadMore(holder);
@@ -633,7 +633,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<RecyclerView.V
             case FOOTER_VIEW:
                 break;
             default:
-                convert((com.humming.ascwg.adapter.BaseViewHolder) holder, mData.get(holder.getLayoutPosition() - getHeaderLayoutCount()));
+                convert((com.humming.ascwg.adapter.BaseViewHolder) holder, mData.get(holder.getLayoutPosition() - getHeaderLayoutCount()), holder.getLayoutPosition() - getHeaderLayoutCount());
                 onBindDefViewHolder((com.humming.ascwg.adapter.BaseViewHolder) holder, mData.get(holder.getLayoutPosition() - getHeaderLayoutCount()));
                 break;
         }
@@ -930,11 +930,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<RecyclerView.V
     }
 
 
-    /**
-     * @see #convert(BaseViewHolder, Object) ()
-     * @deprecated This method is deprecated
-     * {@link #convert(BaseViewHolder, Object)} depending on your use case.
-     */
+
     @Deprecated
     protected void onBindDefViewHolder(BaseViewHolder holder, T item) {
     }
@@ -966,7 +962,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<RecyclerView.V
      * @param helper A fully initialized helper.
      * @param item   The item that needs to be displayed.
      */
-    protected abstract void convert(BaseViewHolder helper, T item);
+    protected abstract void convert(BaseViewHolder helper, T item,int position);
 
     /**
      * Get the row id associated with the specified position in the list.

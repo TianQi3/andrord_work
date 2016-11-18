@@ -12,12 +12,15 @@ public class OrderSelect {
     private String imageUrl;
     private int quantity;
     private boolean select;
+    private long itemId;
+
 
     public OrderSelect() {
     }
 
-    public OrderSelect(long shoppingCartId, String nameEn, String nameCn, String vintage, float costPrice, String imageUrl, int quantity, boolean select) {
+    public OrderSelect(long shoppingCartId, long itemId, String nameEn, String nameCn, String vintage, float costPrice, String imageUrl, int quantity, boolean select) {
         this.shoppingCartId = shoppingCartId;
+        this.itemId = itemId;
         this.nameEn = nameEn;
         this.nameCn = nameCn;
         this.vintage = vintage;
@@ -90,4 +93,14 @@ public class OrderSelect {
     public void setNameCn(String nameCn) {
         this.nameCn = nameCn;
     }
+
+    public long getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(long itemId) {
+        this.itemId = itemId;
+    }
+
+
 }

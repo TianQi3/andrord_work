@@ -17,16 +17,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/magin_10"
-            android:text="@string/text_order_num"
+            android:text="@string/text_order_date"
             android:textColor="@color/gray"
             android:textSize="@dimen/text_12" />
 
         <TextView
-            android:id="@+id/item_my_order__number"
+            android:id="@+id/item_my_order__date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="093048253073"
+            android:text=""
             android:textColor="@color/gray"
             android:textSize="@dimen/text_12" />
 

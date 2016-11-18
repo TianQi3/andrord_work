@@ -11,6 +11,7 @@ import com.humming.ascwg.Application;
 import com.humming.ascwg.Constant;
 import com.humming.ascwg.R;
 import com.humming.ascwg.activity.SetInformationActivity;
+import com.humming.ascwg.activity.SettingActivity;
 import com.humming.ascwg.activity.my.MyAddressActivity;
 import com.humming.ascwg.activity.my.MyAdviserActivity;
 import com.humming.ascwg.activity.my.MyBillActivity;
@@ -75,6 +76,8 @@ public class MyContent extends LinearLayout implements View.OnClickListener {
                 Application.getInstance().getCurrentActivity().startActivityForResult(intent1, SetInformationActivity.NAME_IMAGE_RESULT_CODE);
                 break;
             case R.id.fragment_my__setting:
+                Intent intent = new Intent(Application.getInstance().getApplicationContext(), SettingActivity.class);
+                Application.getInstance().getCurrentActivity().startActivity(intent);
                 break;
             case R.id.fragment_my__adviser:
                 Application.getInstance().getCurrentActivity().startActivity(new Intent(Application.getInstance().getCurrentActivity(), MyAdviserActivity.class));
@@ -83,9 +86,9 @@ public class MyContent extends LinearLayout implements View.OnClickListener {
                 Application.getInstance().getCurrentActivity().startActivity(new Intent(Application.getInstance().getCurrentActivity(), MyOrderActivity.class));
                 break;
             case R.id.fragment_my__address:
-                Intent intent = new Intent(Application.getInstance().getCurrentActivity(), MyAddressActivity.class);
-                intent.putExtra(MyAddressActivity.ADDRESS_TYPE, "1");
-                Application.getInstance().getCurrentActivity().startActivity(intent);
+                Intent intents = new Intent(Application.getInstance().getCurrentActivity(), MyAddressActivity.class);
+                intents.putExtra(MyAddressActivity.ADDRESS_TYPE, "1");
+                Application.getInstance().getCurrentActivity().startActivity(intents);
                 break;
             case R.id.fragment_my__event:
                 Application.getInstance().getCurrentActivity().startActivity(new Intent(Application.getInstance().getCurrentActivity(), MyEventActivity.class));

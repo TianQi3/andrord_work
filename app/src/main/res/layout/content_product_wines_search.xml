@@ -226,7 +226,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="15dp"
             android:background="@drawable/button"
-            android:text="@string/search"
+            android:text="@string/action_search"
             android:textColor="#ffffff" />
     </LinearLayout>
 

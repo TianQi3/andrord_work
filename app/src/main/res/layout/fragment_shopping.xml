@@ -8,16 +8,113 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <ListView
-        android:id="@+id/fragment_shopping__recycler"
+    <com.humming.ascwg.component.ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:divider="#00000000"
-        android:dividerHeight="12dp"
         android:scrollbars="none">
 
-    </ListView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/item_shoppongcart__layout_normal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/shop_cart_bottom_all"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp">
+
+                    <CheckBox
+                        android:id="@+id/fragment_shoppongcart__all_select_normal"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/shopping_cart_radio_status"
+                        android:button="@null"
+                        android:checked="false" />
+                </RadioGroup>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/magin_10"
+                    android:text="@string/all_select_normal"
+                    android:textColor="@color/tab_text"
+                    android:textSize="@dimen/text_14" />
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/fragment_shopping__recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="#00000000"
+                android:dividerHeight="12dp"
+                android:scrollbars="none">
+
+            </ListView>
+
+
+            <LinearLayout
+                android:id="@+id/item_shoppongcart__layout_yum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/shop_cart_bottom_all"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp"
+                android:visibility="gone">
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp">
+
+                    <CheckBox
+                        android:id="@+id/fragment_shoppongcart__all_select_yum"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/shopping_cart_radio_status"
+                        android:button="@null"
+                        android:checked="false" />
+                </RadioGroup>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/magin_10"
+                    android:text="@string/all_select_yum"
+                    android:textColor="@color/tab_text"
+                    android:textSize="@dimen/text_14" />
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/fragment_shopping__recycler_yum"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="#00000000"
+                android:dividerHeight="12dp"
+                android:scrollbars="none">
+
+            </ListView>
+        </LinearLayout>
+    </com.humming.ascwg.component.ScrollView>
 
     <LinearLayout
         android:id="@+id/fragment_shopping__null"
@@ -139,9 +236,10 @@
             android:layout_width="120dp"
             android:layout_height="match_parent"
             android:background="@color/get_ident"
-            android:textColor="@color/tab_text"
             android:text="@string/settlement"
+            android:textColor="@color/tab_text"
             android:textSize="@dimen/text_17" />
 
     </LinearLayout>
+
 </LinearLayout>

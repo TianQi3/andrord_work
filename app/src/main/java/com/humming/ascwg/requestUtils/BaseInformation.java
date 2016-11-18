@@ -19,6 +19,9 @@ public class BaseInformation implements IRequestMainData {
     private String birthday;
     private String signature;
     private String vipCode;
+    private String yumCode;
+    private int page;
+
 
     public String getName() {
         return name;
@@ -114,5 +117,21 @@ public class BaseInformation implements IRequestMainData {
 
     public void setVipCode(String vipCode) {
         this.vipCode = vipCode;
+    }
+
+    public String getYumCode() {
+        return yumCode;
+    }
+
+    public void setYumCode(String yumCode) {
+        this.yumCode = yumCode;
+    }
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
     }
 }

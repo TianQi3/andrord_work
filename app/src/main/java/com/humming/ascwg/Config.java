@@ -5,9 +5,9 @@ package com.humming.ascwg;
  */
 public class Config {
     public static final boolean DEBUG = false;
-
-    // public static final String URL_SERVICE = "http://172.16.1.210:8080/cgi";//测试环境
-    public static final String URL_SERVICE = "http://dsapp.asc-wines.com/cgi";//外网环境
+    //public static final String URL_SERVICE = "http://192.168.1.58:8080/cgi";//测试环境
+    public static final String URL_SERVICE = "http://uat.dsapp.asc-wines.com/cgi";//测试环境
+    //public static final String URL_SERVICE = "http://dsapp.asc-wines.com/cgi";//外网环境
 
 
     //产品
@@ -24,7 +24,9 @@ public class Config {
     public static final String GET_CITY = "baseinfo/cityOrCounty";//获取城市
     public static final String USER_INFORMATION = "user/update";//上传个人信息
     public static final String LOGIN = "user/login";//登录
+    public static final String WXLOGIN = "user/wxLogin";//微信登录
     public static final String SHOPPINGCART_QUERY = "shoppingcart/query";//查询购物车
+    public static final String SHOPPINGCART_QUERY_NEW = "shoppingcart/queryNew";//查询新的购物车
     public static final String SHOPPINGCART_ADD_UPDATE = "shoppingcart/save";//购物车信息添加或修改
     public static final String SHOPPINGCART_DELETE = "shoppingcart/delete";//删除购物车信息
     public static final String ITEM_QUERY_DETIAL = "item/detail";//酒的详情
@@ -36,6 +38,7 @@ public class Config {
     public static final String INSERT_ORDER = "order/insert";//提交订单
     public static final String QUERY_ORDER = "order/query";//订单查询
     public static final String ORDER_DETAIL = "order/detail";//订单详情
+    public static final String ORDER_STATUS = "order/queryOrderStatus";//订单状态
     public static final String EVENT_QUERY = "event/query";//活动查询
     public static final String PROMOTION_QUERY = "promotion/query";//促销查询
     public static final String EVENT_ATTEND = "event/attend";//参加活动
@@ -43,11 +46,15 @@ public class Config {
     public static final String MY_EVENT = "event/mine";//我的活动
     public static final String MY_PROMOTION = "promotion/mine";//我的促销
     public static final String CHECK_VIP_CODE = "user/checkVipCode";//vip码验证
+    public static final String CHECK_YUM_CODE = "user/checkYumCode";//百盛验证
+    public static final String GET_YUM_LIST = "item/queryYumItem";//百盛列表
     public static final String QUERY_RIGHTS = "rights/query";//权益查询
     public static final String SALES_QUERY = "sales/query";//销售顾问
     public static final String MOBILE_VERSION = "baseinfo/mobileVersion";//版本更新
     public static final String URL_SERVICE_ALIIMAGE = "user/update";//头像上传
     public static final String PROMOTION_DETAIL = "promotion/detail";//促销详情
     public static final String USER_SELFINFO = "user/selfInfo";//获取用户信息
+    public static final String REFUND_ORDER = "order/refund";//退款申请
     public static final String CANCEL_ORDER = "order/cancel";//取消订单
+    public static final String PAY_CONTENT = "pay/getContent";//获取支付签名
 }

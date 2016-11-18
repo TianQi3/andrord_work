@@ -1,12 +1,17 @@
 package com.humming.ascwg.activity.my;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -18,26 +23,38 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.alipay.sdk.app.PayTask;
 import com.humming.ascwg.Application;
 import com.humming.ascwg.Config;
+import com.humming.ascwg.Constant;
 import com.humming.ascwg.MainActivity;
 import com.humming.ascwg.R;
 import com.humming.ascwg.activity.AbstractActivity;
 import com.humming.ascwg.content.ShoppingCartContent;
+import com.humming.ascwg.model.OrderResponseData;
 import com.humming.ascwg.model.ResponseData;
 import com.humming.ascwg.requestUtils.CancelOrderRequest;
 import com.humming.ascwg.requestUtils.OrderDetailRequest;
+import com.humming.ascwg.requestUtils.PayContentRequest;
 import com.humming.ascwg.service.Error;
 import com.humming.ascwg.service.OkHttpClientManager;
+import com.humming.ascwg.utils.PayResult;
 import com.squareup.okhttp.Request;
 import com.squareup.picasso.Picasso;
+import com.tencent.mm.sdk.modelpay.PayReq;
+import com.tencent.mm.sdk.openapi.IWXAPI;
+import com.tencent.mm.sdk.openapi.WXAPIFactory;
 import com.wg.order.dto.OrderDetailResponse;
 import com.wg.order.dto.OrderHead;
 import com.wg.order.dto.OrderItemDetail;
 import com.wg.order.dto.ShippingAddressDetail;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by Elvira on 2016/8/15.
@@ -55,17 +72,21 @@ public class MyOrderDetailsActivity extends AbstractActivity {
     public static final String ORDER_ID = "order_id";
     public static final String KEY_TEXT = "key_text";
     public static final int ORDER_CODE = 1004;
-    private TextView tvConsignee, tvPhone, tvAddress, tvOrderNumber, tvTime, tvTotal, tvDisCount, tvDisCountTotal, tvCancelOrder, tvPay;
+    private TextView tvConsignee, tvPhone, tvAddress, tvOrderNumber, tvTime, tvTotal, tvDisCount, tvDisCountTotal, tvCancelOrder, tvPay, tvRefund;
     private OrderDetailResponse orderDetailResponse;
     private ShippingAddressDetail shippingAddress;
-    private OrderHead orderHead;
+    public static OrderHead orderHead;
     private List<OrderItemDetail> itemDetailInfo;
     private Context context;
-    private String orderId = "";
+    public static String orderId = "";
     private ShoppingCartContent shoppingCartContent;
     private Application mAPP;
     private MainActivity.MyHandler mHandler;
     private LinearLayout parent;
+    private static final int SDK_PAY_FLAG = 1;
+    private PayReq req;
+    final IWXAPI msgApi = WXAPIFactory.createWXAPI(this, null);
+    private Timer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +104,7 @@ public class MyOrderDetailsActivity extends AbstractActivity {
 
     private void initView() {
         title = (TextView) findViewById(R.id.toolbar_title);
-        title.setText("订单详情");
+        title.setText(getResources().getString(R.string.text_order_details));
         tvConsignee = (TextView) findViewById(R.id.content_my_order_details__consignee);
         tvPhone = (TextView) findViewById(R.id.content_my_order_details__phone);
         parent = (LinearLayout) findViewById(R.id.content_my_order_details__layouts);
@@ -95,6 +116,8 @@ public class MyOrderDetailsActivity extends AbstractActivity {
         tvTotal = (TextView) findViewById(R.id.content_my_order_details__total_price);
         tvCancelOrder = (TextView) findViewById(R.id.content_my_order_details__cancel_order);
         tvPay = (TextView) findViewById(R.id.content_my_order_details__pay);
+        tvRefund = (TextView) findViewById(R.id.content_my_order_details__refund);
+        tvPay.setVisibility(View.GONE);
         back = (ImageView) findViewById(R.id.toolbar_back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,7 +135,7 @@ public class MyOrderDetailsActivity extends AbstractActivity {
             tvPay.setVisibility(View.VISIBLE);
         } else {
             success.setVisibility(View.GONE);
-            tvPay.setVisibility(View.GONE);
+            //tvPay.setVisibility(View.GONE);
         }
         //去支付
         tvPay.setOnClickListener(new View.OnClickListener() {
@@ -122,6 +145,34 @@ public class MyOrderDetailsActivity extends AbstractActivity {
                 new PopupWindows(MyOrderDetailsActivity.this, parent);
             }
         });
+
+        //退款
+        tvRefund.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CancelOrderRequest cancelOrderRequest = new CancelOrderRequest();
+                cancelOrderRequest.setId(Long.parseLong(orderId));
+                OkHttpClientManager.postAsyn(Config.REFUND_ORDER, new OkHttpClientManager.ResultCallback<ResponseData>() {
+
+                    @Override
+                    public void onError(Request request, Error info) {
+                        Log.e("xxxxxx", "onError , Error = " + info.getInfo());
+                        showShortToast(info.getInfo());
+                    }
+
+                    @Override
+                    public void onResponse(ResponseData response) {
+                        showShortToast(getResources().getString(R.string.order_refund_success));
+                    }
+
+                    @Override
+                    public void onOtherError(Request request, Exception exception) {
+                        Log.e("xxxxxx", "onError , e = " + exception.getMessage());
+                    }
+                }, cancelOrderRequest, ResponseData.class);
+            }
+        });
+        //取消订单
         tvCancelOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,7 +190,7 @@ public class MyOrderDetailsActivity extends AbstractActivity {
 
                     @Override
                     public void onResponse(ResponseData response) {
-                        showShortToast(getResources().getString(R.string.order_status_5));
+                        showShortToast(getResources().getString(R.string.cancel_order_success));
                         Bundle resultBundle = new Bundle();
                         resultBundle.putString(
                                 MyOrderDetailsActivity.KEY_TEXT,
@@ -156,7 +207,7 @@ public class MyOrderDetailsActivity extends AbstractActivity {
                     public void onOtherError(Request request, Exception exception) {
                         Log.e("xxxxxx", "onError , e = " + exception.getMessage());
                     }
-                }, cancelOrderRequest, CancelOrderRequest.class);
+                }, cancelOrderRequest, ResponseData.class);
             }
         });
     }
@@ -173,17 +224,22 @@ public class MyOrderDetailsActivity extends AbstractActivity {
 
                 if (orderHead.getOrderStatus() == 1) {
                     success.setText(getBaseContext().getResources().getString(R.string.order_status_1));
-                    tvCancelOrder.setVisibility(View.VISIBLE);
                 } else if (orderHead.getOrderStatus() == 2) {
                     success.setText(getBaseContext().getResources().getString(R.string.order_status_2));
                 } else if (orderHead.getOrderStatus() == 3) {
                     success.setText(getBaseContext().getResources().getString(R.string.order_status_3));
+                    tvCancelOrder.setVisibility(View.VISIBLE);
+                    tvPay.setVisibility(View.VISIBLE);
                 } else if (orderHead.getOrderStatus() == 4) {
                     success.setText(getBaseContext().getResources().getString(R.string.order_status_4));
                 } else if (orderHead.getOrderStatus() == 5) {
                     success.setText(getBaseContext().getResources().getString(R.string.order_status_5));
                 } else if (orderHead.getOrderStatus() == 6) {
                     success.setText(getBaseContext().getResources().getString(R.string.order_status_6));
+                } else if (orderHead.getOrderStatus() == 7) {
+                    success.setText(getBaseContext().getResources().getString(R.string.order_status_7));
+                } else if (orderHead.getOrderStatus() == 8) {
+                    success.setText(getBaseContext().getResources().getString(R.string.order_status_8));
                 }
 
 
@@ -218,17 +274,23 @@ public class MyOrderDetailsActivity extends AbstractActivity {
 
                     if (orderHead.getOrderStatus() == 1) {
                         success.setText(getBaseContext().getResources().getString(R.string.order_status_1));
-                        tvCancelOrder.setVisibility(View.VISIBLE);
                     } else if (orderHead.getOrderStatus() == 2) {
                         success.setText(getBaseContext().getResources().getString(R.string.order_status_2));
                     } else if (orderHead.getOrderStatus() == 3) {
                         success.setText(getBaseContext().getResources().getString(R.string.order_status_3));
+                        tvCancelOrder.setVisibility(View.VISIBLE);
+                        tvPay.setVisibility(View.VISIBLE);
                     } else if (orderHead.getOrderStatus() == 4) {
                         success.setText(getBaseContext().getResources().getString(R.string.order_status_4));
                     } else if (orderHead.getOrderStatus() == 5) {
                         success.setText(getBaseContext().getResources().getString(R.string.order_status_5));
                     } else if (orderHead.getOrderStatus() == 6) {
                         success.setText(getBaseContext().getResources().getString(R.string.order_status_6));
+                        tvRefund.setVisibility(View.VISIBLE);
+                    } else if (orderHead.getOrderStatus() == 7) {
+                        success.setText(getBaseContext().getResources().getString(R.string.order_status_7));
+                    } else if (orderHead.getOrderStatus() == 8) {
+                        success.setText(getBaseContext().getResources().getString(R.string.order_status_8));
                     }
 
                     tvOrderNumber.setText(orderHead.getOrderNo());
@@ -247,7 +309,6 @@ public class MyOrderDetailsActivity extends AbstractActivity {
                     Log.e("xxxxxx", "onError , e = " + exception.getMessage());
                 }
             }, orderRequest, OrderDetailResponse.class);
-
         }
     }
 
@@ -297,7 +358,6 @@ public class MyOrderDetailsActivity extends AbstractActivity {
                     .findViewById(R.id.ll_popup);
             ll_popup.startAnimation(AnimationUtils.loadAnimation(mContext,
                     R.anim.fade_out));
-
             setWidth(ViewGroup.LayoutParams.FILL_PARENT);
             setHeight(ViewGroup.LayoutParams.FILL_PARENT);
             setBackgroundDrawable(new BitmapDrawable());
@@ -307,20 +367,94 @@ public class MyOrderDetailsActivity extends AbstractActivity {
             setAnimationStyle(R.style.mypopwindow_anim_style);
             showAtLocation(parent, Gravity.BOTTOM, 0, 0);
             update();
-
             TextView aliPay = (TextView) view
                     .findViewById(R.id.item_popupwindows_alipay);
             TextView wxPay = (TextView) view
                     .findViewById(R.id.item_popupwindows_wxpay);
             TextView cancel = (TextView) view
                     .findViewById(R.id.item_popupwindows_cancel);
+            //支付宝支付
             aliPay.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
+                    PayContentRequest payContentRequest = new PayContentRequest();
+                    payContentRequest.setPlatform(2);
+                    payContentRequest.setOrderNo(tvOrderNumber.getText().toString());
+                    OkHttpClientManager.postAsyn(Config.PAY_CONTENT, new OkHttpClientManager.ResultCallback<Map<String, Object>>() {
+                        @Override
+                        public void onError(Request request, Error info) {
+                            Log.e("xxxxxx", "onError , Error = " + info.getInfo());
+                            showShortToast(info.getInfo());
+                        }
+
+                        @Override
+                        public void onResponse(Map<String, Object> response) {
+                            final String payInfo = (String) response.get("data");
+                            /*for (Map.Entry entry : response.entrySet()) {
+                                System.out.println(entry.getKey() + ":" + entry.getValue());
+                            }*/
+                            Runnable payRunnable = new Runnable() {
+
+                                @Override
+                                public void run() {
+                                    // 构造PayTask 对象
+                                    PayTask alipay = new PayTask(Application.getInstance().getCurrentActivity());
+                                    // 调用支付接口，获取支付结果
+                                    String result = alipay.pay(payInfo, true);
+
+                                    Message msg = new Message();
+                                    msg.what = SDK_PAY_FLAG;
+                                    msg.obj = result;
+                                    mHandlers.sendMessage(msg);
+                                }
+                            };
+                            // 必须异步调用
+                            Thread payThread = new Thread(payRunnable);
+                            payThread.start();
+                            finish();
+                        }
+
+                        @Override
+                        public void onOtherError(Request request, Exception exception) {
+                            Log.e("xxxxxx", "onError , e = " + exception.getMessage());
+                        }
+                    }, payContentRequest);
                     dismiss();
                 }
             });
+            //微信支付
             wxPay.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
+                    PayContentRequest payContentRequest = new PayContentRequest();
+                    payContentRequest.setPlatform(1);
+                    payContentRequest.setOrderNo(tvOrderNumber.getText().toString());
+                    OkHttpClientManager.postAsyn(Config.PAY_CONTENT, new OkHttpClientManager.ResultCallback<Map<String, Object>>() {
+                        @Override
+                        public void onError(Request request, Error info) {
+                            Log.e("xxxxxx", "onError , Error = " + info.getInfo());
+                            showShortToast(info.getInfo());
+                        }
+
+                        @Override
+                        public void onResponse(Map<String, Object> response) {
+                            msgApi.registerApp(Constant.APP_ID);
+                            req = new PayReq();
+                            Map<String, Object> aa = (Map<String, Object>) response.get("data");
+                            req.appId = Constant.APP_ID;
+                            req.partnerId = (String) aa.get("partnerid");
+                            req.prepayId = (String) aa.get("prepayid");
+                            req.packageValue = "Sign=WXPay";
+                            req.nonceStr = (String) aa.get("noncestr");
+                            req.timeStamp = (String) aa.get("noncestr");
+                            req.sign = (String) aa.get("timestamp");
+                            msgApi.sendReq(req);
+                            finish();
+                        }
+
+                        @Override
+                        public void onOtherError(Request request, Exception exception) {
+                            Log.e("xxxxxx", "onError , e = " + exception.getMessage());
+                        }
+                    }, payContentRequest);
                     dismiss();
                 }
             });
@@ -329,7 +463,111 @@ public class MyOrderDetailsActivity extends AbstractActivity {
                     dismiss();
                 }
             });
-
         }
     }
+
+    private void getOrderStatus() {
+        OrderDetailRequest orderDetailRequest = new OrderDetailRequest();
+        orderDetailRequest.setOrderNo(orderHead.getOrderNo());
+        OkHttpClientManager.postAsyn(Config.ORDER_STATUS, new OkHttpClientManager.ResultCallback<OrderResponseData>() {
+
+            @Override
+            public void onError(Request request, Error info) {
+                Log.e("xxxxxx", "onError , Error = " + info.getInfo());
+                showShortToast(info.getInfo());
+            }
+
+            @Override
+            public void onResponse(OrderResponseData response) {
+                if (response.getOrderStatus() == 6) {
+                    // Toast.makeText(getApplicationContext(), "支付成功", Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getBaseContext());
+                    builder.setTitle(R.string.app_tip);
+                    builder.setMessage(getString(R.string.pay_result_callback_msg, "支付成功"));
+                    builder.show();
+                    if (timer != null) {
+                        timer.cancel();
+                        // 一定设置为null，否则定时器不会被回收
+                        timer = null;
+                    }
+                } else if (response.getOrderStatus() == 7) {
+                    //  Toast.makeText(getApplicationContext(), getResources().getString(R.string.order_status_7), Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getBaseContext());
+                    builder.setTitle(R.string.app_tip);
+                    builder.setMessage(getString(R.string.pay_result_callback_msg, getResources().getString(R.string.order_status_7)));
+                    builder.show();
+                    if (timer != null) {
+                        timer.cancel();
+                        // 一定设置为null，否则定时器不会被回收
+                        timer = null;
+                    }
+                }
+            }
+
+            @Override
+            public void onOtherError(Request request, Exception exception) {
+                Log.e("xxxxxx", "onError , e = " + exception.getMessage());
+            }
+        }, orderDetailRequest, OrderResponseData.class);
+    }
+
+    //支付宝支付处理结果
+    @SuppressLint("HandlerLeak")
+    private Handler mHandlers = new Handler() {
+        @SuppressWarnings("unused")
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case SDK_PAY_FLAG: {
+                    PayResult payResult = new PayResult((String) msg.obj);
+                    /**
+                     * 同步返回的结果必须放置到服务端进行验证（验证的规则请看https://doc.open.alipay.com/doc2/
+                     * detail.htm?spm=0.0.0.0.xdvAU6&treeId=59&articleId=103665&
+                     * docType=1) 建议商户依赖异步通知
+                     */
+                    String resultInfo = payResult.getResult();// 同步返回需要验证的信息
+
+                    String resultStatus = payResult.getResultStatus();
+                    // 判断resultStatus 为“9000”则代表支付成功，具体状态码代表含义可参考接口文档
+                    if (TextUtils.equals(resultStatus, "9000")) {
+                        final Handler handler = new Handler() {
+                            public void handleMessage(Message msg) {
+                                if (msg.what == 1) {
+                                    getOrderStatus();
+                                }
+                                super.handleMessage(msg);
+                            }
+
+                            ;
+                        };
+                        timer = new Timer();
+                        TimerTask task = new TimerTask() {
+
+                            @Override
+                            public void run() {
+                                // 需要做的事:发送消息
+                                Message message = new Message();
+                                message.what = 1;
+                                handler.sendMessage(message);
+                            }
+                        };
+                        timer.schedule(task, 1000);
+
+                    } else {
+                        // 判断resultStatus 为非"9000"则代表可能支付失败// "8000"代表支付结果因为支付渠道原因或者系统原因还在等待支付结果确认，最终交易是否成功以服务端异步通知为准（小概率状态）
+                        if (TextUtils.equals(resultStatus, "8000")) {
+                            Toast.makeText(getApplicationContext(), "支付结果确认中", Toast.LENGTH_SHORT).show();
+                        } else {
+                            // 其他值就可以判断为支付失败，包括用户主动取消支付，或者系统返回的错误
+                            Toast.makeText(getApplicationContext(), "支付失败", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    break;
+                }
+                default:
+                    break;
+            }
+        }
+
+        ;
+    };
 }

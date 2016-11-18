@@ -66,6 +66,7 @@ public class MainActivity extends AbstractActivity {
     private MobileVersionResponse versionResponse;
     private DownloadManager downloadManager;
     private DownLoadReceive receiver;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +77,7 @@ public class MainActivity extends AbstractActivity {
         mAPP = (Application) getApplication();
         mHandler = new MyHandler();
         mAPP.setHandler(mHandler);
+        context = this;
         downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
         toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
         toolbarSurprise = (LinearLayout) findViewById(R.id.toolbar_activity_promotion);
@@ -142,6 +144,7 @@ public class MainActivity extends AbstractActivity {
                     toolbarSurprise.setVisibility(View.GONE);
                     toolbarTitle.setVisibility(View.VISIBLE);
                     toolbarTitle.setText(titles[position]);
+                    rightsContent.initData(context);
                 } else if (position == 3) {
                     toolbar.setVisibility(View.VISIBLE);
                     toolbarSurprise.setVisibility(View.GONE);

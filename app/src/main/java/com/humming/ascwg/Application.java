@@ -11,6 +11,7 @@ import com.wg.promotion.dto.SalesRespones;
 import com.wg.promotion.dto.SelectPackageRespones;
 
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Created by Ztq on 16/8/3.
@@ -21,6 +22,7 @@ public class Application extends android.app.Application {
     private Activity currentActivity;
     private TextEditorData textEditorData;
     private MainActivity.MyHandler handler = null;
+    private static Stack<Activity> activityStack;
 
 
     /**
@@ -34,6 +36,7 @@ public class Application extends android.app.Application {
      */
     private static Application sInstance;
     private List<OrderSelect> orderSelectList;
+    private List<OrderSelect> rightSelectList;
     private OrderDetailResponse orderDetailResponse;
     private GifResponse gifResponse;
     private PackageRespones packageRespones;
@@ -88,6 +91,14 @@ public class Application extends android.app.Application {
         this.orderSelectList = orderSelectList;
     }
 
+    public List<OrderSelect> getRightSelectList() {
+        return rightSelectList;
+    }
+
+    public void setRightSelectList(List<OrderSelect> rightSelectList) {
+        this.rightSelectList = rightSelectList;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -127,6 +138,28 @@ public class Application extends android.app.Application {
     // get方法
     public MainActivity.MyHandler getHandler() {
         return handler;
+    }
+
+    /**
+     * 结束所有Activity
+     */
+    public void finishAllActivity() {
+        for (int i = 0, size = activityStack.size(); i < size; i++) {
+            if (null != activityStack.get(i)) {
+                activityStack.get(i).finish();
+            }
+        }
+        activityStack.clear();
+    }
+
+    /**
+     * 添加Activity到堆栈
+     */
+    public void addActivity(Activity activity) {
+        if (activityStack == null) {
+            activityStack = new Stack<Activity>();
+        }
+        activityStack.add(activity);
     }
 }
 

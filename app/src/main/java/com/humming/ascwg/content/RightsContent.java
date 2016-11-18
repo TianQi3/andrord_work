@@ -14,25 +14,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.humming.ascwg.Application;
+import com.humming.ascwg.Config;
+import com.humming.ascwg.R;
+import com.humming.ascwg.activity.BusinessDetailsActivity;
+import com.humming.ascwg.activity.rights.RightsDetailActivity;
 import com.humming.ascwg.adapter.BaseAdapter;
 import com.humming.ascwg.adapter.RightsGridAdapter;
 import com.humming.ascwg.adapter.RightsListAdapter;
 import com.humming.ascwg.requestUtils.RequestNull;
 import com.humming.ascwg.service.Error;
 import com.humming.ascwg.service.OkHttpClientManager;
-import com.humming.ascwg.Config;
-import com.humming.ascwg.R;
-import com.humming.ascwg.activity.BusinessDetailsActivity;
 import com.squareup.okhttp.Request;
 import com.squareup.picasso.Picasso;
 import com.wg.rights.dto.PointsRulesDetailResponse;
 import com.wg.rights.dto.RightsDetailResponse;
 import com.wg.rights.dto.RightsResponse;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Zhtq on 16/8/3.
@@ -69,7 +67,7 @@ public class RightsContent extends LinearLayout {
     }
 
     //初始化数据
-    private void initData(final Context c) {
+    public void initData(final Context c) {
         RequestNull requestNull = new RequestNull();
         OkHttpClientManager.postAsyn(Config.QUERY_RIGHTS, new OkHttpClientManager.ResultCallback<RightsResponse>() {
             @Override
@@ -80,7 +78,7 @@ public class RightsContent extends LinearLayout {
 
             @Override
             public void onResponse(RightsResponse response) {
-                List<RightsDetailResponse> baseRights = response.getBaseRights();
+                final List<RightsDetailResponse> baseRights = response.getBaseRights();
                 final List<RightsDetailResponse> exclusiveRights = response.getExclusiveRights();
                 PointsRulesDetailResponse pointsRulesDetailResponse = response.getPointsRules();
 
@@ -92,8 +90,18 @@ public class RightsContent extends LinearLayout {
                 listView.setLayoutManager(linearLayoutManager);
                 listAdapter = new RightsListAdapter(baseRights);
                 listView.setAdapter(listAdapter);
+                listAdapter.setOnRecyclerViewItemClickListener(new BaseAdapter.OnRecyclerViewItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        if (1 == baseRights.get(position).getIsYumRight()) {//判断是否是百盛会员
+                            Intent intent = new Intent(Application.getInstance().getApplicationContext(), RightsDetailActivity.class);
+                            Application.getInstance().getCurrentActivity().startActivity(intent);
+                        } else {
 
-                gridView = (RecyclerView) findViewById(R.id.fragment_rights__gridview);
+                        }
+                    }
+                });
+
                 gridLayoutManager = new GridLayoutManager(getContext(), 2);
                 gridView.setLayoutManager(gridLayoutManager);
                 gridAdapter = new RightsGridAdapter(exclusiveRights);
@@ -134,16 +142,9 @@ public class RightsContent extends LinearLayout {
         cardType = (TextView) findViewById(R.id.fragment_rights__card_type);
         cardPoints = (TextView) findViewById(R.id.fragment_rights__card_points);
         listView = (RecyclerView) findViewById(R.id.fragment_rights__listview);
+        gridView = (RecyclerView) findViewById(R.id.fragment_rights__gridview);
+
     }
 
-    private List<Map<String, String>> initDate(int size) {
-        List<Map<String, String>> list = new ArrayList<Map<String, String>>();
-        for (int i = 0; i < size; i++) {
-            Map<String, String> map = new HashMap<String, String>();
-            map.put("" + i, "" + i);
-            list.add(map);
-        }
-        return list;
-    }
 
 }

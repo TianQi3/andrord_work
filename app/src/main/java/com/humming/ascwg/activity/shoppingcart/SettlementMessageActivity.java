@@ -2,20 +2,15 @@ package com.humming.ascwg.activity.shoppingcart;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.humming.ascwg.Application;
@@ -46,7 +41,9 @@ public class SettlementMessageActivity extends AbstractActivity {
     private RecyclerView orderListView;
     private TextView total, tvContact, tvPhone, tvAddress, tvDiscountTotal, tvDiscount;
     private Button commit;
-    private List<OrderSelect> orderSelectList, orderLists;
+    private List<OrderSelect> orderSelectList;
+    private List<OrderSelect> rightSelectList;
+    private List<OrderSelect> allLists;
     private Context context;
     public static String TOTAL = "total";
     private TextView title;
@@ -124,23 +121,37 @@ public class SettlementMessageActivity extends AbstractActivity {
         // Float totalss = Float.parseFloat(String.valueOf(Integer.parseInt(totals) * Integer.parseInt(Application.getInstance().getDiscountPrice()) / 100));
         tvDiscountTotal.setText(s + "");
         tvDiscount.setText(Application.getInstance().getResources().getString(R.string.vip_discount) + " " + discount + "%");
+        allLists = new ArrayList<OrderSelect>();
         if (Application.getInstance().getOrderSelectList() != null) {
             orderSelectList = Application.getInstance().getOrderSelectList();
-            orderLists = new ArrayList<OrderSelect>();
             for (OrderSelect o : orderSelectList) {
                 if (o.isSelect()) {
-                    orderLists.add(o);
                     OrderItemInfo info = new OrderItemInfo();
                     info.setQuantity(o.getQuantity());
                     info.setShoppingCartId(o.getShoppingCartId());
                     orderItemLists.add(info);
+                    allLists.add(o);
                 }
             }
-            SettlementAdapter settlementAdapter = new SettlementAdapter(context, orderLists);
-            orderListView.setAdapter(settlementAdapter);
-            orderListView.setLayoutManager(new LinearLayoutManager(this));
+
         } else {
         }
+        if (Application.getInstance().getRightSelectList() != null) {
+            rightSelectList = Application.getInstance().getRightSelectList();
+            for (OrderSelect o : rightSelectList) {
+                if (o.isSelect()) {
+                    OrderItemInfo info = new OrderItemInfo();
+                    info.setQuantity(o.getQuantity());
+                    info.setShoppingCartId(o.getShoppingCartId());
+                    orderItemLists.add(info);
+                    allLists.add(o);
+                }
+            }
+        } else {
+        }
+        SettlementAdapter settlementAdapter = new SettlementAdapter(context, allLists);
+        orderListView.setAdapter(settlementAdapter);
+        orderListView.setLayoutManager(new LinearLayoutManager(this));
         //选择地址
         selectAddress.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -188,6 +199,7 @@ public class SettlementMessageActivity extends AbstractActivity {
                 }, orderQuest, OrderDetailResponse.class);
             }
         });
+
     }
 
     @Override
@@ -210,6 +222,4 @@ public class SettlementMessageActivity extends AbstractActivity {
                 break;
         }
     }
-
-
 }

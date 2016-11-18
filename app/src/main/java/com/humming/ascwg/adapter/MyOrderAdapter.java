@@ -1,10 +1,9 @@
 package com.humming.ascwg.adapter;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Paint;
-import android.os.Build;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -26,6 +25,7 @@ public class MyOrderAdapter extends BaseAdapter<OrderListResponse> {
 
     private View view;
     private View lineView;
+    private List<OrderItemDetail> orderItemDetails;
 
     public MyOrderAdapter(List<OrderListResponse> list) {
         super(R.layout.item_my_order, list);
@@ -33,9 +33,10 @@ public class MyOrderAdapter extends BaseAdapter<OrderListResponse> {
 
 
     @Override
-    protected void convert(BaseViewHolder helper, OrderListResponse list) {
+    protected void convert(BaseViewHolder helper, OrderListResponse list, int position) {
         OrderHead orderHead = list.getOrderHeadInfo();
-        List<OrderItemDetail> orderItemDetails = list.getItemDetailInfo();
+        // helper.setIsRecyclable(false);
+        orderItemDetails = list.getItemDetailInfo();
 
         if (orderHead.getOrderStatus() == 1) {
             helper.setText(R.id.item_my_order__status, helper.getView(R.id.item_my_order__status).getContext().getResources().getString(R.string.order_status_1));
@@ -49,25 +50,28 @@ public class MyOrderAdapter extends BaseAdapter<OrderListResponse> {
             helper.setText(R.id.item_my_order__status, helper.getView(R.id.item_my_order__status).getContext().getResources().getString(R.string.order_status_5));
         } else if (orderHead.getOrderStatus() == 6) {
             helper.setText(R.id.item_my_order__status, helper.getView(R.id.item_my_order__status).getContext().getResources().getString(R.string.order_status_6));
+        } else if (orderHead.getOrderStatus() == 7) {
+            helper.setText(R.id.item_my_order__status, helper.getView(R.id.item_my_order__status).getContext().getResources().getString(R.string.order_status_7));
+        } else if (orderHead.getOrderStatus() == 8) {
+            helper.setText(R.id.item_my_order__status, helper.getView(R.id.item_my_order__status).getContext().getResources().getString(R.string.order_status_8));
         }
         helper.setFlags(R.id.item_my_order__original_price, Paint.STRIKE_THRU_TEXT_FLAG);
         int size = orderItemDetails.size();
-        helper.setText(R.id.item_my_order__number, orderHead.getOrderNo()).setText(R.id.item_my_order__original_price
+        helper.setText(R.id.item_my_order__date, orderHead.getOrderTime()).setText(R.id.item_my_order__original_price
                 , orderHead.getOrderCostTotalPrice() + "").setText(R.id.item_my_order__vip_discount, "×" + orderHead.getDiscount() + "%")
                 .setText(R.id.item_my_order__vip_price, orderHead.getOrderSoldTotalPrice() + "");
-        if (((LinearLayout) helper.getView(R.id.item_my_order__layout)).getChildCount() > 0) {
-            return;
-        }
+        LinearLayout linearLayout = helper.getView(R.id.item_my_order__layout);
+        linearLayout.removeAllViews();
+
         for (int i = 0; i < size; i++) {
-            initView(((LinearLayout) helper.getView(R.id.item_my_order__layout)).getContext(), orderItemDetails.get(i));
-            ((LinearLayout) helper.getView(R.id.item_my_order__layout)).addView(view);
+            initView(linearLayout.getContext(), orderItemDetails.get(i));
+            linearLayout.addView(view);
             if (size > 1 && i < size - 1) {
-                ((LinearLayout) helper.getView(R.id.item_my_order__layout)).addView(lineView);
+                linearLayout.addView(lineView);
             }
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void initView(Context context, OrderItemDetail orderItemDetail) {
         view = LayoutInflater.from(context).inflate(R.layout.item_my_order_, null, false);
         LinearLayout layout = (LinearLayout) view.findViewById(R.id.item_my_order__layout_);
@@ -78,6 +82,7 @@ public class MyOrderAdapter extends BaseAdapter<OrderListResponse> {
         TextView wineNum = (TextView) view.findViewById(R.id.item_my_order__wine_num);
         deletePrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         wineName.setText(orderItemDetail.getItemNameCn() + "   " + orderItemDetail.getItemNameEn());
+        Log.v("xxxx", "+++" + orderItemDetail.getItemNameCn());
         Picasso.with(context).load(orderItemDetail.getItemImage()).into(wineImage);
         winePrice.setText(orderItemDetail.getSoldUnitPrice() + "");
         deletePrice.setText(orderItemDetail.getCostUnitPrice() + "");

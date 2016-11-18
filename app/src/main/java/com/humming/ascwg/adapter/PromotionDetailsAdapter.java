@@ -1,8 +1,6 @@
 package com.humming.ascwg.adapter;
 
 import com.humming.ascwg.R;
-import com.humming.ascwg.adapter.BaseAdapter;
-import com.humming.ascwg.adapter.BaseViewHolder;
 
 import java.util.List;
 import java.util.Map;
@@ -17,7 +15,7 @@ public class PromotionDetailsAdapter extends BaseAdapter<Map<String,String>> {
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, Map<String, String> item) {
+    protected void convert(BaseViewHolder helper, Map<String, String> item, int position) {
 
     }
 }

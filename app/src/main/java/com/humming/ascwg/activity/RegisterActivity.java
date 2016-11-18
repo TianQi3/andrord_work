@@ -18,17 +18,14 @@ import android.widget.Toast;
 import com.humming.ascwg.Application;
 import com.humming.ascwg.Config;
 import com.humming.ascwg.Constant;
+import com.humming.ascwg.R;
 import com.humming.ascwg.model.VerificationCode;
 import com.humming.ascwg.requestUtils.BaseInformation;
+import com.humming.ascwg.service.Error;
 import com.humming.ascwg.service.OkHttpClientManager;
 import com.humming.ascwg.utils.BaseTools;
 import com.humming.ascwg.utils.SharePrefUtil;
-import com.humming.ascwg.R;
-import com.humming.ascwg.activity.AbstractActivity;
-import com.humming.ascwg.activity.LoginActivity;
-import com.humming.ascwg.activity.SetPasswordActivity;
 import com.squareup.okhttp.Request;
-import com.humming.ascwg.service.Error;
 
 /**
  * Created by Elvira on 2016/5/12.
@@ -71,8 +68,6 @@ public class RegisterActivity extends AbstractActivity implements View.OnClickLi
         accountPWLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, LoginActivity.class);
-                startActivity(intent);
                 finish();
             }
         });

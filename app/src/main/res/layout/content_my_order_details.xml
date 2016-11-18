@@ -14,7 +14,7 @@
         android:id="@+id/content_my_order_details__success"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_50"
-        android:background="@drawable/product_bg"
+        android:background="@color/money_vip"
         android:gravity="center_vertical"
         android:padding="@dimen/padding_10"
         android:text="下单成功"

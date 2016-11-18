@@ -22,6 +22,7 @@ public class AbstractActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        Application.getInstance().addActivity(this);
         Application.getInstance().setCurrentActivity(this);
         imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
     }

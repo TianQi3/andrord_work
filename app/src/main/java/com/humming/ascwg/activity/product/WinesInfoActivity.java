@@ -63,6 +63,8 @@ public class WinesInfoActivity extends AbstractActivity {
     private Banner banner;
     private Animation mAnimation;
     private int width, height;
+    public static String NORMAL_YUM_FLAG = "normal_yum_flag";
+    private String flag = "";//0代表正常单  1代表yum
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -83,6 +85,7 @@ public class WinesInfoActivity extends AbstractActivity {
         imageView = (ImageView) findViewById(R.id.content_wines_info__imageview);
         Bundle bundle = getIntent().getExtras();
         id = bundle.getLong(Constant.ID);
+        flag = bundle.getString(NORMAL_YUM_FLAG);
         title = (TextView) findViewById(R.id.toolbar_title);
         back = (ImageView) findViewById(R.id.toolbar_back);
         title.setText(getResources().getString(R.string.detail));
@@ -115,9 +118,9 @@ public class WinesInfoActivity extends AbstractActivity {
         llstory = (LinearLayout) findViewById(R.id.content_product_wines_info__layoutstory);
         lldetail = (LinearLayout) findViewById(R.id.content_product_wines_info__layoutdetail);
         FrameLayout.LayoutParams linearParams = (FrameLayout.LayoutParams) banner.getLayoutParams();
-        //linearParams.width = width;//
+        linearParams.width = width;//
         linearParams.height = width;
-        banner.setLayoutParams(linearParams); //
+        banner.setLayoutParams(linearParams);
         imageView.setLayoutParams(linearParams);
         mAnimation.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -162,6 +165,12 @@ public class WinesInfoActivity extends AbstractActivity {
                 ShoppingCartRequest shoppingCartRequest = new ShoppingCartRequest();
                 shoppingCartRequest.setItemId(itemId);
                 shoppingCartRequest.setQuantity(1);
+                if ("0".equals(flag)) {//正常单
+                    shoppingCartRequest.setScType(0);
+                } else if ("1".equals(flag)) {//yum单
+                    shoppingCartRequest.setScType(1);
+                } else {
+                }
                 OkHttpClientManager.postAsyn(Config.SHOPPINGCART_ADD_UPDATE, new OkHttpClientManager.ResultCallback<ResponseData>() {
                     @Override
                     public void onError(Request request, Error info) {
@@ -201,7 +210,6 @@ public class WinesInfoActivity extends AbstractActivity {
             public void onResponse(ItemDetailResponse response) {
                 images = response.getImages();
                 Picasso.with(Application.getInstance().getCurrentActivity()).load(images[0]).into(imageView);
-                Log.v("XXXX", images[0]);
                 banner.setImages(images);
                 itemId = response.getId();
                 tvBrand.setText(response.getBrand());

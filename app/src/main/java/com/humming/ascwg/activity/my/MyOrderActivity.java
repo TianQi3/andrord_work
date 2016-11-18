@@ -3,7 +3,6 @@ package com.humming.ascwg.activity.my;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,7 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
@@ -21,15 +19,15 @@ import android.widget.TextView;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.humming.ascwg.Application;
 import com.humming.ascwg.Config;
+import com.humming.ascwg.R;
 import com.humming.ascwg.activity.AbstractActivity;
 import com.humming.ascwg.adapter.BaseAdapter;
 import com.humming.ascwg.adapter.MyOrderAdapter;
 import com.humming.ascwg.requestUtils.RequestNull;
+import com.humming.ascwg.service.Error;
 import com.humming.ascwg.service.OkHttpClientManager;
-import com.humming.ascwg.R;
 import com.squareup.okhttp.Request;
 import com.wg.order.dto.OrderListResponse;
-import com.humming.ascwg.service.Error;
 
 import java.util.List;
 
@@ -37,7 +35,7 @@ import java.util.List;
  * Created by Elvira on 2016/8/8.
  * 历史订单
  */
-public class MyOrderActivity extends AbstractActivity implements SwipeRefreshLayout.OnRefreshListener, BaseAdapter.RequestLoadMoreListener {
+public class MyOrderActivity extends AbstractActivity {
 
     private SwipeRefreshLayout refresh;
     private RecyclerView listView;
@@ -75,9 +73,9 @@ public class MyOrderActivity extends AbstractActivity implements SwipeRefreshLay
         });
         title.setText(Application.getInstance().getResources().getString(R.string.text_order));
         mLoading.show();
-        refresh = (SwipeRefreshLayout) findViewById(R.id.content_my_order__refresh);
-        refresh.setColorSchemeResources(R.color.colorPrimary);
-        refresh.setOnRefreshListener(this);
+        // refresh = (SwipeRefreshLayout) findViewById(R.id.content_my_order__refresh);
+        // refresh.setColorSchemeResources(R.color.colorPrimary);
+        //refresh.setOnRefreshListener(this);
         listView = (RecyclerView) findViewById(R.id.content_my_order__listview);
         linearLayoutManager = new LinearLayoutManager(MyOrderActivity.this);
         listView.setLayoutManager(linearLayoutManager);
@@ -108,7 +106,7 @@ public class MyOrderActivity extends AbstractActivity implements SwipeRefreshLay
         });
     }
 
-    @Override
+    /*@Override
     public void onLoadMoreRequested() {
         listView.post(new Runnable() {
             @Override
@@ -131,10 +129,10 @@ public class MyOrderActivity extends AbstractActivity implements SwipeRefreshLay
             }
 
         });
-    }
+    }*/
 
 
-    @Override
+   /* @Override
     public void onRefresh() {
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -147,7 +145,7 @@ public class MyOrderActivity extends AbstractActivity implements SwipeRefreshLay
                 refresh.setRefreshing(false);
             }
         }, delayMillis);
-    }
+    }*/
 
     private void initAdapter() {
         mLoading.hide();
@@ -160,9 +158,9 @@ public class MyOrderActivity extends AbstractActivity implements SwipeRefreshLay
         lac.setDelay(0.25f);  //设置动画间隔时间
         lac.setOrder(LayoutAnimationController.ORDER_NORMAL); //设置列表的显示顺序
         listView.setLayoutAnimation(lac);  //为ListView 添加动画
-        mCurrentCounter = myOrderAdapter.getData().size();
-        myOrderAdapter.setOnLoadMoreListener(this);
-        myOrderAdapter.openLoadMore(PAGE_SIZE, true);//or call mQuickAdapter.setPageSize(PAGE_SIZE);  mQuickAdapter.openLoadMore(true);
+        //mCurrentCounter = myOrderAdapter.getData().size();
+        // myOrderAdapter.setOnLoadMoreListener(this);
+      //  myOrderAdapter.openLoadMore(PAGE_SIZE, true);//or call mQuickAdapter.setPageSize(PAGE_SIZE);  mQuickAdapter.openLoadMore(true);
         myOrderAdapter.setOnRecyclerViewItemClickListener(new BaseAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
