@@ -17,7 +17,8 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="70dp"
         android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <ImageView
             android:layout_width="120dp"
@@ -35,5 +36,10 @@
             android:text="@string/open_soon"
             android:textColor="@color/tab_text"
             android:textSize="@dimen/text_17" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/content_my_bill__listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
 </LinearLayout>

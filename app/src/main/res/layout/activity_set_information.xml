@@ -1,467 +1,507 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_set_information__parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:fitsSystemWindows="true"
     tools:context="com.humming.ascwg.activity.SetInformationActivity">
 
-    <android.support.design.widget.AppBarLayout
+    <LinearLayout
+        android:id="@+id/activity_set_information__parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
 
-            <FrameLayout
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
 
-                <ImageView
-                    android:id="@+id/toolbar_back"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:padding="20dp"
-                    android:src="@drawable/back" />
-
-                <TextView
-                    android:id="@+id/toolbar_title"
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:textColor="@color/tab_text"
-                    android:textSize="17sp" />
-            </FrameLayout>
-
-        </android.support.v7.widget.Toolbar>
-
-    </android.support.design.widget.AppBarLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <com.humming.ascwg.component.CircleImageView
-                android:id="@+id/activity_set_information__head_img"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/magin_10"
-                android:src="@mipmap/logo"
-                app:civ_border_color="@color/garys"
-                app:civ_border_width="3dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="普通会员"
-                android:textColor="@color/tab_text"
-                android:textSize="15sp" />
-
-
-            <com.humming.ascwg.component.MaterialRippleLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:mrl_rippleAlpha="0.2"
-                app:mrl_rippleColor="@color/bg_shadow"
-                app:mrl_rippleHover="true"
-                app:mrl_rippleOverlay="true">
-
-                <LinearLayout
-                    android:id="@+id/activity_set_information__nick_layout"
-                    style="@style/item_white_bg"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@color/setting_color">
-
-                    <TextView
-                        style="@style/item_white_bg_text"
-                        android:text="@string/nick_name" />
-
-                    <TextView
-                        android:id="@+id/activity_set_information__nick"
-                        style="@style/item_white_bg_text"
-                        android:layout_marginLeft="15dp"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:textColor="@color/gray" />
+                    android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:layout_gravity="right|center_vertical"
-                        android:src="@drawable/right_w" />
+                        android:id="@+id/toolbar_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:src="@drawable/back" />
 
-                </LinearLayout>
-            </com.humming.ascwg.component.MaterialRippleLayout>
+                    <TextView
+                        android:id="@+id/toolbar_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:textColor="@color/tab_text"
+                        android:textSize="17sp" />
+                </FrameLayout>
 
+            </android.support.v7.widget.Toolbar>
 
-            <com.humming.ascwg.component.MaterialRippleLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:mrl_rippleAlpha="0.2"
-                app:mrl_rippleColor="@color/bg_shadow"
-                app:mrl_rippleHover="true"
-                app:mrl_rippleOverlay="true">
+        </android.support.design.widget.AppBarLayout>
 
-
-            </com.humming.ascwg.component.MaterialRippleLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/setting_color"
-                android:orientation="vertical">
-
-                <com.humming.ascwg.component.MaterialRippleLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:mrl_rippleAlpha="0.2"
-                    app:mrl_rippleColor="@color/bg_shadow"
-                    app:mrl_rippleHover="true"
-                    app:mrl_rippleOverlay="true">
-
-                    <LinearLayout
-                        android:id="@+id/activity_set_information__birthday_layout"
-                        style="@style/item_white_bg">
-
-                        <TextView
-                            style="@style/item_white_bg_text"
-                            android:text="@string/birthday" />
-
-                        <TextView
-                            android:id="@+id/activity_set_information__birthday"
-                            style="@style/item_white_bg_text"
-                            android:layout_marginLeft="15dp"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:text="1989-06-01"
-                            android:textColor="@color/gray" />
-
-                        <ImageView
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
-                            android:layout_gravity="right|center_vertical"
-                            android:src="@drawable/right_w" />
-
-                    </LinearLayout>
-                </com.humming.ascwg.component.MaterialRippleLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:alpha="0.5"
-                    android:background="@color/gray"></View>
-
-                <com.humming.ascwg.component.MaterialRippleLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:mrl_rippleAlpha="0.2"
-                    app:mrl_rippleColor="@color/bg_shadow"
-                    app:mrl_rippleHover="true"
-                    app:mrl_rippleOverlay="true">
-
-                    <LinearLayout
-                        android:id="@+id/activity_set_information__sex_layout"
-                        style="@style/item_white_bg">
-
-                        <TextView
-                            style="@style/item_white_bg_text"
-                            android:text="@string/sex" />
-
-                        <TextView
-                            android:id="@+id/activity_set_information__sex"
-                            style="@style/item_white_bg_text"
-                            android:layout_marginLeft="15dp"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:text="男"
-                            android:textColor="@color/gray" />
-
-                        <ImageView
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
-                            android:layout_gravity="right|center_vertical"
-                            android:src="@drawable/right_w" />
-                    </LinearLayout>
-                </com.humming.ascwg.component.MaterialRippleLayout>
-
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:alpha="0.5"
-                    android:background="@color/gray"></View>
-
-                <com.humming.ascwg.component.MaterialRippleLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:mrl_rippleAlpha="0.2"
-                    app:mrl_rippleColor="@color/bg_shadow"
-                    app:mrl_rippleHover="true"
-                    app:mrl_rippleOverlay="true">
-
-                    <LinearLayout
-                        android:id="@+id/activity_set_information__address_layout"
-                        style="@style/item_white_bg">
-
-                        <TextView
-                            style="@style/item_white_bg_text"
-                            android:text="@string/address" />
-
-                        <TextView
-                            android:id="@+id/activity_set_information__address"
-                            style="@style/item_white_bg_text"
-                            android:layout_marginLeft="15dp"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:textColor="@color/gray" />
-
-                        <ImageView
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
-                            android:layout_gravity="right|center_vertical"
-                            android:src="@drawable/right_w" />
-                    </LinearLayout>
-
-                </com.humming.ascwg.component.MaterialRippleLayout>
-            </LinearLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@color/setting_color"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/activity_set_information__bank_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="center"
-                        android:text="@string/bank_code"
-                        android:textColor="@color/get_ident" />
-
-                    <Switch
-                        android:id="@+id/activity_set_information__switch"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right|center"
-                        android:layout_marginRight="10dp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/tab_text" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/activity_set_information__bank_code_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="5dp"
-                    android:visibility="gone">
-
-                    <EditText
-                        android:id="@+id/activity_set_information__bank_code"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="0.55"
-                        android:background="@drawable/border_white"
-                        android:hint="@string/please_enter_bank_code"
-                        android:inputType="number"
-                        android:paddingBottom="5dp"
-                        android:paddingLeft="10dp"
-                        android:paddingTop="5dp"
-                        android:textColor="@color/tab_text"
-                        android:textColorHint="@color/text_line"
-                        android:textSize="14sp" />
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:background="@color/tab_text"></View>
-
-                    <TextView
-                        android:id="@+id/activity_set_information__bank_code_commit"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="0.35"
-                        android:background="@drawable/bg_border_radius_orange"
-                        android:gravity="center"
-                        android:text="@string/submit"
-                        android:textColor="@color/tab_text" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:alpha="0.5"
-                    android:background="@color/gray"></View>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-
-                    <TextView
-                        android:id="@+id/activity_set_information__yum_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="center"
-                        android:text="@string/pum_code"
-                        android:textColor="@color/get_ident" />
-
-                    <Switch
-                        android:id="@+id/activity_set_information__switch_pum"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center|right"
-                        android:layout_marginRight="10dp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/tab_text" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/activity_set_information__yum_code_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="5dp"
-                    android:visibility="gone">
-
-                    <EditText
-                        android:id="@+id/activity_set_information__yum_code"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="0.55"
-                        android:background="@drawable/border_white"
-                        android:hint="@string/please_enter_yum_code"
-                        android:inputType="number"
-                        android:paddingBottom="5dp"
-                        android:paddingLeft="10dp"
-                        android:paddingTop="5dp"
-                        android:textColor="@color/tab_text"
-                        android:textColorHint="@color/text_line"
-                        android:textSize="14sp" />
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                        android:background="@color/tab_text"></View>
-
-                    <TextView
-                        android:id="@+id/activity_set_information__yum_code_commit"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="0.35"
-                        android:background="@drawable/bg_border_radius_orange"
-                        android:gravity="center"
-                        android:text="@string/submit"
-                        android:textColor="@color/tab_text" />
-                </LinearLayout>
+                <com.humming.ascwg.component.CircleImageView
+                    android:id="@+id/activity_set_information__head_img"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/magin_10"
+                    android:src="@mipmap/logo"
+                    app:civ_border_color="@color/tab_text"
+                    app:civ_border_width="1dp" />
 
                 <TextView
-                    android:id="@+id/activity_set_information__confirm"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/height_50"
-                    android:layout_margin="@dimen/padding_20"
-                    android:background="@drawable/border_white"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:gravity="center"
-                    android:text="@string/submit"
+                    android:text="普通会员"
                     android:textColor="@color/tab_text"
-                    android:textSize="@dimen/text_16"
-                    android:visibility="gone" />
-            </LinearLayout>
-            <!-- <TextView
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:layout_marginTop="20dp"
-                 android:paddingLeft="@dimen/activity_horizontal_margin"
-                 android:text="@string/personalized_signature" />-->
+                    android:textSize="15sp" />
 
-            <!--<MaterialRippleLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                app:mrl_rippleAlpha="0.2"
-                app:mrl_rippleColor="@color/bg_shadow"
-                app:mrl_rippleHover="true"
-                app:mrl_rippleOverlay="true">
+
+                <com.humming.ascwg.component.MaterialRippleLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:mrl_rippleAlpha="0.2"
+                    app:mrl_rippleColor="@color/bg_shadow"
+                    app:mrl_rippleHover="true"
+                    app:mrl_rippleOverlay="true">
+
+                    <LinearLayout
+                        android:id="@+id/activity_set_information__nick_layout"
+                        style="@style/item_white_bg"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/setting_color">
+
+                        <TextView
+                            style="@style/item_white_bg_text"
+                            android:text="@string/nick_name" />
+
+                        <TextView
+                            android:id="@+id/activity_set_information__nick"
+                            style="@style/item_white_bg_text"
+                            android:layout_marginLeft="15dp"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:textColor="@color/gray" />
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="right|center_vertical"
+                            android:src="@drawable/right_w" />
+
+                    </LinearLayout>
+                </com.humming.ascwg.component.MaterialRippleLayout>
+
+
+                <com.humming.ascwg.component.MaterialRippleLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:mrl_rippleAlpha="0.2"
+                    app:mrl_rippleColor="@color/bg_shadow"
+                    app:mrl_rippleHover="true"
+                    app:mrl_rippleOverlay="true">
+
+
+                </com.humming.ascwg.component.MaterialRippleLayout>
+
 
                 <LinearLayout
-                    style="@style/item_white_bg"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/setting_color"
+                    android:orientation="vertical">
 
-                    <EditText
-                        android:id="@+id/activity_set_information__signature"
+                    <com.humming.ascwg.component.MaterialRippleLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/white"
-                        android:hint="@string/please_enter_qianming"
-                        android:text="" />
+                        android:layout_height="wrap_content"
+                        app:mrl_rippleAlpha="0.2"
+                        app:mrl_rippleColor="@color/bg_shadow"
+                        app:mrl_rippleHover="true"
+                        app:mrl_rippleOverlay="true">
+
+                        <LinearLayout
+                            android:id="@+id/activity_set_information__birthday_layout"
+                            style="@style/item_white_bg">
+
+                            <TextView
+                                style="@style/item_white_bg_text"
+                                android:text="@string/birthday" />
+
+                            <TextView
+                                android:id="@+id/activity_set_information__birthday"
+                                style="@style/item_white_bg_text"
+                                android:layout_marginLeft="15dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:text="1989-06-01"
+                                android:textColor="@color/gray" />
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_gravity="right|center_vertical"
+                                android:src="@drawable/right_w" />
+
+                        </LinearLayout>
+                    </com.humming.ascwg.component.MaterialRippleLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:alpha="0.5"
+                        android:background="@color/gray"></View>
+
+                    <com.humming.ascwg.component.MaterialRippleLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:mrl_rippleAlpha="0.2"
+                        app:mrl_rippleColor="@color/bg_shadow"
+                        app:mrl_rippleHover="true"
+                        app:mrl_rippleOverlay="true">
+
+                        <LinearLayout
+                            android:id="@+id/activity_set_information__sex_layout"
+                            style="@style/item_white_bg">
+
+                            <TextView
+                                style="@style/item_white_bg_text"
+                                android:text="@string/sex" />
+
+                            <TextView
+                                android:id="@+id/activity_set_information__sex"
+                                style="@style/item_white_bg_text"
+                                android:layout_marginLeft="15dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:text="男"
+                                android:textColor="@color/gray" />
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_gravity="right|center_vertical"
+                                android:src="@drawable/right_w" />
+                        </LinearLayout>
+                    </com.humming.ascwg.component.MaterialRippleLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:alpha="0.5"
+                        android:background="@color/gray"></View>
+
+                    <com.humming.ascwg.component.MaterialRippleLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:mrl_rippleAlpha="0.2"
+                        app:mrl_rippleColor="@color/bg_shadow"
+                        app:mrl_rippleHover="true"
+                        app:mrl_rippleOverlay="true">
+
+                        <LinearLayout
+                            android:id="@+id/activity_set_information__address_layout"
+                            style="@style/item_white_bg">
+
+                            <TextView
+                                style="@style/item_white_bg_text"
+                                android:text="@string/address" />
+
+                            <TextView
+                                android:id="@+id/activity_set_information__address"
+                                style="@style/item_white_bg_text"
+                                android:layout_marginLeft="15dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:textColor="@color/gray" />
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_gravity="right|center_vertical"
+                                android:src="@drawable/right_w" />
+                        </LinearLayout>
+
+                    </com.humming.ascwg.component.MaterialRippleLayout>
                 </LinearLayout>
-            </MaterialRippleLayout>-->
-        </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/setting_color"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/activity_set_information__bank_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:gravity="center"
+                            android:text="@string/bank_code"
+                            android:textColor="@color/get_ident" />
+
+                        <LinearLayout
+                            android:id="@+id/activity_set_information__bank_img_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:paddingRight="@dimen/magin_10"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:id="@+id/activity_set_information__bank_image"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_gravity="right"
+                                android:src="@drawable/huaqi" />
+                        </LinearLayout>
+
+                        <Switch
+                            android:id="@+id/activity_set_information__switch"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|center"
+                            android:layout_marginRight="10dp"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/tab_text" />
+
+                    </LinearLayout>
 
 
-    </ScrollView>
+                    <LinearLayout
+                        android:id="@+id/activity_set_information__bank_code_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="5dp"
+                        android:visibility="gone">
+
+                        <EditText
+                            android:id="@+id/activity_set_information__bank_code"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="0.55"
+                            android:background="@drawable/border_white"
+                            android:hint="@string/please_enter_bank_code"
+                            android:inputType="number"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="5dp"
+                            android:textColor="@color/tab_text"
+                            android:textColorHint="@color/text_line"
+                            android:textSize="14sp" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_margin="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:background="@color/tab_text"></View>
+
+                        <TextView
+                            android:id="@+id/activity_set_information__bank_code_commit"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="0.35"
+                            android:background="@drawable/bg_border_radius_orange"
+                            android:gravity="center"
+                            android:text="@string/submit"
+                            android:textColor="@color/tab_text" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:alpha="0.5"
+                        android:background="@color/gray"></View>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
 
-</LinearLayout>
+                        <TextView
+                            android:id="@+id/activity_set_information__yum_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:gravity="center"
+                            android:text="@string/pum_code"
+                            android:textColor="@color/get_ident" />
+
+                        <LinearLayout
+                            android:id="@+id/activity_set_information__yum_img_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:paddingRight="@dimen/magin_10"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:id="@+id/activity_set_information__yum_image"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_gravity="right"
+                                android:src="@drawable/yum" />
+                        </LinearLayout>
+
+                        <Switch
+                            android:id="@+id/activity_set_information__switch_pum"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|right"
+                            android:layout_marginRight="10dp"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/tab_text" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/activity_set_information__yum_code_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="5dp"
+                        android:visibility="gone">
+
+                        <EditText
+                            android:id="@+id/activity_set_information__yum_code"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="0.55"
+                            android:background="@drawable/border_white"
+                            android:hint="@string/please_enter_yum_code"
+                            android:inputType="number"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="5dp"
+                            android:textColor="@color/tab_text"
+                            android:textColorHint="@color/text_line"
+                            android:textSize="14sp" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_margin="5dp"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:background="@color/tab_text"></View>
+
+                        <TextView
+                            android:id="@+id/activity_set_information__yum_code_commit"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="0.35"
+                            android:background="@drawable/bg_border_radius_orange"
+                            android:gravity="center"
+                            android:text="@string/submit"
+                            android:textColor="@color/tab_text" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/activity_set_information__confirm"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_50"
+                        android:layout_margin="@dimen/padding_20"
+                        android:background="@drawable/border_white"
+                        android:gravity="center"
+                        android:text="@string/submit"
+                        android:textColor="@color/tab_text"
+                        android:textSize="@dimen/text_16"
+                        android:visibility="gone" />
+                </LinearLayout>
+                <!-- <TextView
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="20dp"
+                     android:paddingLeft="@dimen/activity_horizontal_margin"
+                     android:text="@string/personalized_signature" />-->
+
+                <!--<MaterialRippleLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:mrl_rippleAlpha="0.2"
+                    app:mrl_rippleColor="@color/bg_shadow"
+                    app:mrl_rippleHover="true"
+                    app:mrl_rippleOverlay="true">
+
+                    <LinearLayout
+                        style="@style/item_white_bg"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true">
+
+                        <EditText
+                            android:id="@+id/activity_set_information__signature"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
+                            android:hint="@string/please_enter_qianming"
+                            android:text="" />
+                    </LinearLayout>
+                </MaterialRippleLayout>-->
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

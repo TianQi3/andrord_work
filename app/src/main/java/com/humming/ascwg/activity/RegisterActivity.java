@@ -64,13 +64,13 @@ public class RegisterActivity extends AbstractActivity implements View.OnClickLi
         phoneNumEt = (EditText) findViewById(R.id.content_register__phonenum);
         setCodeEt = (EditText) findViewById(R.id.content_register__edit_code);
         titleTv = (TextView) findViewById(R.id.content_register__title);
-        accountPWLogin = (TextView) findViewById(R.id.content_login__create_account);
-        accountPWLogin.setOnClickListener(new View.OnClickListener() {
+        // accountPWLogin = (TextView) findViewById(R.id.content_login__create_account);
+        /*accountPWLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
-        });
+        });*/
         //   tipTv = (TextView) findViewById(R.id.content_register__tip);
         //  agreementLayout = (LinearLayout) findViewById(R.id.content_register__agreement_layout);
         nextTv.setEnabled(false);
@@ -191,9 +191,10 @@ public class RegisterActivity extends AbstractActivity implements View.OnClickLi
                 // if ("1".equals(response.getAccountType())) {
                 SharePrefUtil.putString(Constant.FILE_NAME, "token", response.getToken(), RegisterActivity.this);
                 if (isForget) {
-                    Intent intent = new Intent(Application.getInstance().getCurrentActivity(),SetPasswordActivity.class);
-                    intent.putExtra(SetPasswordActivity.IS_FORGET,"isforget");
+                    Intent intent = new Intent(Application.getInstance().getCurrentActivity(), SetPasswordActivity.class);
+                    intent.putExtra(SetPasswordActivity.IS_FORGET, "isforget");
                     startActivity(intent);
+                    finish();
                 } else {
                     startActivity(new Intent(RegisterActivity.this, SetPasswordActivity.class));
                 }
@@ -215,7 +216,6 @@ public class RegisterActivity extends AbstractActivity implements View.OnClickLi
     private void getBackPwdCode(String phone) {
         BaseInformation getVerification = new BaseInformation();
         getVerification.setPhone(phone);
-
 
         OkHttpClientManager.postAsyn(Config.GET_BACK_PWD_CODE, new OkHttpClientManager.ResultCallback<VerificationCode>() {
             @Override

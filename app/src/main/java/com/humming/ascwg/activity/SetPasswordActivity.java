@@ -82,11 +82,11 @@ public class SetPasswordActivity extends AbstractActivity implements View.OnClic
                 String pwd = setPwd.getText().toString().trim();
                 String resetpwd = resetPwd.getText().toString().trim();
                 if (pwd.length() > 12) {
-                    setPwd.setError("密码过长");
+                    setPwd.setError(getResources().getString(R.string.pass_too_long));
                 } else if (pwd.length() < 6) {
-                    setPwd.setError("密码过短");
+                    setPwd.setError(getResources().getString(R.string.pass_too_short));
                 } else if (!pwd.equals(resetpwd)) {
-                    resetPwd.setError("两次密码输入不一致");
+                    resetPwd.setError(getResources().getString(R.string.two_pass_not_like));
                 } else {
                     //  mLoading.show();
                     setPassword(pwd);

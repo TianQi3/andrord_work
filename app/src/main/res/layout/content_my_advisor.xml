@@ -45,8 +45,8 @@
 
                     <com.humming.ascwg.component.CircleImageView
                         android:id="@+id/content_my_advisor__head_image"
-                        android:layout_width="@dimen/height_80"
-                        android:layout_height="@dimen/height_80"
+                        android:layout_width="@dimen/height_60"
+                        android:layout_height="@dimen/height_60"
                         android:src="@drawable/wine_glasses" />
 
                     <TextView
@@ -79,12 +79,10 @@
 
                 <com.humming.ascwg.component.CircleImageView
                     android:id="@+id/content_my_advisor__head_image1"
-                    android:layout_width="@dimen/height_50"
-                    android:layout_height="@dimen/height_50"
+                    android:layout_width="@dimen/height_40"
+                    android:layout_height="@dimen/height_40"
                     android:layout_marginRight="@dimen/magin_20"
-                    android:src="@drawable/wine_glasses"
-                    app:civ_border_color="@color/tab_text"
-                    app:civ_border_width="1dp" />
+                    android:src="@drawable/wine_glasses" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -118,7 +116,7 @@
                 android:background="@color/bg_list"
                 android:orientation="vertical"
                 android:paddingBottom="@dimen/padding_30"
-                android:paddingLeft="@dimen/padding_10"
+                android:paddingLeft="@dimen/padding_5"
                 android:paddingRight="@dimen/padding_10"
                 android:paddingTop="@dimen/padding_5">
 
@@ -129,26 +127,35 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="@dimen/height_25"
-                        android:layout_height="@dimen/height_25"
+                        android:layout_width="@dimen/height_20"
+                        android:layout_height="@dimen/height_20"
                         android:layout_margin="@dimen/magin_10"
                         android:src="@drawable/phone" />
 
                     <TextView
                         android:id="@+id/content_my_advisor__phone"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/magin_10"
+                        android:layout_marginLeft="@dimen/magin_5"
+                        android:layout_weight="1"
                         android:text="18621801485"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/text_14" />
+
                     <ImageView
                         android:id="@+id/content_my_advisor__call_phone"
-                        android:layout_width="@dimen/height_20"
-                        android:layout_height="@dimen/height_20"
-                        android:src="@drawable/call"/>
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/call" />
                 </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dp"
+                    android:layout_marginLeft="@dimen/margin_50"
+                    android:layout_marginRight="@dimen/magin_5"
+                    android:alpha="0.2"
+                    android:background="@color/line_color" />
 
                 <View
                     android:layout_width="match_parent"
@@ -165,8 +172,8 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="@dimen/height_25"
-                        android:layout_height="@dimen/height_25"
+                        android:layout_width="@dimen/height_20"
+                        android:layout_height="@dimen/height_20"
                         android:layout_margin="@dimen/magin_10"
                         android:src="@drawable/tel_phone" />
 
@@ -174,19 +181,11 @@
                         android:id="@+id/content_my_advisor__mobile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/magin_10"
+                        android:layout_marginLeft="@dimen/magin_5"
                         android:text="021 69488888-16"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/text_14" />
                 </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.2dp"
-                    android:layout_marginLeft="@dimen/margin_60"
-                    android:layout_marginRight="@dimen/magin_5"
-                    android:alpha="0.2"
-                    android:background="@color/line_color" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -195,8 +194,9 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="@dimen/height_25"
-                        android:layout_height="@dimen/height_25"
+                        android:id="@+id/imageView2"
+                        android:layout_width="@dimen/height_20"
+                        android:layout_height="@dimen/height_20"
                         android:layout_margin="@dimen/magin_10"
                         android:src="@drawable/email" />
 
@@ -204,7 +204,7 @@
                         android:id="@+id/content_my_advisor__email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/magin_10"
+                        android:layout_marginLeft="@dimen/magin_5"
                         android:text="LucyYang@asc-wines.com"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/text_14" />
@@ -213,6 +213,14 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.2dp"
+                    android:layout_marginLeft="@dimen/margin_50"
+                    android:layout_marginRight="@dimen/magin_5"
+                    android:alpha="0.2"
+                    android:background="@color/line_color" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dp"
                     android:layout_marginLeft="@dimen/margin_60"
                     android:layout_marginRight="@dimen/magin_5"
                     android:alpha="0.2"
@@ -225,8 +233,8 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="@dimen/height_25"
-                        android:layout_height="@dimen/height_25"
+                        android:layout_width="@dimen/height_20"
+                        android:layout_height="@dimen/height_20"
                         android:layout_margin="@dimen/magin_10"
                         android:src="@drawable/dizhi" />
 
@@ -234,19 +242,11 @@
                         android:id="@+id/content_my_advisor__address"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/magin_10"
+                        android:layout_marginLeft="@dimen/magin_5"
                         android:text="上海市裕通路100号17楼"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/text_14" />
                 </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.2dp"
-                    android:layout_marginLeft="@dimen/margin_60"
-                    android:layout_marginRight="@dimen/magin_5"
-                    android:alpha="0.2"
-                    android:background="@color/line_color" />
 
                 <!--<LinearLayout
                     android:layout_width="match_parent"

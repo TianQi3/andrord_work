@@ -95,6 +95,8 @@ public class SetInformationActivity extends BasePhotoActivity implements View.On
     public static final String IMAGE_RESULT = "image_result";
     private View bankCodeLayout, yumCodeLayout;
     private TextView bankCommit, yumCommit;
+    private String headImageUrl;
+    private View bankImageLayout, yumImageLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -124,6 +126,8 @@ public class SetInformationActivity extends BasePhotoActivity implements View.On
         bankText = (TextView) findViewById(R.id.activity_set_information__bank_text);
         bankCodeLayout = findViewById(R.id.activity_set_information__bank_code_layout);
         yumCodeLayout = findViewById(R.id.activity_set_information__yum_code_layout);
+        bankImageLayout = findViewById(R.id.activity_set_information__bank_img_layout);
+        yumImageLayout = findViewById(R.id.activity_set_information__yum_img_layout);
         bankCommit = (TextView) findViewById(R.id.activity_set_information__bank_code_commit);
         yumCommit = (TextView) findViewById(R.id.activity_set_information__yum_code_commit);
         String pum = SharePrefUtil.getString(Constant.FILE_NAME, Constant.PUM_CODE, "", SetInformationActivity.this);//判断是否验证过百盛会员
@@ -131,17 +135,21 @@ public class SetInformationActivity extends BasePhotoActivity implements View.On
         if (pum != null && !"".equals(pum)) {
             yumCodeLayout.setVisibility(View.GONE);
             pumCloseOpen.setVisibility(View.GONE);
+            yumImageLayout.setVisibility(View.VISIBLE);
             pumText.setText(getResources().getString(R.string.pum_code_verified));
         }
         if (bank != null && !"".equals(bank)) {
             bankCodeLayout.setVisibility(View.GONE);
             bankCloseOpen.setVisibility(View.GONE);
+            bankImageLayout.setVisibility(View.VISIBLE);
             bankText.setText(getResources().getString(R.string.bank_code_verified));
         }
         confirm = (TextView) findViewById(R.id.activity_set_information__confirm);
         if ("true".equals(getIntent().getStringExtra(COME_FROM_MY))) {//从我的里面进来。需要获取个人信息
             getSelfInfo();
+            confirm.setVisibility(View.GONE);
         } else {
+            confirm.setVisibility(View.VISIBLE);
         }
         back.setOnClickListener(this);
         confirm.setOnClickListener(this);
@@ -226,12 +234,14 @@ public class SetInformationActivity extends BasePhotoActivity implements View.On
                 woman.setChecked(false);
                 sexTv.setText(getResources().getString(R.string.sex_man));
                 dialog.dismiss();
+                VerificationInformation();
                 break;
             case R.id.dialog_sex__woman:
                 woman.setChecked(true);
                 man.setChecked(false);
                 sexTv.setText(getResources().getString(R.string.sex_woman));
                 dialog.dismiss();
+                VerificationInformation();
                 break;
             case R.id.activity_set_information__bank_code_commit://银行会员
                 CheckBandCode();
@@ -240,6 +250,22 @@ public class SetInformationActivity extends BasePhotoActivity implements View.On
                 CheckPumCode();
                 break;
             case R.id.toolbar_back:
+                Bundle resultBundle = new Bundle();
+                resultBundle.putString(
+                        SetInformationActivity.NAME_RESULT,
+                        nickText.getText().toString());
+                if (!"".equals(headImageUrl)) {
+                    resultBundle.putString(
+                            SetInformationActivity.IMAGE_RESULT,
+                            headImageUrl);
+                } else {
+
+                }
+                Intent resultIntent = new Intent()
+                        .putExtras(resultBundle);
+                setResult(
+                        NAME_IMAGE_RESULT_CODE,
+                        resultIntent);
                 finish();
                 break;
             case R.id.activity_set_information__confirm:
@@ -265,6 +291,7 @@ public class SetInformationActivity extends BasePhotoActivity implements View.On
                 SharePrefUtil.putString(Constant.FILE_NAME, Constant.BANK_CODE, bankCode.getText().toString(), SetInformationActivity.this);
                 bankCodeLayout.setVisibility(View.GONE);
                 bankCloseOpen.setVisibility(View.GONE);
+                bankImageLayout.setVisibility(View.VISIBLE);
                 bankText.setText(getResources().getString(R.string.bank_code_verified));
             }
 
@@ -291,6 +318,7 @@ public class SetInformationActivity extends BasePhotoActivity implements View.On
                 SharePrefUtil.putString(Constant.FILE_NAME, Constant.PUM_CODE, pumCode.getText().toString(), SetInformationActivity.this);
                 yumCodeLayout.setVisibility(View.GONE);
                 pumCloseOpen.setVisibility(View.GONE);
+                yumImageLayout.setVisibility(View.VISIBLE);
                 pumText.setText(getResources().getString(R.string.pum_code_verified));
             }
 
@@ -323,21 +351,9 @@ public class SetInformationActivity extends BasePhotoActivity implements View.On
                 @Override
                 public void onResponse(UpdateResponse response) {
                     Log.v("xxxxxxx", response.getHeadImage());
-                    showShortToast(getResources().getString(R.string.setting_success));
+                    //showShortToast(getResources().getString(R.string.setting_success));
                     if ("true".equals(getIntent().getStringExtra(COME_FROM_MY))) {
-                        Bundle resultBundle = new Bundle();
-                        resultBundle.putString(
-                                SetInformationActivity.NAME_RESULT,
-                                response.getName());
-                        resultBundle.putString(
-                                SetInformationActivity.IMAGE_RESULT,
-                                response.getHeadImage());
-                        Intent resultIntent = new Intent()
-                                .putExtras(resultBundle);
-                        setResult(
-                                NAME_IMAGE_RESULT_CODE,
-                                resultIntent);
-                        finish();
+                        headImageUrl = response.getHeadImage();
                     } else {
                         Intent i = new Intent(Application.getInstance().getCurrentActivity(), MainActivity.class);
                         startActivity(i);
@@ -425,6 +441,7 @@ public class SetInformationActivity extends BasePhotoActivity implements View.On
                 date = year + "-" + month + "-" + day;
                 birthdayText.setText(date);
                 window.dismiss();
+                VerificationInformation();
             }
         });
     }
@@ -443,12 +460,14 @@ public class SetInformationActivity extends BasePhotoActivity implements View.On
                 } else {
                     addressText.setText(text);
                 }
+                VerificationInformation();
                 break;
             case TextEditorActivity.ACTIVITY_CHANGE_NAME:
                 resultBundle = data.getExtras();
                 String texts = resultBundle
                         .getString(TextEditorActivity.KEY_TEXT);
                 nickText.setText(texts);
+                VerificationInformation();
                 break;
         }
         if (!mIsKitKat) {//低于4.4的版本

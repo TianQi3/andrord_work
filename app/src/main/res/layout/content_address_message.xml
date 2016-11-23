@@ -30,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:background="@null"
             android:hint="@string/please_click_write"
             android:textColor="@color/tab_text"
             android:textColorHint="@color/cart_text" />
@@ -37,7 +38,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0.7dp"
         android:background="@color/garys"></View>
 
     <LinearLayout
@@ -59,6 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:background="@null"
             android:hint="@string/please_click_write"
             android:textColor="@color/tab_text"
             android:textColorHint="@color/cart_text" />
@@ -66,36 +68,37 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0.7dp"
         android:background="@color/garys"></View>
-     <LinearLayout
-         android:id="@+id/content_address_message__province_city_layout"
-         android:layout_width="match_parent"
-         android:layout_height="50dp"
-         android:layout_marginLeft="15dp"
-         android:gravity="center_vertical"
-         android:orientation="horizontal">
 
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="match_parent"
-             android:gravity="center"
-             android:text="@string/province_city"
-             android:textColor="@color/tab_text" />
+    <LinearLayout
+        android:id="@+id/content_address_message__province_city_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-         <TextView
-             android:id="@+id/content_address_message__province_city"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginLeft="10dp"
-             android:hint="@string/please_click_write"
-             android:textColor="@color/tab_text"
-             android:textColorHint="@color/cart_text" />
-     </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/province_city"
+            android:textColor="@color/tab_text" />
+
+        <TextView
+            android:id="@+id/content_address_message__province_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:hint="@string/please_click_write"
+            android:textColor="@color/tab_text"
+            android:textColorHint="@color/cart_text" />
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0.7dp"
         android:background="@color/garys"></View>
 
     <LinearLayout
@@ -117,6 +120,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:background="@null"
             android:hint="@string/please_click_write"
             android:textColor="@color/tab_text"
             android:textColorHint="@color/cart_text" />
@@ -124,14 +128,14 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0.7dp"
         android:background="@color/garys"></View>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <CheckBox
@@ -139,13 +143,14 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:background="@drawable/edit_my_address_status"
-            android:checked="true"
-            android:button="@null"/>
+            android:button="@null"
+            android:checked="true" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/tab_text"
             android:layout_marginLeft="10dp"
-            android:text="@string/set_default_address"/>
+            android:text="@string/set_default_address"
+            android:textColor="@color/tab_text" />
     </LinearLayout>
 </LinearLayout>

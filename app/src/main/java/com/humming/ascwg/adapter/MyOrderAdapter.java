@@ -82,17 +82,16 @@ public class MyOrderAdapter extends BaseAdapter<OrderListResponse> {
         TextView wineNum = (TextView) view.findViewById(R.id.item_my_order__wine_num);
         deletePrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         wineName.setText(orderItemDetail.getItemNameCn() + "   " + orderItemDetail.getItemNameEn());
-        Log.v("xxxx", "+++" + orderItemDetail.getItemNameCn());
         Picasso.with(context).load(orderItemDetail.getItemImage()).into(wineImage);
-        winePrice.setText(orderItemDetail.getSoldUnitPrice() + "");
-        deletePrice.setText(orderItemDetail.getCostUnitPrice() + "");
+        winePrice.setText("¥" + orderItemDetail.getSoldUnitPrice() + "");
+        deletePrice.setText("¥" + orderItemDetail.getCostUnitPrice() + "");
         wineNum.setText("×" + orderItemDetail.getQuantity() + "");
 
         lineView = new View(context);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, 1);
         lineView.setLayoutParams(lp);
-        lineView.setBackgroundColor(ContextCompat.getColor(context, R.color.line_color_gray));
+        lineView.setBackgroundColor(ContextCompat.getColor(context, R.color.garys));
     }
 
 }

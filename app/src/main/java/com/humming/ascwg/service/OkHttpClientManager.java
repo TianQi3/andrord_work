@@ -1,5 +1,6 @@
 package com.humming.ascwg.service;
 
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 
@@ -12,6 +13,7 @@ import com.google.gson.Gson;
 import com.humming.ascwg.Application;
 import com.humming.ascwg.Config;
 import com.humming.ascwg.Constant;
+import com.humming.ascwg.R;
 import com.humming.ascwg.model.ResponseData;
 import com.humming.ascwg.utils.SharePrefUtil;
 import com.squareup.okhttp.Callback;
@@ -25,6 +27,7 @@ import com.squareup.okhttp.Response;
 import java.io.IOException;
 import java.net.CookieManager;
 import java.net.CookiePolicy;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -80,8 +83,16 @@ public class OkHttpClientManager {
         if (!"".equals(token)) {
             requestData.setToken(token);
         }
+        Locale curLocal = Application.getInstance().getResources().getConfiguration().locale;
+        if (curLocal.equals(Locale.SIMPLIFIED_CHINESE)) {
+            requestData.setLanguage("cn");
+        } else {
+            requestData.setLanguage("en");
+        }
         requestData.setCmd(cmd);
         requestData.setParameters(requestMainDataData);
+        requestData.setAppVersion(Build.BRAND + "_" + Build.DISPLAY + "_" + Build.FINGERPRINT + "_" + Build.ID);
+        //设备品牌 设备显示的版本号  设备唯一标示  设备版本号   -上传地址
         String url = Config.URL_SERVICE;
         Request request = buildPostRequest(url, requestData);
         deliveryResult(callback, request, resultVOClass);
@@ -94,6 +105,14 @@ public class OkHttpClientManager {
         if (!"".equals(token)) {
             requestData.setToken(token);
         }
+        Locale curLocal = Application.getInstance().getResources().getConfiguration().locale;
+        if (curLocal.equals(Locale.SIMPLIFIED_CHINESE)) {
+            requestData.setLanguage("cn");
+        } else {
+            requestData.setLanguage("en");
+        }
+        requestData.setAppVersion(Build.BRAND + "_" + Build.DISPLAY + "_" + Build.FINGERPRINT + "_" + Build.ID);
+        //设备品牌 设备显示的版本号  设备唯一标示  设备版本号   -上传地址
         requestData.setCmd(cmd);
         requestData.setParameters(requestMainDataData);
         String url = Config.URL_SERVICE;
@@ -108,6 +127,14 @@ public class OkHttpClientManager {
         if (!"".equals(token)) {
             requestData.setToken(token);
         }
+        Locale curLocal = Application.getInstance().getResources().getConfiguration().locale;
+        if (curLocal.equals(Locale.SIMPLIFIED_CHINESE)) {
+            requestData.setLanguage("cn");
+        } else {
+            requestData.setLanguage("en");
+        }
+        requestData.setAppVersion(Build.BRAND + "_" + Build.DISPLAY + "_" + Build.FINGERPRINT + "_" + Build.ID);
+        //设备品牌 设备显示的版本号  设备唯一标示  设备版本号   -上传地址
         requestData.setCmd(cmd);
         requestData.setParameters(requestMainDataData);
         String url = Config.URL_SERVICE;

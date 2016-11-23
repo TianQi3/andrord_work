@@ -32,6 +32,7 @@ import com.humming.ascwg.Constant;
 import com.humming.ascwg.MainActivity;
 import com.humming.ascwg.R;
 import com.humming.ascwg.activity.AbstractActivity;
+import com.humming.ascwg.activity.PayTypeSelectActivity;
 import com.humming.ascwg.content.ShoppingCartContent;
 import com.humming.ascwg.model.OrderResponseData;
 import com.humming.ascwg.model.ResponseData;
@@ -87,6 +88,7 @@ public class MyOrderDetailsActivity extends AbstractActivity {
     private PayReq req;
     final IWXAPI msgApi = WXAPIFactory.createWXAPI(this, null);
     private Timer timer;
+    private String orderNo, orderAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,8 +143,12 @@ public class MyOrderDetailsActivity extends AbstractActivity {
         tvPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                new PopupWindows(MyOrderDetailsActivity.this, parent);
+                //  imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                // new PopupWindows(MyOrderDetailsActivity.this, parent);
+                Intent intent = new Intent(Application.getInstance().getCurrentActivity(), PayTypeSelectActivity.class);
+                intent.putExtra(PayTypeSelectActivity.ORDER_NO,orderNo);
+                intent.putExtra(PayTypeSelectActivity.ORDER_AMOUNT, orderAmount);
+                startActivity(intent);
             }
         });
 
@@ -242,15 +248,16 @@ public class MyOrderDetailsActivity extends AbstractActivity {
                     success.setText(getBaseContext().getResources().getString(R.string.order_status_8));
                 }
 
-
+                orderNo = orderHead.getOrderNo();
+                orderAmount = orderHead.getOrderSoldTotalPrice() + "";
                 tvOrderNumber.setText(orderHead.getOrderNo());
                 tvTime.setText(orderHead.getOrderTime());
                 tvConsignee.setText(shippingAddress.getContact());
                 tvPhone.setText(shippingAddress.getPhone());
                 tvAddress.setText(Application.getInstance().getResources().getString(R.string.address_shop) + shippingAddress.getDetailAddress());
                 tvDisCount.setText("×" + orderHead.getDiscount() + "%");
-                tvDisCountTotal.setText(orderHead.getOrderSoldTotalPrice() + "");
-                tvTotal.setText(orderHead.getOrderCostTotalPrice() + "");
+                tvDisCountTotal.setText("¥" + orderHead.getOrderSoldTotalPrice() + "");
+                tvTotal.setText("¥" + orderHead.getOrderCostTotalPrice() + "");
                 addWineList(itemDetailInfo.size());
             } else {
             }
@@ -293,14 +300,16 @@ public class MyOrderDetailsActivity extends AbstractActivity {
                         success.setText(getBaseContext().getResources().getString(R.string.order_status_8));
                     }
 
+                    orderNo = orderHead.getOrderNo();
+                    orderAmount = orderHead.getOrderSoldTotalPrice() + "";
                     tvOrderNumber.setText(orderHead.getOrderNo());
                     tvTime.setText(orderHead.getOrderTime());
                     tvConsignee.setText(shippingAddress.getContact());
                     tvPhone.setText(shippingAddress.getPhone());
                     tvAddress.setText(Application.getInstance().getResources().getString(R.string.address_shop) + shippingAddress.getDetailAddress());
                     tvDisCount.setText("×" + orderHead.getDiscount() + "%");
-                    tvDisCountTotal.setText(orderHead.getOrderSoldTotalPrice() + "");
-                    tvTotal.setText(orderHead.getOrderCostTotalPrice() + "");
+                    tvDisCountTotal.setText("¥" + orderHead.getOrderSoldTotalPrice() + "");
+                    tvTotal.setText("¥" + orderHead.getOrderCostTotalPrice() + "");
                     addWineList(itemDetailInfo.size());
                 }
 
@@ -335,8 +344,8 @@ public class MyOrderDetailsActivity extends AbstractActivity {
             OrderItemDetail orderItemDetail = itemDetailInfo.get(i);
             Picasso.with(context).load(orderItemDetail.getItemImage()).into(wineImage);
             wineName.setText(orderItemDetail.getItemNameCn() + "   " + orderItemDetail.getItemNameEn());
-            winePrice.setText(orderItemDetail.getSoldUnitPrice() + "");
-            deletePrice.setText(orderItemDetail.getCostUnitPrice() + "");
+            winePrice.setText("¥" + orderItemDetail.getSoldUnitPrice() + "");
+            deletePrice.setText("¥" + orderItemDetail.getCostUnitPrice() + "");
             wineNum.setText("×" + orderItemDetail.getQuantity() + "");
         }
     }
@@ -346,7 +355,7 @@ public class MyOrderDetailsActivity extends AbstractActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    public class PopupWindows extends PopupWindow {
+    /*public class PopupWindows extends PopupWindow {
 
         public PopupWindows(Context mContext, View parent) {
 
@@ -389,9 +398,9 @@ public class MyOrderDetailsActivity extends AbstractActivity {
                         @Override
                         public void onResponse(Map<String, Object> response) {
                             final String payInfo = (String) response.get("data");
-                            /*for (Map.Entry entry : response.entrySet()) {
+                            *//*for (Map.Entry entry : response.entrySet()) {
                                 System.out.println(entry.getKey() + ":" + entry.getValue());
-                            }*/
+                            }*//*
                             Runnable payRunnable = new Runnable() {
 
                                 @Override
@@ -465,109 +474,6 @@ public class MyOrderDetailsActivity extends AbstractActivity {
             });
         }
     }
+*/
 
-    private void getOrderStatus() {
-        OrderDetailRequest orderDetailRequest = new OrderDetailRequest();
-        orderDetailRequest.setOrderNo(orderHead.getOrderNo());
-        OkHttpClientManager.postAsyn(Config.ORDER_STATUS, new OkHttpClientManager.ResultCallback<OrderResponseData>() {
-
-            @Override
-            public void onError(Request request, Error info) {
-                Log.e("xxxxxx", "onError , Error = " + info.getInfo());
-                showShortToast(info.getInfo());
-            }
-
-            @Override
-            public void onResponse(OrderResponseData response) {
-                if (response.getOrderStatus() == 6) {
-                    // Toast.makeText(getApplicationContext(), "支付成功", Toast.LENGTH_SHORT).show();
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getBaseContext());
-                    builder.setTitle(R.string.app_tip);
-                    builder.setMessage(getString(R.string.pay_result_callback_msg, "支付成功"));
-                    builder.show();
-                    if (timer != null) {
-                        timer.cancel();
-                        // 一定设置为null，否则定时器不会被回收
-                        timer = null;
-                    }
-                } else if (response.getOrderStatus() == 7) {
-                    //  Toast.makeText(getApplicationContext(), getResources().getString(R.string.order_status_7), Toast.LENGTH_SHORT).show();
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getBaseContext());
-                    builder.setTitle(R.string.app_tip);
-                    builder.setMessage(getString(R.string.pay_result_callback_msg, getResources().getString(R.string.order_status_7)));
-                    builder.show();
-                    if (timer != null) {
-                        timer.cancel();
-                        // 一定设置为null，否则定时器不会被回收
-                        timer = null;
-                    }
-                }
-            }
-
-            @Override
-            public void onOtherError(Request request, Exception exception) {
-                Log.e("xxxxxx", "onError , e = " + exception.getMessage());
-            }
-        }, orderDetailRequest, OrderResponseData.class);
-    }
-
-    //支付宝支付处理结果
-    @SuppressLint("HandlerLeak")
-    private Handler mHandlers = new Handler() {
-        @SuppressWarnings("unused")
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case SDK_PAY_FLAG: {
-                    PayResult payResult = new PayResult((String) msg.obj);
-                    /**
-                     * 同步返回的结果必须放置到服务端进行验证（验证的规则请看https://doc.open.alipay.com/doc2/
-                     * detail.htm?spm=0.0.0.0.xdvAU6&treeId=59&articleId=103665&
-                     * docType=1) 建议商户依赖异步通知
-                     */
-                    String resultInfo = payResult.getResult();// 同步返回需要验证的信息
-
-                    String resultStatus = payResult.getResultStatus();
-                    // 判断resultStatus 为“9000”则代表支付成功，具体状态码代表含义可参考接口文档
-                    if (TextUtils.equals(resultStatus, "9000")) {
-                        final Handler handler = new Handler() {
-                            public void handleMessage(Message msg) {
-                                if (msg.what == 1) {
-                                    getOrderStatus();
-                                }
-                                super.handleMessage(msg);
-                            }
-
-                            ;
-                        };
-                        timer = new Timer();
-                        TimerTask task = new TimerTask() {
-
-                            @Override
-                            public void run() {
-                                // 需要做的事:发送消息
-                                Message message = new Message();
-                                message.what = 1;
-                                handler.sendMessage(message);
-                            }
-                        };
-                        timer.schedule(task, 1000);
-
-                    } else {
-                        // 判断resultStatus 为非"9000"则代表可能支付失败// "8000"代表支付结果因为支付渠道原因或者系统原因还在等待支付结果确认，最终交易是否成功以服务端异步通知为准（小概率状态）
-                        if (TextUtils.equals(resultStatus, "8000")) {
-                            Toast.makeText(getApplicationContext(), "支付结果确认中", Toast.LENGTH_SHORT).show();
-                        } else {
-                            // 其他值就可以判断为支付失败，包括用户主动取消支付，或者系统返回的错误
-                            Toast.makeText(getApplicationContext(), "支付失败", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                    break;
-                }
-                default:
-                    break;
-            }
-        }
-
-        ;
-    };
 }

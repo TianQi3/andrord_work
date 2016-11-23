@@ -9,7 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/bg_list"
-        android:layout_marginBottom="10dp"
         android:orientation="horizontal"
         android:padding="@dimen/padding_10">
 
@@ -47,8 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingLeft="@dimen/padding_10"
-        android:paddingRight="@dimen/padding_10">
+        >
 
     </LinearLayout>
 
@@ -60,14 +58,13 @@
         android:orientation="horizontal"
         android:paddingBottom="@dimen/magin_10"
         android:paddingTop="@dimen/padding_10"
-        android:layout_marginTop="10dp"
         android:paddingRight="@dimen/padding_10">
 
         <TextView
             android:layout_width="@dimen/height_70"
             android:layout_height="@dimen/height_20"
             android:background="@drawable/discount"
-            android:text="会员折扣"
+            android:text="@string/text_discount"
             android:textSize="@dimen/text_12"
             android:gravity="center"
             android:textColor="@color/tab_text"/>
@@ -87,7 +84,7 @@
         android:layout_height="wrap_content"
         android:background="@color/bg_list"
         android:orientation="horizontal"
-        android:paddingBottom="@dimen/padding_10"
+        android:paddingBottom="@dimen/magin_5"
         android:paddingLeft="@dimen/padding_10"
         android:paddingRight="@dimen/padding_10">
 

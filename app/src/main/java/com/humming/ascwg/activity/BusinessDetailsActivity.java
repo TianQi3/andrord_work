@@ -20,7 +20,7 @@ import com.squareup.picasso.Picasso;
  * 商家信息
  */
 public class BusinessDetailsActivity extends AbstractActivity {
-    private ImageView callBusiness;//打电话
+    private TextView callBusiness;//打电话
     private TextView title;
     private ImageView back;
     public static String BUSINESS_IMAGE_DETAIL = "business_image_detail";
@@ -43,7 +43,7 @@ public class BusinessDetailsActivity extends AbstractActivity {
                 finish();
             }
         });
-        callBusiness = (ImageView) findViewById(R.id.toolbar_call);
+        callBusiness = (TextView) findViewById(R.id.toolbar_call);
         callBusiness.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

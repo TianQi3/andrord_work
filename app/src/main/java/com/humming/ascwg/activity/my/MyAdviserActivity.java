@@ -117,7 +117,7 @@ public class MyAdviserActivity extends AbstractActivity {
                                 startActivity(phoneIntent);
                             }
                         } else {
-                            Toast.makeText(Application.getInstance().getCurrentActivity(), "电话为空",
+                            Toast.makeText(Application.getInstance().getCurrentActivity(), getResources().getString(R.string.english),
                                     Toast.LENGTH_LONG).show();
                         }
                     }

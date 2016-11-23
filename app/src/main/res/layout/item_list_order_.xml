@@ -2,27 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="20dp"
+    android:layout_marginBottom="5dp"
     android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/item_my_order__layout_"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/shop_cart_address"
+        android:background="@color/colorPrimary"
         android:orientation="horizontal"
         android:padding="@dimen/padding_10">
 
         <ImageView
             android:id="@+id/item_my_order__wine_image"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/shopping_cart_item" />
 
         <TextView
             android:id="@+id/item_my_order__wine_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="@dimen/magin_10"
             android:layout_weight="2"
             android:text="罗兰百悦盛世香槟(气泡葡萄酒）"
@@ -40,9 +41,9 @@
                 android:id="@+id/item_my_order__wine_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
                 android:layout_marginLeft="@dimen/magin_10"
                 android:layout_marginRight="@dimen/magin_10"
+                android:gravity="right"
                 android:text="¥110,009.00"
                 android:textColor="@color/my_text"
                 android:textSize="@dimen/text_12" />
@@ -75,6 +76,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/garys"></View>
+        android:layout_height="0.7dp"
+        android:alpha="0.4"
+        android:background="@color/tab_text"></View>
 </LinearLayout>

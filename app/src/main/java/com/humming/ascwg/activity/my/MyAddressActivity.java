@@ -33,7 +33,7 @@ import java.util.List;
  * 地址管理
  */
 public class MyAddressActivity extends AbstractActivity {
-    private LinearLayout addAddress;
+    private TextView addAddress;
     private LinearLayout noAddress;
     private ListView addressListView;
     private Context context;
@@ -41,7 +41,7 @@ public class MyAddressActivity extends AbstractActivity {
     private ImageView back;
     private static int[] itemPageResArray;
     private MyAddressAdapter mAdapter;
-    private   List<ShippingAddressListResponse> addressLists;
+    private List<ShippingAddressListResponse> addressLists;
     public static final int ADDRESS_CODE = 1003;
     public static final String ADDRESS_TYPE = "address_type";
     public static final String GET_ADDRESS = "get_address";
@@ -113,7 +113,7 @@ public class MyAddressActivity extends AbstractActivity {
             title.setText(getResources().getString(R.string.select_address_shop));
         }
 
-        addAddress = (LinearLayout) findViewById(R.id.content_my_adress__add);
+        addAddress = (TextView) findViewById(R.id.content_my_adress__add);
         noAddress = (LinearLayout) findViewById(R.id.content_my_address__no_address);
         addressListView = (ListView) findViewById(R.id.content_my_adress__listview);
         back.setOnClickListener(new View.OnClickListener() {
