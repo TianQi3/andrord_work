@@ -10,15 +10,15 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/height_150"
+        android:layout_height="@dimen/height_120"
         android:layout_gravity="center"
         android:gravity="center"
         android:orientation="vertical">
 
         <com.humming.ascwg.component.CircleImageView
             android:id="@+id/fragment_my__head_img"
-            android:layout_width="@dimen/height_80"
-            android:layout_height="@dimen/height_80"
+            android:layout_width="@dimen/height_60"
+            android:layout_height="@dimen/height_60"
             android:src="@drawable/wine_glasses"
             app:civ_border_color="@color/tab_text"
             app:civ_border_width="1dp" />
@@ -30,8 +30,7 @@
             android:layout_marginTop="@dimen/magin_10"
             android:padding="@dimen/padding_5"
             android:text="@string/text_name"
-            android:textColor="@color/tab_text"
-            android:textSize="@dimen/text_15" />
+            android:textColor="@color/tab_text" />
     </LinearLayout>
 
 
@@ -39,9 +38,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingBottom="@dimen/padding_40"
-        android:paddingLeft="@dimen/padding_20"
-        android:paddingRight="@dimen/padding_20">
+        android:paddingBottom="@dimen/padding_20"
+        android:paddingLeft="@dimen/padding_40"
+        android:paddingRight="@dimen/padding_40">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -55,11 +54,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/magin_10"
+                android:paddingTop="@dimen/magin_15">
 
                 <ImageView
-                    android:layout_width="@dimen/height_35"
-                    android:layout_height="@dimen/height_35"
+                    android:layout_width="@dimen/height_30"
+                    android:layout_height="@dimen/height_30"
                     android:src="@drawable/xiaoshouguwen" />
 
                 <TextView
@@ -67,13 +68,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/magin_10"
                     android:text="@string/text_adviser"
-                    android:textColor="@color/tab_text"
-                    android:textSize="@dimen/text_15" />
+                    android:textColor="@color/tab_text" />
             </LinearLayout>
 
             <View
-                android:layout_width="0.2dp"
+                android:layout_width="0.4dp"
                 android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/magin_10"
                 android:alpha="0.5"
                 android:background="@color/tab_text" />
 
@@ -83,11 +84,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingRight="@dimen/magin_10"
+                android:paddingTop="@dimen/magin_10">
 
                 <ImageView
-                    android:layout_width="@dimen/height_35"
-                    android:layout_height="@dimen/height_35"
+                    android:layout_width="@dimen/height_30"
+                    android:layout_height="@dimen/height_30"
                     android:src="@drawable/dingdan" />
 
                 <TextView
@@ -95,15 +98,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/magin_10"
                     android:text="@string/text_order"
-                    android:textColor="@color/tab_text"
-                    android:textSize="@dimen/text_15" />
+                    android:textColor="@color/tab_text" />
             </LinearLayout>
 
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="0.2dp"
+            android:layout_height="0.4dp"
+            android:layout_marginLeft="@dimen/magin_10"
+            android:layout_marginRight="@dimen/magin_10"
             android:alpha="0.5"
             android:background="@color/tab_text" />
 
@@ -119,25 +123,25 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/magin_10"
+                android:paddingTop="@dimen/magin_10">
 
                 <ImageView
-                    android:layout_width="@dimen/height_35"
-                    android:layout_height="@dimen/height_35"
-                    android:src="@drawable/dizhiguanli"
-                    android:id="@+id/imageView" />
+                    android:layout_width="@dimen/height_30"
+                    android:layout_height="@dimen/height_30"
+                    android:src="@drawable/dizhiguanli" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/magin_10"
                     android:text="@string/text_address"
-                    android:textColor="@color/tab_text"
-                    android:textSize="@dimen/text_15" />
+                    android:textColor="@color/tab_text" />
             </LinearLayout>
 
             <View
-                android:layout_width="0.2dp"
+                android:layout_width="0.4dp"
                 android:layout_height="match_parent"
                 android:alpha="0.5"
                 android:background="@color/tab_text" />
@@ -148,11 +152,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingRight="@dimen/magin_10"
+                android:paddingTop="@dimen/magin_10">
 
                 <ImageView
-                    android:layout_width="@dimen/height_35"
-                    android:layout_height="@dimen/height_35"
+                    android:layout_width="@dimen/height_30"
+                    android:layout_height="@dimen/height_30"
                     android:src="@drawable/fapiaoguanli" />
 
                 <TextView
@@ -160,15 +166,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/magin_10"
                     android:text="@string/text_bill"
-                    android:textColor="@color/tab_text"
-                    android:textSize="@dimen/text_15" />
+                    android:textColor="@color/tab_text" />
             </LinearLayout>
 
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="0.2dp"
+            android:layout_height="0.4dp"
+            android:layout_marginLeft="@dimen/magin_10"
+            android:layout_marginRight="@dimen/magin_10"
             android:alpha="0.5"
             android:background="@color/tab_text" />
 
@@ -184,11 +191,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/magin_10"
+                android:paddingTop="@dimen/magin_10">
 
                 <ImageView
-                    android:layout_width="@dimen/height_35"
-                    android:layout_height="@dimen/height_35"
+                    android:layout_width="@dimen/height_30"
+                    android:layout_height="@dimen/height_30"
                     android:src="@drawable/huodong" />
 
                 <TextView
@@ -196,16 +205,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/magin_10"
                     android:text="@string/text_event"
-                    android:textColor="@color/tab_text"
-                    android:textSize="@dimen/text_15" />
+                    android:textColor="@color/tab_text" />
             </LinearLayout>
 
             <View
-                android:layout_width="0.2dp"
+                android:layout_width="0.4dp"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/magin_10"
                 android:alpha="0.5"
                 android:background="@color/tab_text" />
-
 
             <LinearLayout
                 android:id="@+id/fragment_my__setting"
@@ -213,11 +221,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingRight="@dimen/magin_10"
+                android:paddingTop="@dimen/magin_10">
 
                 <ImageView
-                    android:layout_width="@dimen/height_35"
-                    android:layout_height="@dimen/height_35"
+                    android:layout_width="@dimen/height_30"
+                    android:layout_height="@dimen/height_30"
                     android:src="@drawable/shezhi" />
 
                 <TextView
@@ -225,8 +235,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/magin_10"
                     android:text="@string/action_settings"
-                    android:textColor="@color/tab_text"
-                    android:textSize="@dimen/text_15" />
+                    android:textColor="@color/tab_text" />
             </LinearLayout>
         </LinearLayout>
 

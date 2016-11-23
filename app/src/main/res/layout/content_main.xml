@@ -17,10 +17,10 @@
         android:background="@color/tab_text_select"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:tabMode="fixed"
         app:tabIndicatorColor="@null"
+        app:tabMode="fixed"
         app:tabPaddingTop="4dp"
-        />
+        app:tabTextAppearance="@style/TabLayoutTextStyle" />
 
     <com.humming.ascwg.component.LockableViewPager
         android:id="@+id/content_main_viewpager"

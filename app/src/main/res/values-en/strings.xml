@@ -11,7 +11,7 @@
     <!--我的-->
     <string name="text_name">Search</string>
     <string name="text_shopping_cart">Cart</string>
-    <string name="text_adviser">Sales</string>
+    <string name="text_adviser">Sales Consultant</string>
     <string name="text_order">Orders</string>
     <string name="text_address">Address</string>
     <string name="text_event">Activity</string>
@@ -25,12 +25,13 @@
     <string name="activity_detail">Event Details</string>
     <string name="business_detail">Business Details</string>
     <string name="my_event">Activity</string>
+    <string name="contact_you">Sales Consultant will contact you later (Fraction removed)</string>
 
     <string name="total">Total:</string>
     <string name="commodity_price">Total price:</string>
-    <string name="settlement">Settlement</string>
+    <string name="settlement">Balance</string>
     <string name="settlement_message">Settlement Information</string>
-    <string name="order_commit">Submit Order</string>
+    <string name="order_commit">Submit</string>
     <string name="commit">Submit</string>
     <string name="char_right">&gt;</string>
     <string name="action_search">Search</string>
@@ -51,17 +52,29 @@
     <string name="text_order_num">Order NO.</string>
     <string name="text_order_discount">Discounted Price：</string>
     <string name="text_order_date">Order Date</string>
-    <string name="buy_one_send_three">Buy one gift three</string>
-    <string name="text_order_details">Order details</string>
-    <string name="text_order_cancel">Order cancellation</string>
-    <string name="text_order_pay">To pay</string>
+    <string name="buy_one_send_three">Buy 3 get 1 free</string>
+    <string name="not_included_fees">Other fees not included</string>
+    <string name="text_order_details">Detail</string>
+    <string name="text_order_cancel">Cancel Order</string>
+    <string name="text_order_pay">Pay</string>
+    <string name="text_order_disco">Discount price:</string>
+    <string name="text_vip_discount">VIP discount:</string>
+    <string name="text_commodity_price">Total price:</string>
+    <string name="text_creat_time">Creation time:</string>
+    <string name="out_of_stock">Out of stock</string>
+    <string name="select_payment">Please select system of payment</string>
+    <string name="ali_pay">AliPay</string>
+    <string name="wx_pay">WechatPay</string>
+    <string name="province_city">City:</string>
     <!--注册-->
     <string name="text_identifying_code">Verification Code</string>
     <string name="text_get_identifying_code">Get Verification Code</string>
+    <string name="text_get_identifying_phone">Verify phone number</string>
     <string name="text_register">Register</string>
     <string name="reget_identifying_code">Get Again</string>
     <string name="hint_correct_phone">Please enter the correct phone number</string>
     <string name="next">Next</string>
+    <string name="edit">edit</string>
     <string name="text_welcome">Welcome ASC尊享会员</string>
     <string name="set_password">Setting Password</string>
     <string name="reset_password">Verify Password:</string>
@@ -71,12 +84,12 @@
     <string name="hint_set_password">The password is 6~12 bit letters and numbers.</string>
     <string name="text_register_agree">Agree</string>
     <string name="text_register_agreement"> 《ASC Service Agreement》</string>
-    <string name="nick_name">nickname:</string>
+    <string name="nick_name">nickname</string>
     <string name="nick_account">nickname/account</string>
     <string name="basic_information">Personal Information:</string>
-    <string name="birthday">Birthday:</string>
-    <string name="sex">Gender:</string>
-    <string name="address">Area:</string>
+    <string name="birthday">Birthday</string>
+    <string name="sex">Gender</string>
+    <string name="address">Area</string>
     <string name="select_address">Select Area</string>
     <string name="date_cancel">Cancel</string>
     <string name="date_submit">Confirm</string>
@@ -102,7 +115,7 @@
     <string name="address_shop">Address:</string>
     <string name="my_address">My Address</string>
     <string name="order">Order</string>
-    <string name="add_address">Add Consignee information</string>
+    <string name="add_address">Add </string>
     <string name="update_address">Edit Address</string>
     <string name="add_address_no">You have not set the receiving address, oh hurry to set up bar</string>
     <string name="is_working_hard_on_the_new_oh">Is working hard on the new oh</string>
@@ -146,6 +159,10 @@
     <string name="detail">Details</string>
     <string name="chinese">Chinese</string>
     <string name="english">English</string>
+    <string name="join">Join</string>
+    <string name="call_phone">Call phone</string>
+    <string name="text_discount">Discount</string>
+    <string name="home">Home</string>
     <string name="activity_product_wines_info__brand_story">Brand Story</string>
     <!--我的订单状态-->
     <!--<string name="order_status_1">Wait for audit</string>
@@ -155,6 +172,7 @@
     <string name="order_status_5">Cancel success</string>
     <string name="order_status_6">Cancel failure</string>-->
     <string name="cancel_order_success">Cancel Order Success</string>
+    <string name="order_refund">refund</string>
     <string name="order_status_1">Order success</string>
     <string name="order_status_2">Order failure</string>
     <string name="order_status_3">Wait for payment</string>
@@ -164,6 +182,8 @@
     <string name="order_status_7">Audit failure</string>
     <string name="order_status_8">Order refund</string>
 
+
+    <string name="point">Bonus Point</string>
     <string name="label_country">Country:</string>
     <string name="label_region">Region:</string>
     <string name="label_price">Price:</string>
@@ -173,7 +193,7 @@
     <string name="label_wines_type">Wine Type:</string>
     <string name="label_brand">Brand:</string>
     <string name="label_item_code">Item Code:</string>
-    <string name="label_stock">Inventory:</string>
+    <string name="label_stock">Stock:</string>
     <string name="reset">Reset</string>
     <string name="label_grape_variety">grape Variety:</string>
     <string name="label_name">Name:</string>
@@ -183,12 +203,27 @@
     <string name="msg_at_least_one_item">Only one value is required!</string>
     <string name="tab_product">Product</string>
     <string name="tab_surprise">Surprise</string>
-    <string name="tab_rights">Rights</string>
+    <string name="tab_rights">VIP</string>
     <string name="yum_member_zone">Yum member zone</string>
     <string name="tab_cart">Cart</string>
     <string name="tab_my">Me</string>
     <string name="order_refund_success">Apply for a refund of success</string>
     <string name="settings_language">Setting Language</string>
-    <string name="all_select_normal">All products</string>
-    <string name="all_select_yum">Select Yum goods</string>
+    <string name="all_select_normal">Select All Normal Items</string>
+    <string name="all_select_yum">Select All Yum Items</string>
+    <string name="no_inventory">No inventory</string>
+    <string name="add_cart_success">Add shopping cart success</string>
+    <string name="take_photo">Take photo</string>
+    <string name="select_from_album">Select from album</string>
+    <string name="pass_too_long">Password is too long</string>
+    <string name="pass_too_short">Password is too short</string>
+    <string name="two_pass_not_like">Two passwords are not the same</string>
+
+
+    <!--发票-->
+    <string name="nor_invoice">Ordinary invoice</string>
+    <string name="sep_invoice">VAT invoice</string>
+    <string name="invoice_information">Invoice information</string>
+    <string name="com_head">Company header</string>
+    <string name="mail_message">Mailing information</string>
 </resources>

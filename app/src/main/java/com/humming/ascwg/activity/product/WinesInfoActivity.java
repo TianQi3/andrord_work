@@ -1,6 +1,7 @@
 package com.humming.ascwg.activity.product;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import com.humming.ascwg.Application;
 import com.humming.ascwg.Config;
 import com.humming.ascwg.Constant;
+import com.humming.ascwg.MainActivity;
 import com.humming.ascwg.R;
 import com.humming.ascwg.activity.AbstractActivity;
 import com.humming.ascwg.model.ResponseData;
@@ -56,7 +58,7 @@ public class WinesInfoActivity extends AbstractActivity {
     private LinearLayout llstory;
     private LinearLayout lldetail;
     private Long id = null;
-    private TextView title;
+    private TextView title, home;
     private ImageView back, imageView;
     private long itemId;
     private String[] images;
@@ -65,6 +67,7 @@ public class WinesInfoActivity extends AbstractActivity {
     private int width, height;
     public static String NORMAL_YUM_FLAG = "normal_yum_flag";
     private String flag = "";//0代表正常单  1代表yum
+    private int stocks;//库存
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -87,12 +90,21 @@ public class WinesInfoActivity extends AbstractActivity {
         id = bundle.getLong(Constant.ID);
         flag = bundle.getString(NORMAL_YUM_FLAG);
         title = (TextView) findViewById(R.id.toolbar_title);
-        back = (ImageView) findViewById(R.id.toolbar_back);
+        back = (ImageView) findViewById(R.id.toolbar_backs);
         title.setText(getResources().getString(R.string.detail));
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+        home = (TextView) findViewById(R.id.toolbar_homes);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Application.getInstance().finishAllActivity();
+                Intent intents = new Intent(Application.getInstance().getApplicationContext(), MainActivity.class);
+                Application.getInstance().getCurrentActivity().startActivity(intents);
             }
         });
         banner = (Banner) findViewById(R.id.content_wines_info__banner);
@@ -130,7 +142,11 @@ public class WinesInfoActivity extends AbstractActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                imageView.setVisibility(View.GONE);
+                if (images == null || images.length == 1) {
+                    imageView.setVisibility(View.VISIBLE);
+                } else {
+                    imageView.setVisibility(View.GONE);
+                }
             }
 
             @Override
@@ -143,7 +159,7 @@ public class WinesInfoActivity extends AbstractActivity {
             @Override
             public void onClick(View v) {
                 lldetail.setVisibility(View.GONE);
-                btStory.setTextColor(Application.getInstance().getResources().getColor(R.color.tab_text));
+                btStory.setTextColor(Application.getInstance().getResources().getColor(R.color.tab_bg));
                 btDetail.setTextColor(Application.getInstance().getResources().getColor(R.color.text_gray));
                 llstory.setVisibility(View.VISIBLE);
             }
@@ -154,7 +170,7 @@ public class WinesInfoActivity extends AbstractActivity {
             public void onClick(View v) {
                 llstory.setVisibility(View.GONE);
                 btStory.setTextColor(Application.getInstance().getResources().getColor(R.color.text_gray));
-                btDetail.setTextColor(Application.getInstance().getResources().getColor(R.color.tab_text));
+                btDetail.setTextColor(Application.getInstance().getResources().getColor(R.color.tab_bg));
                 lldetail.setVisibility(View.VISIBLE);
             }
         });
@@ -162,35 +178,38 @@ public class WinesInfoActivity extends AbstractActivity {
         btAddCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShoppingCartRequest shoppingCartRequest = new ShoppingCartRequest();
-                shoppingCartRequest.setItemId(itemId);
-                shoppingCartRequest.setQuantity(1);
-                if ("0".equals(flag)) {//正常单
-                    shoppingCartRequest.setScType(0);
-                } else if ("1".equals(flag)) {//yum单
-                    shoppingCartRequest.setScType(1);
+                if (0 == stocks) {//库存为0
                 } else {
+                    ShoppingCartRequest shoppingCartRequest = new ShoppingCartRequest();
+                    shoppingCartRequest.setItemId(itemId);
+                    shoppingCartRequest.setQuantity(1);
+                    if ("0".equals(flag)) {//正常单
+                        shoppingCartRequest.setScType(0);
+                    } else if ("1".equals(flag)) {//yum单
+                        shoppingCartRequest.setScType(1);
+                    } else {
+                    }
+                    OkHttpClientManager.postAsyn(Config.SHOPPINGCART_ADD_UPDATE, new OkHttpClientManager.ResultCallback<ResponseData>() {
+                        @Override
+                        public void onError(Request request, Error info) {
+                            Log.e("xxxxxx", "onError , Error = " + info.getInfo());
+                            showShortToast(info.getInfo());
+                        }
+
+                        @Override
+                        public void onResponse(final ResponseData response) {
+                            showShortToast(getResources().getString(R.string.add_cart_success));
+                            imageView.setVisibility(View.VISIBLE);
+                            imageView.startAnimation(mAnimation);
+
+                        }
+
+                        @Override
+                        public void onOtherError(Request request, Exception exception) {
+                            Log.e("xxxxxx", "onError , e = " + exception.getMessage());
+                        }
+                    }, shoppingCartRequest, ResponseData.class);
                 }
-                OkHttpClientManager.postAsyn(Config.SHOPPINGCART_ADD_UPDATE, new OkHttpClientManager.ResultCallback<ResponseData>() {
-                    @Override
-                    public void onError(Request request, Error info) {
-                        Log.e("xxxxxx", "onError , Error = " + info.getInfo());
-                        showShortToast(info.getInfo());
-                    }
-
-                    @Override
-                    public void onResponse(final ResponseData response) {
-                        showShortToast("添加购物车成功");
-                        imageView.setVisibility(View.VISIBLE);
-                        imageView.startAnimation(mAnimation);
-
-                    }
-
-                    @Override
-                    public void onOtherError(Request request, Exception exception) {
-                        Log.e("xxxxxx", "onError , e = " + exception.getMessage());
-                    }
-                }, shoppingCartRequest, ResponseData.class);
             }
         });
 
@@ -209,8 +228,22 @@ public class WinesInfoActivity extends AbstractActivity {
             @Override
             public void onResponse(ItemDetailResponse response) {
                 images = response.getImages();
-                Picasso.with(Application.getInstance().getCurrentActivity()).load(images[0]).into(imageView);
-                banner.setImages(images);
+                if (images == null) {
+                    Picasso.with(Application.getInstance().getCurrentActivity()).load(R.drawable.wines_img).into(imageView);
+                    imageView.setVisibility(View.VISIBLE);
+                    banner.setVisibility(View.GONE);
+                } else if (images.length == 1) {
+                    banner.setVisibility(View.GONE);
+                    imageView.setVisibility(View.VISIBLE);
+                    Picasso.with(Application.getInstance().getCurrentActivity()).load(images[0]).into(imageView);
+                } else {
+                    banner.setImages(images);
+                    imageView.setVisibility(View.GONE);
+                }
+                stocks = response.getStock();
+                if (stocks == 0) {
+                    btAddCart.setText(getResources().getString(R.string.out_of_stock));
+                }
                 itemId = response.getId();
                 tvBrand.setText(response.getBrand());
                 tvCode.setText(response.getItemCode());

@@ -20,7 +20,8 @@ public class BaseInformation implements IRequestMainData {
     private String signature;
     private String vipCode;
     private String yumCode;
-    private int page;
+    private long thirdInfoId;
+    private String thirdInfoType;
 
 
     public String getName() {
@@ -127,11 +128,19 @@ public class BaseInformation implements IRequestMainData {
         this.yumCode = yumCode;
     }
 
-    public int getPage() {
-        return page;
+    public long getThirdInfoId() {
+        return thirdInfoId;
     }
 
-    public void setPage(int page) {
-        this.page = page;
+    public void setThirdInfoId(long thirdInfoId) {
+        this.thirdInfoId = thirdInfoId;
+    }
+
+    public String getThirdInfoType() {
+        return thirdInfoType;
+    }
+
+    public void setThirdInfoType(String thirdInfoType) {
+        this.thirdInfoType = thirdInfoType;
     }
 }

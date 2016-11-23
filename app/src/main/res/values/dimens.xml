@@ -28,6 +28,7 @@
 
     <dimen name="magin_5">5dp</dimen>
     <dimen name="magin_10">10dp</dimen>
+    <dimen name="magin_15">15dp</dimen>
     <dimen name="magin_20">20dp</dimen>
     <dimen name="magin_30">30dp</dimen>
     <dimen name="magin_40">40dp</dimen>
@@ -43,6 +44,7 @@
     <dimen name="text_18">18sp</dimen>
     <dimen name="text_26">26sp</dimen>
     <dimen name="margin_60">60dp</dimen>
+    <dimen name="margin_50">50dp</dimen>
     <dimen name="text_24">24sp</dimen>
     <dimen name="text_22">22sp</dimen>
 

@@ -122,7 +122,7 @@ public class MainActivity extends AbstractActivity {
         adapter = new ViewPagerAdapter(list, titles);
         viewPager.setSwipeable(false);
         viewPager.setAdapter(adapter);
-        // checkUpdate();//检查更新
+        checkUpdate();//检查更新
         TabLayout.TabLayoutOnPageChangeListener onPageChangeListener = new TabLayout.TabLayoutOnPageChangeListener(tabLayout) {
             private int lastIndex = -1;
 
@@ -229,6 +229,7 @@ public class MainActivity extends AbstractActivity {
 
             @Override
             public void onResponse(MobileVersionResponse response) {
+                versionResponse = response;
                 PackageInfo pi = null;
                 PackageManager pm = getPackageManager();
                 try {
@@ -330,9 +331,9 @@ public class MainActivity extends AbstractActivity {
             public void run() {
                 try {
                     //  String apkUrl = versionInfo.getAndrLink();
-                    String apkUrl = "http://101.231.101.70:8080/mobile-sales.apk";
+                    String apkUrl = "http://dsapp.asc-wines.com/downloadapp/ds-app.apk";
                     DownloadManager.Request request = new DownloadManager.Request(Uri.parse(apkUrl));
-                    request.setDestinationInExternalPublicDir("download", "salesMobile.apk");
+                    request.setDestinationInExternalPublicDir("download", "ds-app.apk");
                     request.setDescription("salesMobile新版本下载");
                     request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
                     request.setMimeType("application/vnd.android.package-archive");

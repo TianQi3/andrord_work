@@ -36,8 +36,6 @@ import com.wg.event.dto.EventListResponse;
 import com.wg.promotion.dto.PromotionDetailResponse;
 import com.wg.promotion.dto.PromotionListResponse;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -107,15 +105,6 @@ public class SurpriseContent extends LinearLayout implements SwipeRefreshLayout.
         });
     }
 
-    private List<Map<String, String>> initData() {
-        list = new ArrayList<Map<String, String>>();
-        for (int i = 0; i < 10; i++) {
-            Map<String, String> map = new HashMap<String, String>();
-            map.put("" + i, "" + i);
-            list.add(map);
-        }
-        return list;
-    }
 
     //获取促销数据
     private void initPromotionDatas() {

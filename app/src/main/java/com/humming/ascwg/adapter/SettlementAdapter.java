@@ -44,7 +44,7 @@ public class SettlementAdapter extends RecyclerView.Adapter<SettlementAdapter.My
         Picasso.with(mContext).load(orderSelect.getImageUrl()).into(holder.mimage);
         holder.mName.setText(orderSelect.getNameCn() + orderSelect.getNameEn());
         holder.mNumber.setText("×" + orderSelect.getQuantity() + "");
-        holder.mPrice.setText(orderSelect.getCostPrice() + "");
+        holder.mPrice.setText("¥" + orderSelect.getCostPrice() + "");
     }
 
     @Override

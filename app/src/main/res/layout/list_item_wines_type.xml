@@ -52,8 +52,8 @@
         </LinearLayout>
 
         <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             android:layout_gravity="center"
             android:layout_marginRight="10dp"
             android:src="@drawable/right_w" />
@@ -61,6 +61,9 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/garys"></View>
+        android:layout_height="0.7dp"
+        android:alpha="0.4"
+        android:layout_marginLeft="@dimen/magin_20"
+        android:layout_marginRight="@dimen/magin_10"
+        android:background="@color/tab_text"></View>
 </LinearLayout>

@@ -1,11 +1,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_settlement__layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
     android:orientation="vertical"
-    android:id="@+id/content_settlement__layout"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.humming.ascwg.activity.shoppingcart.SettlementMessageActivity"
     tools:showIn="@layout/activity_settlement_message">
@@ -13,22 +13,23 @@
     <LinearLayout
         android:id="@+id/content_settlement__default_address"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:background="@color/shop_cart_address"
         android:orientation="horizontal"
-        android:paddingLeft="20dp">
+        android:paddingLeft="10dp">
 
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/dizhi" />
+            android:src="@drawable/dizhiguanli" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <LinearLayout
@@ -64,15 +65,21 @@
                 android:text="vvvvv"
                 android:textColor="@color/tab_text" />
         </LinearLayout>
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/right_w" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/content_settlement__select_address"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:background="@color/shop_cart_address"
         android:orientation="horizontal"
-        android:paddingLeft="20dp">
+        android:paddingLeft="10dp">
 
         <ImageView
             android:layout_width="20dp"
@@ -91,23 +98,23 @@
             android:textSize="@dimen/text_17" />
 
         <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             android:layout_gravity="center_vertical"
             android:src="@drawable/right_w" />
     </LinearLayout>
 
-
-    <View
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/garys"></View>
+        android:layout_height="10dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/address_sep"></ImageView>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:orientation="horizontal"
-        android:paddingLeft="20dp">
+        android:paddingLeft="10dp">
 
         <com.humming.ascwg.component.CircleImageView
             android:layout_width="20dp"
@@ -122,23 +129,133 @@
             android:layout_marginLeft="10dp"
             android:text="@string/order"
             android:textColor="@color/text_gray"
-            android:textSize="@dimen/text_17" />
+             />
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/garys"></View>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/content_settlement__order_listview"
+    <com.humming.ascwg.component.ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/content_settlement__order_listview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_list"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/padding_10"
+                android:paddingRight="@dimen/padding_10"
+                android:paddingTop="@dimen/padding_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_commodity_price"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/text_13" />
+
+                <TextView
+                    android:id="@+id/content_settlement_message__total"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="¥110,009.00"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/text_13" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_list"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/padding_10"
+                android:paddingRight="@dimen/padding_10"
+                android:paddingTop="@dimen/padding_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_vip_discount"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/text_13" />
+
+                <TextView
+                    android:id="@+id/content_settlement_message__discount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="x 90%"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/text_13" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_list"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_order_discount"
+                    android:textColor="@color/get_ident"
+                    android:textSize="@dimen/text_14" />
+
+                <TextView
+                    android:id="@+id/content_settlement_message__discount_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="¥99,008.00"
+                    android:textColor="@color/get_ident"
+                    android:textSize="@dimen/text_14" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/item_shoppongcart__layout_normal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/shop_cart_bottom_all"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_you"
+                    android:textColor="@color/tab_text"
+                    android:textSize="@dimen/text_13" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.humming.ascwg.component.ScrollView>
+
+    <!--<View
+        android:layout_width="match_parent"
+        android:layout_height="0.7dp"
+        android:alpha="0.4"
+        android:background="@color/tab_text"></View>-->
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="45dp"
         android:background="@color/shop_cart_bottom_all"
         android:orientation="horizontal">
 
@@ -152,11 +269,12 @@
             android:paddingBottom="10dp"
             android:paddingTop="10dp">
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -185,19 +303,19 @@
 
                 </LinearLayout>
 
-                 <TextView
-                     android:id="@+id/content_settlement_message__discount"
-                     android:layout_width="wrap_content"
-                     android:layout_height="match_parent"
-                     android:layout_gravity="center"
-                     android:layout_marginTop="5dp"
-                     android:textSize="10sp"
-                     android:textColor="@color/tab_text"
-                     android:text="@string/vip_discount" />
-            </LinearLayout>
+                <TextView
+                    android:id="@+id/content_settlement_message__discount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/vip_discount"
+                    android:textColor="@color/tab_text"
+                    android:textSize="10sp" />
+            </LinearLayout>-->
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginRight="15dp"
                 android:gravity="center|right"
@@ -240,7 +358,7 @@
             android:background="@color/get_ident"
             android:text="@string/order_commit"
             android:textColor="@color/tab_text"
-            android:textSize="@dimen/text_17" />
+            android:textSize="@dimen/text_16" />
 
     </LinearLayout>
 </LinearLayout>

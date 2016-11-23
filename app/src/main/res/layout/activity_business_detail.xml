@@ -48,15 +48,15 @@
                         android:textColor="@color/tab_text"
                         android:textSize="17sp" />
 
-                    <ImageView
+                    <TextView
                         android:id="@+id/toolbar_call"
-                        android:layout_width="30dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="30dp"
                         android:gravity="right|center"
                         android:padding="5dp"
                         android:layout_marginRight="5dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/call" />
+                        android:text="@string/call_phone" />
                 </LinearLayout>
 
             </FrameLayout>

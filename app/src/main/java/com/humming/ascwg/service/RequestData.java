@@ -8,6 +8,15 @@ public class RequestData {
 
     private String token;
 
+    private String language;
+    private String appDomain;
+    private String appPushToken;
+    private String appVersion;
+    private String clientIdentifierCode;
+    private String locationXy;
+    private String resolution;
+
+
     private IRequestMainData parameters;
 
     public String getCmd() {
@@ -32,6 +41,22 @@ public class RequestData {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getAppVersion() {
+        return appVersion;
+    }
+
+    public void setAppVersion(String appVersion) {
+        this.appVersion = appVersion;
     }
 
     @Override

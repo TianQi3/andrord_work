@@ -56,7 +56,11 @@ public class MyContent extends LinearLayout implements View.OnClickListener {
         billLayout = (LinearLayout) view.findViewById(R.id.fragment_my__bill);
         String userNames = SharePrefUtil.getString(Constant.FILE_NAME, Constant.CONTRACT, "", Application.getInstance().getCurrentActivity());
         String headImages = SharePrefUtil.getString(Constant.FILE_NAME, Constant.HEAD_IMAGE, "", Application.getInstance().getCurrentActivity());
-        Picasso.with(context).load(headImages).into(headImage);
+        if (!headImages.isEmpty()) {
+            Picasso.with(context).load(headImages).into(headImage);
+        } else {
+            Picasso.with(context).load(R.mipmap.logo).into(headImage);
+        }
         userName.setText(userNames);
         headImage.setOnClickListener(this);
         settingLayout.setOnClickListener(this);

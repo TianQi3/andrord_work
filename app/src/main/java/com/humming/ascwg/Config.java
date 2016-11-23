@@ -9,7 +9,6 @@ public class Config {
     public static final String URL_SERVICE = "http://uat.dsapp.asc-wines.com/cgi";//测试环境
     //public static final String URL_SERVICE = "http://dsapp.asc-wines.com/cgi";//外网环境
 
-
     //产品
     public static final String PRODUCT_ALL_ITEM_CODE = "item/queryAllItemCode";//获取产品全部 itemCode
     public static final String PRODUCT_ALL_COUNTRY = "baseinfo/country";//获取国家
@@ -57,4 +56,6 @@ public class Config {
     public static final String REFUND_ORDER = "order/refund";//退款申请
     public static final String CANCEL_ORDER = "order/cancel";//取消订单
     public static final String PAY_CONTENT = "pay/getContent";//获取支付签名
+    public static final String QUERY_NOR = "invoice/queryNor";//查询普通发票
+    public static final String QUERY_SEP = "invoice/querySep";//查询增值税发票
 }

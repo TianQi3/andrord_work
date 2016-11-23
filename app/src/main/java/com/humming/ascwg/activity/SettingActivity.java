@@ -2,6 +2,7 @@ package com.humming.ascwg.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -26,6 +27,8 @@ public class SettingActivity extends AbstractActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         title = (TextView) findViewById(R.id.toolbar_title);
         back = (ImageView) findViewById(R.id.toolbar_back);
         title.setText(getResources().getString(R.string.action_settings));

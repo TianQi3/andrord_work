@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/bg1"
+    android:background="@drawable/bg"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.humming.ascwg.activity.product.WinesQueryActivity"
@@ -65,6 +65,7 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:ems="10"
+                    android:textColor="@color/tab_text"
                     android:focusable="false"
                     android:inputType="none"></EditText>
             </LinearLayout>
@@ -96,6 +97,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
+                    android:textColor="@color/tab_text"
                     android:background="@null"
                     android:ems="10"></EditText>
             </LinearLayout>
@@ -127,6 +129,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
+                    android:textColor="@color/tab_text"
                     android:background="@null"
                     android:ems="10"
                     android:focusable="false"
@@ -161,6 +164,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:background="@null"
+                    android:textColor="@color/tab_text"
                     android:ems="10"
                     android:focusable="false"
                     android:inputType="none"></EditText>
@@ -194,6 +198,7 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:ems="10"
+                    android:textColor="@color/tab_text"
                     android:focusable="false"
                     android:inputType="none"></EditText>
             </LinearLayout>

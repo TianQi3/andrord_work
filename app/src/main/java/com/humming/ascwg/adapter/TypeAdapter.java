@@ -39,8 +39,8 @@ public class TypeAdapter extends RecyclerView.Adapter<TypeAdapter.MyViewHolder> 
     public void onBindViewHolder(TypeAdapter.MyViewHolder holder, final int position) {
         final MyViewHolder vh = (MyViewHolder) holder;
         ItemTypeResponse typeResponse = mList.get(position);
-        holder.mTypeCn.setText(typeResponse.getNameCn());
-        holder.mTypeEn.setText(typeResponse.getNameEn());
+        holder.mTypeCn.setText(typeResponse.getNameEn());
+        holder.mTypeEn.setText(typeResponse.getNameCn());
         if (mOnItemClickListener != null) {
             vh.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

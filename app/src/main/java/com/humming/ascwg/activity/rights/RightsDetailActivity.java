@@ -23,7 +23,7 @@ import com.humming.ascwg.activity.AbstractActivity;
 import com.humming.ascwg.activity.product.WinesInfoActivity;
 import com.humming.ascwg.adapter.BaseAdapter;
 import com.humming.ascwg.adapter.RightsDetailAdapter;
-import com.humming.ascwg.requestUtils.BaseInformation;
+import com.humming.ascwg.requestUtils.RightsRequest;
 import com.humming.ascwg.service.Error;
 import com.humming.ascwg.service.OkHttpClientManager;
 import com.squareup.okhttp.Request;
@@ -68,7 +68,7 @@ public class RightsDetailActivity extends AbstractActivity {
     }
 
     private void initData() {
-        BaseInformation baseInformation = new BaseInformation();
+        RightsRequest baseInformation = new RightsRequest();
         baseInformation.setPage(1);
         OkHttpClientManager.postAsyn(Config.GET_YUM_LIST, new OkHttpClientManager.ResultCallback<List<YumItemListResponse>>() {
             @Override

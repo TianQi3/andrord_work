@@ -7,6 +7,7 @@
     <color name="tab_text_select">#000</color>
     <color name="tab_text">#fff</color>
     <color name="toolbar_surprise">#C0142B</color>
+    <color name="price_color">#FFDE3915</color>
     <color name="text_gray">#858585</color>
     <color name="text_line">#E2E2E2</color>
     <color name="cart_delete">#CDB280</color>
@@ -42,4 +43,5 @@
     <color name="line_colors_">#20E4E4E4</color>
     <color name="navpage">#FFE1E8EB</color>
     <color name="setting_color">#2B241A</color>
+    <color name="purple">#9f2348</color>
 </resources>

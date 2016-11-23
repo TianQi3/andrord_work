@@ -15,7 +15,7 @@ import com.humming.ascwg.Constant;
 import com.humming.ascwg.MainActivity;
 import com.humming.ascwg.activity.AbstractActivity;
 import com.humming.ascwg.activity.LoginActivity;
-import com.humming.ascwg.model.ResponseData;
+import com.humming.ascwg.activity.WxCheckPhoneActivity;
 import com.humming.ascwg.requestUtils.WxUserInfoRequest;
 import com.humming.ascwg.service.Error;
 import com.humming.ascwg.service.OkHttpClientManager;
@@ -28,6 +28,7 @@ import com.tencent.mm.sdk.modelbase.BaseReq;
 import com.tencent.mm.sdk.modelbase.BaseResp;
 import com.tencent.mm.sdk.modelmsg.SendAuth;
 import com.tencent.mm.sdk.openapi.IWXAPIEventHandler;
+import com.wg.user.dto.LoginUserInfoResponse;
 
 import java.io.IOException;
 
@@ -195,7 +196,7 @@ public class WXEntryActivity extends AbstractActivity implements IWXAPIEventHand
                 mDelivery.post(new Runnable() {
                     @Override
                     public void run() {
-                        OkHttpClientManager.postAsyn(Config.WXLOGIN, new OkHttpClientManager.ResultCallback<ResponseData>() {
+                        OkHttpClientManager.postAsyn(Config.WXLOGIN, new OkHttpClientManager.ResultCallback<LoginUserInfoResponse>() {
 
                             @Override
                             public void onError(Request request, Error info) {
@@ -204,18 +205,25 @@ public class WXEntryActivity extends AbstractActivity implements IWXAPIEventHand
                             }
 
                             @Override
-                            public void onResponse(ResponseData response) {
-                               // Log.v("xxxx","成功了");
+                            public void onResponse(LoginUserInfoResponse response) {
                                 WXEntryActivity.this.finish();
-                                Intent intent = new Intent(Application.getInstance().getCurrentActivity(), MainActivity.class);
-                                startActivity(intent);
+                                SharePrefUtil.putString(Constant.FILE_NAME, "thirdInfoId", response.getThirdInfoId() + "", WXEntryActivity.this);
+                                SharePrefUtil.putString(Constant.FILE_NAME, "thirdInfoType", response.getThirdInfoType(), WXEntryActivity.this);
+                                if (response.getIsNeedRegister() == 1) {//需要验证手机号
+                                    Intent intent = new Intent(Application.getInstance().getCurrentActivity(), WxCheckPhoneActivity.class);
+                                    startActivity(intent);
+                                } else {
+                                    Intent intent = new Intent(Application.getInstance().getCurrentActivity(), MainActivity.class);
+                                    startActivity(intent);
+                                }
+                                /**/
                             }
 
                             @Override
                             public void onOtherError(Request request, Exception exception) {
                                 Log.e("xxxxxx", "onError , e = " + exception.getMessage());
                             }
-                        }, wxUserInfoRequest, ResponseData.class);
+                        }, wxUserInfoRequest, LoginUserInfoResponse.class);
 
                     }
                 });

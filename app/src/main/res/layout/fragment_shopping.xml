@@ -27,6 +27,7 @@
                 android:background="@color/shop_cart_bottom_all"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
+                android:paddingLeft="2dp"
                 android:visibility="gone">
 
                 <RadioGroup
@@ -34,14 +35,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:orientation="vertical"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="10dp">
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp">
 
                     <CheckBox
                         android:id="@+id/fragment_shoppongcart__all_select_normal"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
                         android:background="@drawable/shopping_cart_radio_status"
                         android:button="@null"
                         android:checked="false" />
@@ -61,7 +62,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:divider="#00000000"
-                android:dividerHeight="12dp"
+                android:dividerHeight="8dp"
                 android:scrollbars="none">
 
             </ListView>
@@ -71,10 +72,11 @@
                 android:id="@+id/item_shoppongcart__layout_yum"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:background="@color/shop_cart_bottom_all"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:layout_marginTop="12dp"
+                android:paddingLeft="2dp"
                 android:visibility="gone">
 
                 <RadioGroup
@@ -82,14 +84,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:orientation="vertical"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="10dp">
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp">
 
                     <CheckBox
                         android:id="@+id/fragment_shoppongcart__all_select_yum"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
                         android:background="@drawable/shopping_cart_radio_status"
                         android:button="@null"
                         android:checked="false" />
@@ -109,7 +111,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:divider="#00000000"
-                android:dividerHeight="12dp"
+                android:dividerHeight="8dp"
                 android:scrollbars="none">
 
             </ListView>
@@ -139,14 +141,14 @@
             android:textColor="@color/tab_text" />
     </LinearLayout>
 
-    <View
+    <!--<View
         android:layout_width="match_parent"
         android:layout_height="0.8dp"
-        android:background="@color/text_gray"></View>
+        android:background="@color/text_gray"></View>-->
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:background="@color/shop_cart_bottom_all"
         android:orientation="horizontal">
 
@@ -155,7 +157,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="0.7"
             android:orientation="vertical"
             android:paddingBottom="10dp"
             android:paddingLeft="10dp"
@@ -173,10 +174,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="5dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="@dimen/magin_5"
             android:text="@string/all_select"
-            android:textColor="@color/tab_text"
-            android:textSize="@dimen/text_17" />
+            android:textColor="@color/tab_text" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -184,14 +185,14 @@
             android:layout_gravity="center"
             android:layout_weight="1.7"
             android:orientation="vertical"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp">
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="20dp"
-                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/magin_10"
+                android:gravity="center|right"
                 android:orientation="horizontal">
 
                 <TextView
@@ -223,17 +224,20 @@
                     android:textColor="@color/tab_text" />
             </LinearLayout>
 
-            <!-- <TextView
-                 android:layout_width="wrap_content"
-                 android:layout_height="match_parent"
-                 android:layout_gravity="right"
-                 android:textSize="10sp"
-                 android:text="(不含运费)" />-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:layout_marginRight="@dimen/magin_10"
+                android:layout_marginTop="@dimen/magin_5"
+                android:text="@string/not_included_fees"
+                android:textColor="@color/tab_text"
+                android:textSize="10sp" />
         </LinearLayout>
 
         <Button
             android:id="@+id/fragment_shopping__account"
-            android:layout_width="120dp"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:background="@color/get_ident"
             android:text="@string/settlement"

@@ -38,9 +38,19 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="fffff"
+                    android:text="@string/action_save"
                     android:textColor="@color/tab_text"
                     android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/content_my_adress__add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="10dp"
+                    android:gravity="right|center"
+                    android:text="@string/add_address"
+                    android:textColor="@color/money_vip" />
             </FrameLayout>
 
         </android.support.v7.widget.Toolbar>

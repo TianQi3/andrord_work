@@ -9,20 +9,23 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:id="@+id/imageView"
+        android:layout_width="130dp"
+        android:layout_height="0dp"
         android:layout_gravity="center_horizontal"
+        android:layout_weight="0.45"
         android:src="@drawable/asc_logo" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_marginBottom="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="80dp"
+        android:layout_weight="0.55"
         android:orientation="vertical"
         android:paddingBottom="@dimen/padding_40"
-        android:paddingLeft="@dimen/padding_30"
-        android:paddingRight="@dimen/padding_30">
+        android:paddingLeft="@dimen/padding_50"
+        android:paddingRight="@dimen/padding_50">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,14 +49,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/magin_10"
+                    android:layout_marginTop="@dimen/magin_15"
                     android:text="@string/country"
                     android:textColor="@color/tab_text"
                     android:textSize="@dimen/text_16" />
             </LinearLayout>
 
             <View
-                android:layout_width="0.2dp"
+                android:layout_width="0.4dp"
                 android:layout_height="match_parent"
                 android:alpha="0.5"
                 android:background="@color/tab_text" />
@@ -74,7 +77,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/magin_10"
+                    android:layout_marginTop="@dimen/magin_15"
                     android:text="@string/wines_type"
                     android:textColor="@color/tab_text"
                     android:textSize="@dimen/text_16" />
@@ -84,7 +87,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="0.2dp"
+            android:layout_height="0.4dp"
             android:alpha="0.5"
             android:background="@color/tab_text" />
 
@@ -110,14 +113,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/magin_10"
+                    android:layout_marginTop="@dimen/magin_15"
                     android:text="@string/brand"
                     android:textColor="@color/tab_text"
                     android:textSize="@dimen/text_16" />
             </LinearLayout>
 
             <View
-                android:layout_width="0.2dp"
+                android:layout_width="0.4dp"
                 android:layout_height="match_parent"
                 android:alpha="0.5"
                 android:background="@color/tab_text" />
@@ -138,7 +141,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/magin_10"
+                    android:layout_marginTop="@dimen/magin_15"
                     android:text="@string/search"
                     android:textColor="@color/tab_text"
                     android:textSize="@dimen/text_16" />

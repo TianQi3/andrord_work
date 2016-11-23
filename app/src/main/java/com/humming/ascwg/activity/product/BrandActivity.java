@@ -5,19 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -48,6 +47,7 @@ public class BrandActivity extends AbstractActivity implements SwipeRefreshLayou
     private List<BrandResponse> brandQueryList;
     private boolean asSelector = false;
     private TextView title;
+    private ImageView back;
     private SwipeRefreshLayout refresh;
 
     @Override
@@ -56,7 +56,7 @@ public class BrandActivity extends AbstractActivity implements SwipeRefreshLayou
         setContentView(R.layout.activity_product_brands);
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         context = this;
         initView();//初始化数据
         getData();//获取数据
@@ -125,10 +125,17 @@ public class BrandActivity extends AbstractActivity implements SwipeRefreshLayou
     }
 
     private void initView() {
+
         mLoading.show();
         brandQueryList = new ArrayList<BrandResponse>();
         title = (TextView) findViewById(R.id.toolbar_title);
-        // back = (ImageView) findViewById(R.id.toolbar_back);
+        back = (ImageView) findViewById(R.id.toolbar_back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         title.setText(getResources().getString(R.string.brand));
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -140,7 +147,7 @@ public class BrandActivity extends AbstractActivity implements SwipeRefreshLayou
 
     }
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_search, menu);
         seacherFilterMenu = menu.findItem(R.id.action_search);
@@ -172,7 +179,7 @@ public class BrandActivity extends AbstractActivity implements SwipeRefreshLayou
             }
         });
         return true;
-    }
+    }*/
 
     //关键字查询
     public void queryListCode(String keyWords) {
@@ -222,7 +229,7 @@ public class BrandActivity extends AbstractActivity implements SwipeRefreshLayou
         });
     }
 
-    @Override
+    /*@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -230,7 +237,7 @@ public class BrandActivity extends AbstractActivity implements SwipeRefreshLayou
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     @Override
     public void onRefresh() {

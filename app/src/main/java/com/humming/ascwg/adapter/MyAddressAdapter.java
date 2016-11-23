@@ -8,22 +8,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.humming.ascwg.Application;
-import com.humming.ascwg.R;
 import com.humming.ascwg.Config;
-import com.humming.ascwg.service.Error;
+import com.humming.ascwg.R;
 import com.humming.ascwg.activity.my.AddressMessageActivity;
 import com.humming.ascwg.activity.my.MyAddressActivity;
 import com.humming.ascwg.model.AddressSelect;
 import com.humming.ascwg.model.ResponseData;
 import com.humming.ascwg.requestUtils.AddressRequest;
-import com.squareup.okhttp.Request;
+import com.humming.ascwg.service.Error;
 import com.humming.ascwg.service.OkHttpClientManager;
+import com.squareup.okhttp.Request;
 import com.wg.order.dto.ShippingAddressListResponse;
 
 import java.util.ArrayList;
@@ -91,8 +90,8 @@ public class MyAddressAdapter extends AbstractItemPagerArrayAdapter<ShippingAddr
                 } else {
                     Bundle resultBundles = new Bundle();
                     resultBundles.putString(
-                            MyAddressActivity.GET_ADDRESS,
-                            items.get(position).getDetailAddress());
+                            MyAddressActivity.GET_ADDRESS, items.get(position).getCountyName() + items.get(position).getCityName() +
+                                    items.get(position).getDetailAddress());
                     resultBundles.putString(
                             MyAddressActivity.GET_NAME,
                             items.get(position).getContact());
@@ -153,12 +152,14 @@ public class MyAddressAdapter extends AbstractItemPagerArrayAdapter<ShippingAddr
         View rightView = itemPages.get(1);
         View centerView = itemPages.get(0);
         viewHolder.v = centerView;
-        viewHolder.mEdit = (ImageView) centerView.findViewById(R.id.list_item_address__edit);
+        viewHolder.mEdit = (TextView) centerView.findViewById(R.id.list_item_address__edit);
+        viewHolder.mDelete = (TextView) centerView.findViewById(R.id.list_item_address__delete);
         viewHolder.mName = (TextView) centerView.findViewById(R.id.list_item_address__name);
         viewHolder.mPhone = (TextView) centerView.findViewById(R.id.list_item_address__phone);
         viewHolder.mAddress = (TextView) centerView.findViewById(R.id.list_item_address__address);
         viewHolder.setDefault = (CheckBox) centerView.findViewById(R.id.list_item_address__defult);
         viewHolder.defaultLayout = (LinearLayout) centerView.findViewById(R.id.list_item_address__defult_layout);
+        viewHolder.mDelete.setOnClickListener(onbtnDeleteClickListener);
         viewHolder.btnDelete = (Button) rightView
                 .findViewById(R.id.item_delete);
         viewHolder.btnDelete.setVisibility(View.VISIBLE);
@@ -169,6 +170,7 @@ public class MyAddressAdapter extends AbstractItemPagerArrayAdapter<ShippingAddr
         viewHolder.v.setTag(position);
         viewHolder.mEdit.setTag(position);
         viewHolder.btnDelete.setTag(position);
+        viewHolder.mDelete.setTag(position);
 
     }
 
@@ -205,6 +207,7 @@ public class MyAddressAdapter extends AbstractItemPagerArrayAdapter<ShippingAddr
                             Toast.makeText(Application.getInstance().getCurrentActivity(), info.getInfo(), Toast.LENGTH_SHORT).show();
                         }
 
+
                         @Override
                         public void onResponse(ResponseData response) {
                             for (AddressSelect addressSelect : addressSelectList) {
@@ -228,7 +231,8 @@ public class MyAddressAdapter extends AbstractItemPagerArrayAdapter<ShippingAddr
 }
 
 class ViewHolders {
-    public ImageView mEdit;
+    public TextView mEdit;
+    public TextView mDelete;
     public TextView mName;
     public TextView mPhone;
     public TextView mAddress;

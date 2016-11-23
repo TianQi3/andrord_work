@@ -4,28 +4,30 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.humming.ascwg.Constant;
-import com.humming.ascwg.adapter.ItemCodeAdapter;
 import com.humming.ascwg.Config;
+import com.humming.ascwg.Constant;
 import com.humming.ascwg.R;
 import com.humming.ascwg.activity.AbstractActivity;
+import com.humming.ascwg.adapter.ItemCodeAdapter;
 import com.humming.ascwg.requestUtils.RequestNull;
 import com.humming.ascwg.service.Error;
 import com.humming.ascwg.service.OkHttpClientManager;
@@ -35,7 +37,7 @@ import com.wg.item.dto.AllItemCodeResponse;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemCodeSelectorActivity extends AbstractActivity implements SwipeRefreshLayout.OnRefreshListener{
+public class ItemCodeSelectorActivity extends AbstractActivity implements SwipeRefreshLayout.OnRefreshListener {
     private RecyclerView listView;
     private Context context;
     private SearchView msearchView;
@@ -43,14 +45,16 @@ public class ItemCodeSelectorActivity extends AbstractActivity implements SwipeR
     ItemCodeAdapter itemCodeAdapter;
     RequestNull requestNull = new RequestNull();
     List<String> itemCodeList;
+    List<String> itemCodeLists;
     List<String> itemCodeQueryList;
     private LinearLayoutManager linearLayoutManager;
-    private TextView title;
+    private TextView title,cancel;
     private ImageView back;
     private SwipeRefreshLayout refresh;
+    private EditText serach;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_code_selector);
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -72,6 +76,7 @@ public class ItemCodeSelectorActivity extends AbstractActivity implements SwipeR
             public void onResponse(AllItemCodeResponse response) {
                 mLoading.hide();
                 itemCodeList = response.getItemCodeList();
+                itemCodeLists = itemCodeList;
                 linearLayoutManager = new LinearLayoutManager(context);
                 listView.setLayoutManager(linearLayoutManager);
                 itemCodeAdapter = new ItemCodeAdapter(context, itemCodeList);
@@ -104,10 +109,69 @@ public class ItemCodeSelectorActivity extends AbstractActivity implements SwipeR
                 finish();
             }
         });
-        itemCodeQueryList  = new ArrayList<String>();
+        cancel = (TextView) findViewById(R.id.content_product_itemcode_cancel);
+        serach = (EditText) findViewById(R.id.content_product_itemcode__search);
+        itemCodeQueryList = new ArrayList<String>();
+        itemCodeLists = new ArrayList<String>();
         listView = (RecyclerView) findViewById(R.id.content_product_itemcode__listview);
         refresh = (SwipeRefreshLayout) findViewById(R.id.content_product_itemcode__refresh);
         refresh.setOnRefreshListener(this);
+        serach.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                serach.setFocusable(true);
+                serach.setFocusableInTouchMode(true);
+                serach.requestFocus();
+                InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+                imm.hideSoftInputFromWindow(serach.getWindowToken(), 0);
+                return false;
+            }
+        });
+        serach.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                queryListCode(serach.getText().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                queryListCode(serach.getText().toString());
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                queryListCode("");
+                serach.clearFocus();
+                cancel.setVisibility(View.GONE);
+                serach.setText("");
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                boolean isOpen = imm.isActive();
+                if (isOpen) {
+                    // imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);//没有显示则显示
+                    imm.hideSoftInputFromWindow(serach.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                }
+            }
+        });
+        serach.setOnFocusChangeListener(new android.view.View.
+                OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 此处为得到焦点时的处理内容
+                    cancel.setVisibility(View.VISIBLE);
+                } else {
+                    // 此处为失去焦点时的处理内容
+                    cancel.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 
     public void setOnclickListener() {
@@ -115,7 +179,7 @@ public class ItemCodeSelectorActivity extends AbstractActivity implements SwipeR
             @Override
             public void onItemClick(View view, int position) {
                 Bundle bundle = new Bundle();
-                String item = itemCodeList.get(position);
+                String item = itemCodeLists.get(position);
                 bundle.putString(Constant.ITEM_CODE, item);
                 Intent intent = new Intent().putExtras(bundle);
                 intent.putExtras(bundle);
@@ -125,7 +189,7 @@ public class ItemCodeSelectorActivity extends AbstractActivity implements SwipeR
         });
     }
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_search, menu);
         seacherFilterMenu = menu.findItem(R.id.action_search);
@@ -157,7 +221,7 @@ public class ItemCodeSelectorActivity extends AbstractActivity implements SwipeR
             }
         });
         return true;
-    }
+    }*/
 
     //关键字查询
     public void queryListCode(String keyWords) {
@@ -167,12 +231,14 @@ public class ItemCodeSelectorActivity extends AbstractActivity implements SwipeR
                 itemCodeQueryList.add(value);
             }
         }
+        itemCodeLists = itemCodeQueryList;
         linearLayoutManager = new LinearLayoutManager(context);
         listView.setLayoutManager(linearLayoutManager);
         itemCodeAdapter = new ItemCodeAdapter(context, itemCodeQueryList);
         listView.setAdapter(itemCodeAdapter);
         setOnclickListener();
     }
+
     @Override
     public void onRefresh() {
         new Handler().postDelayed(new Runnable() {

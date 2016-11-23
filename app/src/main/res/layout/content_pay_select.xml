@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_product_brand__root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.humming.ascwg.activity.PayTypeSelectActivity"
+    tools:showIn="@layout/activity_pay_select">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="@dimen/magin_10"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/text_order_num"
+            android:textColor="@color/tab_text" />
+
+        <TextView
+            android:id="@+id/content_type_select__order_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/tab_text" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="@dimen/magin_10"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/total"
+            android:textColor="@color/tab_text" />
+
+        <TextView
+            android:id="@+id/content_type_select__order_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/tab_text"></TextView>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/magin_30"
+        android:text="@string/select_payment"
+        android:textColor="@color/tab_text" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/magin_20"
+        android:background="@color/shop_cart_bottom_all"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/magin_20"
+        android:paddingRight="@dimen/magin_10">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:src="@drawable/alipay" />
+
+        <TextView
+            android:id="@+id/item_popupwindows_alipay"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:text="@string/ali_pay"
+            android:textColor="@color/tab_text" />
+
+        <RadioGroup
+            android:id="@+id/content_pay_select__alipay_radiogroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp">
+
+            <CheckBox
+                android:id="@+id/content_pay_select__alipay_radio"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:background="@drawable/shopping_cart_radio_status"
+                android:button="@null"
+                android:checked="false" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/magin_10"
+        android:background="@color/shop_cart_bottom_all"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/magin_20"
+        android:paddingRight="@dimen/magin_10">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:src="@drawable/wechatpay" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:text="@string/wx_pay"
+            android:textColor="@color/tab_text" />
+
+        <RadioGroup
+            android:id="@+id/content_pay_select__wx_pay_radiogroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp">
+
+            <CheckBox
+                android:id="@+id/content_pay_select__wx_pay_radio"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:background="@drawable/shopping_cart_radio_status"
+                android:button="@null"
+                android:checked="false" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/content_pay_select__pay"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/bg_border_radius_orange"
+            android:gravity="center"
+            android:padding="@dimen/padding_10"
+            android:text="@string/text_order_pay"
+            android:textColor="@color/tab_text"
+            android:textSize="@dimen/text_14" />
+    </LinearLayout>
+
+</LinearLayout>

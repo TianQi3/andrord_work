@@ -135,7 +135,16 @@
             android:name="com.humming.ascwg.activity.SettingActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name="com.humming.ascwg.activity.PayTypeSelectActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name="com.humming.ascwg.activity.UpdatePasswordActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.WxCheckPhoneActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.humming.ascwg.activity.WxSetPasswordActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.humming.ascwg.activity.ChangeLanguageActivity"

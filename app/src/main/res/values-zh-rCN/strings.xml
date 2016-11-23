@@ -56,9 +56,16 @@
     <string name="text_order_details">订单详情</string>
     <string name="text_order_cancel">订单取消</string>
     <string name="text_order_pay">去支付</string>
+    <string name="text_order_disco">折扣价:</string>
+    <string name="text_vip_discount">会员折扣:</string>
+    <string name="text_commodity_price">商品总价:</string>
+    <string name="text_creat_time">创建时间:</string>
+    <string name="out_of_stock">无现货</string>
+
     <!--注册-->
     <string name="text_identifying_code">验证码</string>
     <string name="text_get_identifying_code">获取验证码</string>
+    <string name="text_get_identifying_phone">手机验证</string>
     <string name="text_register">注册</string>
     <string name="reget_identifying_code">重新获取</string>
     <string name="hint_correct_phone">请输入正确的手机号</string>
@@ -75,17 +82,19 @@
     <string name="hint_set_password">密码为6~12位</string>
     <string name="text_register_agree">同意</string>
     <string name="text_register_agreement"> 《ASC服务协议》</string>
-    <string name="nick_name">昵称:</string>
+    <string name="nick_name">昵称</string>
     <string name="nick_account">昵称/帐号</string>
     <string name="basic_information">基本信息:</string>
-    <string name="birthday">生日:</string>
+    <string name="birthday">生日</string>
     <string name="modify_password">修改密码</string>
     <string name="bind_wechat">绑定微信</string>
     <string name="change_language">更改语言</string>
-    <string name="sex">性别:</string>
-    <string name="address">所在地:</string>
+    <string name="sex">性别</string>
+    <string name="address">所在地</string>
     <string name="select_address">选择地区</string>
     <string name="date_cancel">取消</string>
+    <string name="take_photo">拍照</string>
+    <string name="select_from_album">从相册选取</string>
     <string name="date_submit">确定</string>
     <string name="action_save">保存</string>
     <string name="check_sex">选择性别</string>
@@ -102,18 +111,27 @@
     <string name="add_cart">加入购物车</string>
     <string name="all_select">全选</string>
     <string name="all_select_normal">全选已购商品</string>
+    <string name="contact_you">销售顾问将与您联系</string>
     <string name="all_select_yum">全选yum商品</string>
     <string name="cart_null">购物车为空哦~</string>
     <string name="select_address_shop">选择收货地址</string>
     <string name="address_shop">收货地址:</string>
     <string name="my_address">我的地址</string>
     <string name="order">订单</string>
+    <string name="ali_pay">支付宝支付</string>
+    <string name="wx_pay">微信支付</string>
     <string name="add_address">新增收货地址</string>
+    <string name="select_payment">请选择支付方式</string>
     <string name="update_address">修改收货地址</string>
     <string name="add_address_no">您还没设置收货地址哦  快点去设置吧</string>
     <string name="is_working_hard_on_the_new_oh">正在努力上新哦</string>
     <string name="open_soon">即将开放</string>
-    <string name="consignee">收货人:</string>
+    <string name="join">加入</string>
+    <string name="call_phone">拨打电话</string>
+    <string name="text_discount">会员折扣</string>
+    <string name="home">首页</string>
+    <string name="consignee">收货人:</string>目前获得的积分
+    <string name="point">目前获得的积分</string>
     <string name="contact_infomation">联系方式:</string>
     <string name="detail_address">详细地址:</string>
     <string name="province_city">省市:</string>
@@ -157,6 +175,7 @@
     <string name="activity_product_wines_info__brand_story">品牌故事</string>
     <!--我的订单状态-->
     <string name="order_status_1">下单成功</string>
+    <string name="order_refund">申请退款</string>
     <string name="order_refund_success">申请退款成功</string>
     <string name="cancel_order_success">取消订单成功</string>
     <string name="order_status_2">下单失败</string>
@@ -189,14 +208,28 @@
     <string name="yum_member_zone">Yum会员专区</string>
     <string name="tab_cart">购物车</string>
     <string name="tab_my">我的</string>
-    <string name="buy_one_send_three">买一赠三</string>
+    <string name="not_included_fees">不包含其他费用</string>
+    <string name="buy_one_send_three">买三赠一</string>
 
     <string name="chinese">中文</string>
+    <string name="pass_too_long">密码过长</string>
+    <string name="pass_too_short">密码过短</string>
+    <string name="two_pass_not_like">两次密码不一致</string>
     <string name="english">英文</string>
+    <string name="no_inventory">无库存</string>
     <!-- WXPayEntryActivity -->
     <string name="pay_result_tip">这个界面用于显示第三方app通过微信支付的结果</string>
     <string name="pay_result_callback_msg" formatted="false">微信支付结果：%s</string>
     <string name="app_tip">提示</string>
+    <string name="add_cart_success">添加购物车成功</string>
+    <string name="phone_is_empty">电话为空</string>
+    <string name="edit">编辑</string>
 
+    <!--发票-->
+    <string name="nor_invoice">普票</string>
+    <string name="sep_invoice">增票</string>
+    <string name="invoice_information">发票信息</string>
+    <string name="com_head">公司抬头</string>
+    <string name="mail_message">邮寄信息</string>
 
 </resources>

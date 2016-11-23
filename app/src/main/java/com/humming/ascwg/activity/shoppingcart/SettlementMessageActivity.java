@@ -39,7 +39,7 @@ public class SettlementMessageActivity extends AbstractActivity {
 
     private LinearLayout selectAddress, defaultAddress;
     private RecyclerView orderListView;
-    private TextView total, tvContact, tvPhone, tvAddress, tvDiscountTotal, tvDiscount;
+    private TextView total, tvContact, tvPhone, tvAddress, tvDiscountTotal, tvDiscount, tvTotal;
     private Button commit;
     private List<OrderSelect> orderSelectList;
     private List<OrderSelect> rightSelectList;
@@ -80,7 +80,7 @@ public class SettlementMessageActivity extends AbstractActivity {
                     tvPhone.setText(response.getPhone() + "");
                     tvContact.setText(response.getContact());
                     shippingAddressId = response.getShippingAddressId();
-                    tvAddress.setText(response.getDetailAddress());
+                    tvAddress.setText(response.getCountyName() + response.getCityName() + response.getDetailAddress());
                 } else {
                     selectAddress.setVisibility(View.VISIBLE);
                     defaultAddress.setVisibility(View.GONE);
@@ -113,14 +113,16 @@ public class SettlementMessageActivity extends AbstractActivity {
         commit = (Button) findViewById(R.id.content_settlement_message__commit);
         total = (TextView) findViewById(R.id.content_settlement_message__total);
         tvDiscountTotal = (TextView) findViewById(R.id.content_settlement_message__discount_total);
+        tvTotal = (TextView) findViewById(R.id.content_settlement_message__discount_price);
         tvDiscount = (TextView) findViewById(R.id.content_settlement_message__discount);
         String totals = getIntent().getStringExtra(TOTAL);
-        total.setText(totals);
+        total.setText("¥" + totals);
         String discount = SharePrefUtil.getString(Constant.FILE_NAME, Constant.DISCOUNT, "", this);
         Double s = Double.parseDouble(totals) * Integer.parseInt(discount) / 100;
         // Float totalss = Float.parseFloat(String.valueOf(Integer.parseInt(totals) * Integer.parseInt(Application.getInstance().getDiscountPrice()) / 100));
         tvDiscountTotal.setText(s + "");
-        tvDiscount.setText(Application.getInstance().getResources().getString(R.string.vip_discount) + " " + discount + "%");
+        tvTotal.setText("¥" + s + "");
+        tvDiscount.setText("×" + discount + "%");
         allLists = new ArrayList<OrderSelect>();
         if (Application.getInstance().getOrderSelectList() != null) {
             orderSelectList = Application.getInstance().getOrderSelectList();
@@ -222,4 +224,5 @@ public class SettlementMessageActivity extends AbstractActivity {
                 break;
         }
     }
+
 }

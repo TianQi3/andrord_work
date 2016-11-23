@@ -54,7 +54,7 @@
                         android:layout_height="match_parent"
                         android:gravity="right|center"
                         android:padding="5dp"
-                        android:text="参加"
+                        android:text="@string/join"
                         android:textColor="@color/get_ident"
                         android:textSize="17sp" />
                 </LinearLayout>

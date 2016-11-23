@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:fitsSystemWindows="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.humming.ascwg.activity.SettingActivity">
+
+
+    <LinearLayout
+        android:id="@+id/activity_set_information__parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/toolbar_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:src="@drawable/back" />
+
+                    <TextView
+                        android:id="@+id/toolbar_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:textColor="@color/tab_text"
+                        android:textSize="17sp" />
+                </FrameLayout>
+
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/height_20"
+            android:background="@color/setting_color"
+            android:orientation="vertical">
+
+            <com.humming.ascwg.component.MaterialRippleLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:mrl_rippleAlpha="0.2"
+                app:mrl_rippleColor="@color/bg_shadow"
+                app:mrl_rippleHover="true"
+                app:mrl_rippleOverlay="true">
+
+                <LinearLayout
+                    android:id="@+id/activity_setting__password_layout"
+                    style="@style/item_white_bg">
+
+                    <TextView
+                        style="@style/item_white_bg_text"
+                        android:text="@string/modify_password" />
+
+                    <TextView
+                        style="@style/item_white_bg_text"
+                        android:layout_marginLeft="15dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:textColor="@color/gray" />
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="right|center_vertical"
+                        android:src="@drawable/right_w" />
+
+                </LinearLayout>
+            </com.humming.ascwg.component.MaterialRippleLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:alpha="0.5"
+                android:background="@color/gray"></View>
+
+            <com.humming.ascwg.component.MaterialRippleLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:mrl_rippleAlpha="0.2"
+                app:mrl_rippleColor="@color/bg_shadow"
+                app:mrl_rippleHover="true"
+                app:mrl_rippleOverlay="true">
+
+                <LinearLayout
+                    android:id="@+id/activity_setting__bind_weChat_layout"
+                    style="@style/item_white_bg">
+
+                    <TextView
+                        style="@style/item_white_bg_text"
+                        android:text="@string/bind_wechat" />
+
+                    <TextView
+                        style="@style/item_white_bg_text"
+                        android:layout_marginLeft="15dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:textColor="@color/gray" />
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="right|center_vertical"
+                        android:src="@drawable/right_w" />
+
+                </LinearLayout>
+            </com.humming.ascwg.component.MaterialRippleLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:alpha="0.5"
+                android:background="@color/gray"></View>
+
+            <com.humming.ascwg.component.MaterialRippleLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:mrl_rippleAlpha="0.2"
+                app:mrl_rippleColor="@color/bg_shadow"
+                app:mrl_rippleHover="true"
+                app:mrl_rippleOverlay="true">
+
+                <LinearLayout
+                    android:id="@+id/activity_setting__update_language_layout"
+                    style="@style/item_white_bg">
+
+                    <TextView
+                        style="@style/item_white_bg_text"
+                        android:text="@string/change_language" />
+
+                    <TextView
+                        android:id="@+id/activity_setting__update_language"
+                        style="@style/item_white_bg_text"
+                        android:layout_marginLeft="15dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:textColor="@color/gray" />
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="right|center_vertical"
+                        android:src="@drawable/right_w" />
+
+                </LinearLayout>
+            </com.humming.ascwg.component.MaterialRippleLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="bottom">
+
+            <com.humming.ascwg.component.MaterialRippleLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:mrl_rippleAlpha="0.2"
+                app:mrl_rippleColor="@color/bg_shadow"
+                app:mrl_rippleHover="true"
+                app:mrl_rippleOverlay="true">
+
+                <TextView
+                    android:id="@+id/activity_setting__exit"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="@dimen/height_50"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/bg_border_radius_orange"
+                    android:gravity="center"
+                    android:text="@string/text_quit"
+                    android:textColor="@color/tab_text" />
+            </com.humming.ascwg.component.MaterialRippleLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

@@ -15,14 +15,17 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height_180"
+            android:layout_height="@dimen/height_150"
             android:orientation="horizontal"
-            android:padding="@dimen/padding_20">
+            android:paddingLeft="@dimen/magin_10"
+            android:paddingRight="@dimen/magin_10"
+            android:paddingBottom="@dimen/magin_20"
+            android:paddingTop="@dimen/magin_20">
 
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2">
+                android:layout_weight="1.9">
 
                 <ImageView
                     android:id="@+id/fragment_rights__card_image"
@@ -38,11 +41,23 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
-                    android:layout_marginBottom="@dimen/magin_20"
+                    android:layout_marginBottom="@dimen/magin_5"
                     android:layout_marginRight="@dimen/magin_10"
                     android:text="NO.870097"
-                    android:textColor="@color/money_delete"
-                    android:textSize="@dimen/text_14" />
+                    android:textColor="@color/get_ident"
+                    android:textSize="@dimen/text_14"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="@dimen/magin_5"
+                    android:layout_marginTop="@dimen/magin_5"
+                    android:text="VIP"
+                    android:textColor="@color/get_ident"
+                    android:textSize="@dimen/text_14"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
 
@@ -65,7 +80,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/magin_10"
-                    android:text="目前获得的积分"
+                    android:text="@string/point"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/text_12" />
 
@@ -83,8 +98,8 @@
                         android:id="@+id/fragment_rights__card_points"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
+                        android:layout_centerInParent="true"
                         android:layout_marginBottom="@dimen/magin_20"
                         android:text="100"
                         android:textColor="@color/tab_text"
@@ -95,11 +110,11 @@
 
         </LinearLayout>
 
-        <View
+        <!--<View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginBottom="@dimen/magin_20"
-            android:background="@color/gray" />
+            android:background="@color/gray" />-->
 
 
         <android.support.v7.widget.RecyclerView
@@ -111,7 +126,7 @@
             android:id="@+id/fragment_rights__gridview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/magin_10" />
+            android:layout_margin="@dimen/magin_5" />
 
         <TextView
             android:id="@+id/fragment_rights__rule_head"

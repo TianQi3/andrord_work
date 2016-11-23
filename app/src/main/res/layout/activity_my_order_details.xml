@@ -38,9 +38,32 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="fffff"
+                    android:text="@string/action_save"
                     android:textColor="@color/tab_text"
                     android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/content_my_order_details__refund"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="10dp"
+                    android:gravity="right|center"
+                    android:text="@string/order_refund_success"
+                    android:textColor="@color/money_vip"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/content_my_order_details__cancel_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="10dp"
+                    android:gravity="right|center"
+                    android:text="@string/text_order_cancel"
+                    android:textColor="@color/money_vip"
+                    android:visibility="gone" />
+
             </FrameLayout>
 
         </android.support.v7.widget.Toolbar>

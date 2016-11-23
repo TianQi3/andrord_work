@@ -70,6 +70,8 @@ public class ShoppingCartContent extends LinearLayout {
     public ShoppingCartContent(Context context, AttributeSet attrs) {
         super(context, attrs);
         view = inflate(context, R.layout.fragment_shopping, this);
+        normalList = new ArrayList<ShoppingCartList>();
+        yumList = new ArrayList<ShoppingCartList>();
         initView();//初始化view
         initData();//获取数据
     }
@@ -357,8 +359,8 @@ public class ShoppingCartContent extends LinearLayout {
             @Override
             public void onResponse(ShoppingCartListResponse response) {
                 listResponses = response;
-                normalList = listResponses.getNormalList();
-                yumList = listResponses.getYumList();
+                normalList = response.getNormalList();
+                yumList = response.getYumList();
                 if (normalList.size() == 0 && yumList.size() == 0) {
                     cartNull.setVisibility(View.VISIBLE);
                 } else {
@@ -401,7 +403,7 @@ public class ShoppingCartContent extends LinearLayout {
         ListAdapter listAdapter = listView.getAdapter();
         ViewGroup.LayoutParams params = listView.getLayoutParams();
         final float scale = Application.getInstance().getBaseContext().getResources().getDisplayMetrics().density;
-        params.height = (int) (117 * scale * listAdapter.getCount() + 0.5f - 12 * scale);
+        params.height = (int) (112 * scale * listAdapter.getCount() + 0.5f - 8 * scale);
         listView.setLayoutParams(params);
     }
 

@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/out"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/out"
     android:orientation="vertical">
 
     <LinearLayout
@@ -11,15 +11,15 @@
 
         <ImageView
             android:id="@+id/list_item_country__image"
-            android:layout_width="100dp"
-            android:layout_height="59dp"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"></ImageView>
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="79dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/magin_10"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -32,16 +32,15 @@
                 android:textColor="@color/tab_text" />
 
             <TextView
-                android:id="@+id/list_item_country__en"
-                android:layout_width="wrap_content"
+                android:id="@+id/list_item_country__en" android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/tab_text" />
         </LinearLayout>
 
         <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             android:layout_gravity="center"
             android:layout_marginRight="10dp"
             android:src="@drawable/right_w" />
@@ -49,6 +48,9 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/garys"></View>
+        android:layout_height="0.7dp"
+        android:alpha="0.4"
+        android:layout_marginLeft="@dimen/magin_5"
+        android:layout_marginRight="@dimen/magin_10"
+        android:background="@color/tab_text"></View>
 </LinearLayout>

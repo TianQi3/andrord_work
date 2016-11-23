@@ -4,7 +4,7 @@
     android:id="@+id/content_product_brand__root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg1"
+    android:background="@drawable/bg"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.humming.ascwg.activity.product.ItemCodeSelectorActivity"
@@ -15,7 +15,59 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:orientation="horizontal">
 
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/border_white_solid"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:paddingBottom="3dp"
+            android:paddingLeft="3dp"
+            android:paddingTop="3dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:padding="3dp"
+                android:src="@drawable/icon_search"
+                android:tint="@color/gray" />
+
+            <EditText
+                android:id="@+id/content_product_itemcode__search"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="@string/search"
+                android:inputType="none"
+                android:textColor="@color/tab_text"
+                android:textColorHint="@color/gray"
+                android:textSize="@dimen/text_14"></EditText>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/content_product_itemcode_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingLeft="8dp"
+            android:text="@string/date_cancel"
+            android:textColor="@color/tab_bg"
+            android:visibility="gone"/>
+    </LinearLayout>
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/content_product_itemcode__refresh"
         android:layout_width="match_parent"
